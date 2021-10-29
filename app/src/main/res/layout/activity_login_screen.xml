@@ -102,6 +102,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/primary"
             android:textColor="@color/white"
+            android:id="@+id/ingresar"
             android:text="@string/ingresar"/>
 
         <LinearLayout
