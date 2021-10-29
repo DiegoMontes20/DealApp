@@ -3,4 +3,18 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="titulo">DEAL</string>
+    <string name="bienvenida">Bienvenido</string>
+    <string name="telefono">Teléfono</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="olvidar_contraseña">¿Olvidaste tu contraseña?</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="nombres">Nombres(s)</string>
+    <string name="apellidos">Apellido(s)</string>
+    <string name="confirmar_contraseña">Confirmar Contraseña</string>
+    <string name="telefono_contacto">Teléfono de Contacto</string>
+    <string name="cuenta_existente">¿Ya tienes una cuenta?</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+
 </resources>
