@@ -73,6 +73,7 @@
                     ></TextView>
                 <EditText
                     android:layout_width="350dp"
+                    android:id="@+id/lo_user"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/secondary"
                     />
@@ -88,6 +89,7 @@
                     android:paddingTop="20dp"
                     ></TextView>
                 <EditText
+                    android:id="@+id/lo_password"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/secondary"
@@ -106,6 +108,7 @@
                     ></TextView>
 
                 <Button
+                    android:id="@+id/btn_login"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

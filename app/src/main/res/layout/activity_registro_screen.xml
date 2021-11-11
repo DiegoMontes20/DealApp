@@ -76,6 +76,25 @@
 
             ></TextView>
         <EditText
+            android:id="@+id/re_nombre"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/usuario"
+            android:textSize="20sp"
+            android:textColor="@color/secondaryDark"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="28dp"
+            android:paddingTop="20dp"
+            android:textStyle="bold"
+
+            ></TextView>
+        <EditText
+            android:id="@+id/re_usuario"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -92,6 +111,7 @@
             android:paddingTop="20dp"
             ></TextView>
         <EditText
+            android:id="@+id/re_apellidos"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -109,6 +129,7 @@
 
             ></TextView>
         <EditText
+            android:id="@+id/re_telefono"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -126,6 +147,7 @@
 
             ></TextView>
         <EditText
+            android:id="@+id/re_contrasenia"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -143,11 +165,13 @@
 
             ></TextView>
         <EditText
+            android:id="@+id/re_confirmar"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
             />
-        <TextView
+        <!--
+         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/telefono_contacto"
@@ -160,14 +184,16 @@
 
             ></TextView>
         <EditText
+            android:id="@+id/re_telefonoContacto"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
             />
+         -->
 
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btnRegister"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
