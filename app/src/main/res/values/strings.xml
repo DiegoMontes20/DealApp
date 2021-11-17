@@ -16,5 +16,26 @@
     <string name="telefono_contacto">Teléfono de Contacto</string>
     <string name="cuenta_existente">¿Ya tienes una cuenta?</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="datos_generales">Datos generales</string>
+    <string name="perfil">Perfil</string>
+
+    <!-- PROVEEDOR -->
+    <string name="titulo_registro_proveedor">Registro de proveedor</string>
+    <string name="imagen_empresa">Imagen de la empresa</string>
+    <string name="nombre_empresa">Nombre de la empresa</string>
+    <string name="giro_empresa">Giro de la empresa</string>
+    <string name="ubicacion">Ubicación</string>
+    <string name="descripcion">Descripción</string>
+    <string name="horario">Horario de atención</string>
+    <string name="regresar">Regresar</string>
+    <string name="continuar">Continuar</string>
+    <string name="fecha_hora">Fecha y hora</string>
+    <string name="servicio">Servicio</string>
+    <string name="agenda">Agenda</string>
+    <string name="cambiar_info">Cambiar información</string>
+    <string name="guardar_info">Guardar información</string>
+    <string name="chat">Chat</string>
+    <string name="horario_laboral">Horario laboral</string>
 
 </resources>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="28sp"
+    tools:context=".proveedor.agenda.CitaDetails">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Detalle"
+        android:gravity="center"
+        android:textColor="@color/primaryDark"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_hora"
+            android:textSize="20sp"
+            android:textColor="@color/secondaryDark"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtFechaHora"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primaryDark"
+            android:textSize="15dp"
+            android:backgroundTint="@color/secondary"
+            android:text="Mièrcoles, 25 diciembre 12:00pm a 12:30pm"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ubicacion"
+            android:textSize="20sp"
+            android:textColor="@color/secondaryDark"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtUbicacion"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primaryDark"
+            android:textSize="15dp"
+            android:backgroundTint="@color/secondary"
+            android:text="Calle Laureles #45 Colonia Centro"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/servicio"
+            android:textSize="20sp"
+            android:textColor="@color/secondaryDark"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            ></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/detalleServicio"
+            android:orientation="vertical"
+            android:background="@drawable/cita_shape"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Corte de cabello"
+                    android:textStyle="bold"
+                    android:layout_marginRight="120dp"
+                    android:gravity="start"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$200"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="200dp"
+                    android:text="Incluye masaje mientras lavamos tu cabello, corte y peinado."
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="60dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 min."
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/regresar"
+        android:textColor="@color/primaryDark" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".proveedor.agenda.AgendaList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="200dp"
+            android:backgroundTint="@color/white"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@color/primaryDark"
+            android:text="@string/agenda"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:id="@+id/fotoChat"
+            android:src="@mipmap/ic_logoDeal" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/secondaryDark"
+        android:layout_marginBottom="8dp"/>
+    <ListView
+        android:id="@+id/listaChat"
+        android:layout_width="match_parent"
+        android:divider="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_weight="2" />
+
+</LinearLayout>
