@@ -7,13 +7,16 @@ import android.os.Handler
 import android.util.Log
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import mx.edu.utez.deal.Login.LoginScreen
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        getFirebaseToken()
         initApp()
+
     }
 
     private fun initApp(){
@@ -27,13 +30,13 @@ class SplashScreen : AppCompatActivity() {
         var token: String? = null
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w("MyFirebaseMsgService", "Fetching FCM registration token failed", task.exception)
+                Log.w("MyFirebaseMsgService->", "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
             }
 
             // Get new FCM registration token
             token = task.result
-            Log.w("MyFirebaseMsgService", "$token")
+            Log.w("MyFirebaseMsgService->", "$token")
         })
         return token
     }
