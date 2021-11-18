@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "652470411376",
-    "project_id": "pruebadeal",
-    "storage_bucket": "pruebadeal.appspot.com"
+    "project_number": "177024004869",
+    "project_id": "deal-4e225",
+    "storage_bucket": "deal-4e225.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:652470411376:android:fea863fb3bbcbcdc0294b5",
+        "mobilesdk_app_id": "1:177024004869:android:c60d927ec3aaef80323d6c",
         "android_client_info": {
           "package_name": "mx.edu.utez.deal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "652470411376-0icraki0p0sgpndie5m1bvio4ap5l2vp.apps.googleusercontent.com",
+          "client_id": "177024004869-b0f1qds5s0ss2i346rh2jeu7d93lm6i3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.edu.utez.deal",
+            "certificate_hash": "06b8415f9bb687aa7e939b4d149b390af435fdac"
+          }
+        },
+        {
+          "client_id": "177024004869-bke6sdj0tdhqs5r14povo4b429s7d59o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYo_Wuv5xJwD_VIwnABL3CKXqVX-mYjZg"
+          "current_key": "AIzaSyABrNKlcJErZHhXkITUCnl8bT0XF8nD4uQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "652470411376-0icraki0p0sgpndie5m1bvio4ap5l2vp.apps.googleusercontent.com",
+              "client_id": "177024004869-bke6sdj0tdhqs5r14povo4b429s7d59o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
