@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:orientation="vertical"
+        tools:context=".Login.LoginScreen">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="141dp"
+                android:layout_height="118dp"
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="10sp"
+                android:src="@drawable/logoappointment"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:letterSpacing="0.2"
+                android:paddingLeft="20dp"
+                android:text="@string/titulo"
+                android:textColor="@color/white"
+                android:textSize="50dp"
+
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/esquinas_redondeadas"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Información"
+                android:textColor="@color/primaryDark"
+                android:textSize="40dp"
+                android:layout_marginTop="15dp"
+                android:letterSpacing="0.1"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="left">
+
+                    <TextView
+                        android:id="@+id/nombreEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondaryDark"
+                        android:text="El electrico uwu" />
+
+                    <TextView
+                        android:id="@+id/hora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:text="12:00am - 06:00m " />
+                    <TextView
+                        android:id="@+id/ubi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:justificationMode="inter_word"
+                        android:textSize="20dp"
+
+                        android:textColor="@color/black"
+                        android:text="Emiliano zapata, Morelos. " />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/secondary"
+                    android:text="Sobre la empresa" />
+
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:justificationMode="inter_word"
+                    android:textSize="20dp"
+
+                    android:textColor="@color/black"
+                    android:text="Somos una cadena de salones de belleza con más de 30 años de experiencia. Constantemente nos estamos actualizando en tendencias de moda. " />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giro de la empresa"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Télefono"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="30dp"
+
+                    android:layout_marginTop="15dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Electricista/plomero"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7771487548"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Costo"
+                    android:textColor="@color/primary"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$una lana"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:id="@+id/costo"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@color/primary"
+                    android:textColor="@color/white"
+                    android:text="Solicitar Servicio"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+

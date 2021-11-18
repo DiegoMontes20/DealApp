@@ -17,5 +17,6 @@
     <string name="telefono_contacto">Teléfono de Contacto</string>
     <string name="cuenta_existente">¿Ya tienes una cuenta?</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

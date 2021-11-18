@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import mx.edu.utez.deal.MainActivity
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Registro.RegistroScreen
@@ -36,9 +37,11 @@ class LoginScreen : AppCompatActivity() {
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }else{
-                if(login()){
+                if(true /*login()*/){
                     Toast.makeText(applicationContext,
                         "Sesion exitosa", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+
                 }else{
                     Toast.makeText(applicationContext,
                         "Valio verga", Toast.LENGTH_LONG).show()
