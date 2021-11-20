@@ -73,7 +73,40 @@
                     android:src="@drawable/logoappointment"
                     />
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usuario"
+                android:textSize="20sp"
+                android:textColor="@color/secondaryDark"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:textStyle="bold"
 
+                ></TextView>
+            <EditText
+                android:id="@+id/re_username"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contraseña"
+                android:textSize="20sp"
+                android:textColor="@color/secondaryDark"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:textStyle="bold"
+
+                ></TextView>
+            <EditText
+                android:id="@+id/re_password"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,23 +119,7 @@
 
                 ></TextView>
             <EditText
-                android:id="@+id/inputNombreEmpresa"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ubicacion"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:paddingTop="20dp"
-                ></TextView>
-            <EditText
-                android:id="@+id/inputUbicacion"
+                android:id="@+id/re_name"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/secondary"
@@ -120,7 +137,7 @@
 
                 ></TextView>
             <EditText
-                android:id="@+id/inputTelefono"
+                android:id="@+id/re_phone"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/secondary"
@@ -137,7 +154,7 @@
 
                 ></TextView>
             <EditText
-                android:id="@+id/inputGiro"
+                android:id="@+id/re_area"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/secondary"
@@ -154,7 +171,7 @@
 
                 ></TextView>
             <EditText
-                android:id="@+id/inputDescripcion"
+                android:id="@+id/re_descripcion"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/secondary"
@@ -206,7 +223,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/inputDesde"
+                    android:id="@+id/re_startTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -216,7 +233,7 @@
                     android:hint="10:00 p. m." />
 
                 <EditText
-                    android:id="@+id/inputHasta"
+                    android:id="@+id/re_finalTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -239,9 +256,11 @@
                     android:layout_marginRight="100dp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/primaryDark"
+                    android:id="@+id/backLogin"
                     android:text="@string/regresar"/>
 
                 <Button
+                    android:id="@+id/btn_pro_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/boton_primary"

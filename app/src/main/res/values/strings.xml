@@ -11,6 +11,7 @@
     <string name="ingresar">Ingresar</string>
     <string name="registrarse">Registrarse</string>
     <string name="nombres">Nombres(s)</string>
+    <string name="usuario">Usuario</string>
     <string name="apellidos">Apellido(s)</string>
     <string name="confirmar_contraseña">Confirmar Contraseña</string>
     <string name="telefono_contacto">Teléfono de Contacto</string>

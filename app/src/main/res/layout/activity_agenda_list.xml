@@ -29,7 +29,7 @@
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:id="@+id/fotoChat"
-            android:src="@mipmap/ic_logoDeal" />
+            android:src="@drawable/logoappointment" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
