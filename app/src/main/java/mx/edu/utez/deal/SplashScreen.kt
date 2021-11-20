@@ -8,6 +8,7 @@ import android.util.Log
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import mx.edu.utez.deal.Login.LoginScreen
+import mx.edu.utez.deal.Prefs.PrefsApplication
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,8 @@ class SplashScreen : AppCompatActivity() {
 
     private fun initApp(){
         Handler().postDelayed({
-            startActivity(Intent(this, LoginScreen::class.java))
+            verifyAuth()
+           // startActivity(Intent(this, LoginScreen::class.java))
         }, 4000)
 
     }
@@ -36,5 +38,16 @@ class SplashScreen : AppCompatActivity() {
             Log.w("MyFirebaseMsgService", "$token")
         })
         return token
+    }
+    fun verifyAuth(){
+        if(PrefsApplication.prefs.getData("token").isNotEmpty()){
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }else{
+            val intent = Intent(this, LoginScreen::class.java)
+            intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
     }
 }

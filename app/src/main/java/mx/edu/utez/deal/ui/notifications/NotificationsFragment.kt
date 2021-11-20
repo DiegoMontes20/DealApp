@@ -1,5 +1,6 @@
 package mx.edu.utez.deal.ui.notifications
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_notifications.view.*
+import mx.edu.utez.deal.Login.LoginScreen
+import mx.edu.utez.deal.Prefs.PrefsApplication
+import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.FragmentNotificationsBinding
 
@@ -35,7 +40,17 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })*/
+
+        root.cerrarSesion.setOnClickListener {
+            prefs.deleteAll()
+            chageActivity()
+        }
         return root
+    }
+    fun chageActivity(){
+        val intent = Intent(activity, LoginScreen::class.java)
+        intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

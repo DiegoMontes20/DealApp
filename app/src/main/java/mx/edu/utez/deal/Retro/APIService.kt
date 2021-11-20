@@ -1,6 +1,7 @@
 package mx.edu.utez.deal.Retro
 
 import mx.edu.utez.deal.Model.Client
+import mx.edu.utez.deal.Model.User
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -13,9 +14,8 @@ interface APIService {
     fun createEmployee(@Body requestBody: Client): Call<Void>
     //fun createClient(@Body data: Client):Call<Void>
 
-    @FormUrlEncoded
     @POST("/login")
-    suspend fun login(@FieldMap params: HashMap<String?, String?>): Response<ResponseBody>
-
+    @Headers("Content-Type: application/json")
+    fun login(@Body requestBody: User): Call<Void>
 }
 

@@ -65,6 +65,8 @@ class RegistroScreen : AppCompatActivity() {
             }
         }
 
+        gettoken()
+
     }
 
     fun validar():Boolean{
@@ -115,6 +117,21 @@ class RegistroScreen : AppCompatActivity() {
             }
         })
 
+    }
+
+    fun gettoken(){
+        FirebaseMessaging.getInstance().isAutoInitEnabled = true
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener {
+            if(!it.isSuccessful){
+                println("Error en firebase ${it.exception}")
+                return@OnCompleteListener
+            }else{
+                val token = it.result
+                Log.i("SI hay","${token}")
+
+
+            }
+        })
     }
 
 

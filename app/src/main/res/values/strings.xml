@@ -6,6 +6,7 @@
     <string name="titulo">DEAL</string>
     <string name="bienvenida">Bienvenido</string>
     <string name="telefono">Teléfono</string>
+
     <string name="contraseña">Contraseña</string>
     <string name="olvidar_contraseña">¿Olvidaste tu contraseña?</string>
     <string name="ingresar">Ingresar</string>

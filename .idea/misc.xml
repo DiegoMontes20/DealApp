@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/git/10/android/Cliente/DealApp/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
+        <entry key="..\:/git/10/android/Cliente/DealApp/app/src/main/res/layout/activity_registro_screen.xml" value="0.18" />
+        <entry key="..\:/git/10/android/Cliente/DealApp/app/src/main/res/layout/fragment_notifications.xml" value="0.19427083333333334" />
         <entry key="..\:/git/10/android/DealApp/app/src/main/res/layout/activity_login_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/git/10/android/DealApp/app/src/main/res/layout/activity_registro_screen.xml" value="0.20520833333333333" />
       </map>
