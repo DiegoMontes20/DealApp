@@ -37,7 +37,6 @@
                 android:text="@string/titulo"
                 android:textColor="@color/white"
                 android:textSize="50dp"
-
                 android:textStyle="bold" />
 
 
@@ -206,6 +205,7 @@
                     />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,9 +238,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@color/primary"
-                    android:textColor="@color/white"
-                    android:text="Solicitar Servicio"/>
+                    android:text="Solicitar Servicio"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
         </LinearLayout>
