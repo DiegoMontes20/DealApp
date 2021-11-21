@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_width="350dp"
+    android:layout_height="200dp"
+    android:layout_margin="15dp"
+    android:gravity="center"
     android:orientation="horizontal"
     android:background="@drawable/listamargin"
     >
 
     <LinearLayout
-        android:layout_width="260dp"
+        android:layout_width="191dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/tipoServicio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
+            android:text="Electricista(Jiutepec)"
             android:textColor="@color/primaryDark"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Electricista" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/info"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
             android:text="Electricistas a domicilio urgentes las 24 Horas en la ciudad de México df, estado de México y área metropolitana" />
 
-        <TextView
-            android:id="@+id/numero"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/secondaryDark"
-            android:layout_marginBottom="10dp"
-            android:text="7771487548" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/numero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="7771487548"
+                android:textColor="@color/secondary" />
+
+            <TextView
+                android:id="@+id/horario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="10:00 - 04:00"
+                android:textColor="@color/secondary" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:gravity=""
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imgProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/imgProfile"
+            android:layout_marginTop="30dp"
             android:src="@drawable/imsdadsa"
-            />
+
+           />
     </LinearLayout>
 
 </LinearLayout>

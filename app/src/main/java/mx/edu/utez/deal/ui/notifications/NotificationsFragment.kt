@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_notifications.view.*
+import mx.edu.utez.deal.InfoPersonal.EditarInformacioActivity
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
@@ -43,15 +44,22 @@ class NotificationsFragment : Fragment() {
 
         root.cerrarSesion.setOnClickListener {
             prefs.deleteAll()
-            chageActivity()
+            changeActivity()
         }
+        root.editarInformacion.setOnClickListener {
+            val intent = Intent(activity, EditarInformacioActivity::class.java)
+            startActivity(intent)
+        }
+
+
         return root
     }
-    fun chageActivity(){
+    fun changeActivity(){
         val intent = Intent(activity, LoginScreen::class.java)
         intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

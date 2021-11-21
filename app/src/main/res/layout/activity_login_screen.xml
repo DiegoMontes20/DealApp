@@ -10,7 +10,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:backgroundTint="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,105 +43,106 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="447dp"
                 android:background="@drawable/esquinas_redondeadas"
                 android:gravity="center"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:letterSpacing="0.1"
                     android:text="@string/bienvenida"
                     android:textColor="@color/secondary"
                     android:textSize="40dp"
-                    android:layout_marginTop="15dp"
-                    android:letterSpacing="0.1"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="28dp"
+                    android:paddingTop="20dp"
                     android:text="@string/usuario"
-                    android:textSize="20sp"
                     android:textColor="@color/secondaryDark"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="28dp"
-                    android:paddingTop="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
 
                     ></TextView>
+
                 <EditText
-                    android:layout_width="350dp"
                     android:id="@+id/lo_user"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/secondary"
-                    />
+                    android:backgroundTint="@color/secondary" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/contraseña"
-                    android:textSize="20sp"
-                    android:textColor="@color/secondaryDark"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="28dp"
-                    android:textStyle="bold"
                     android:paddingTop="20dp"
-                    ></TextView>
+                    android:text="@string/contraseña"
+                    android:textColor="@color/secondaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+
                 <EditText
                     android:id="@+id/lo_password"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/secondary"
-                    />
+                    android:backgroundTint="@color/secondary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/olvidar_contraseña"
-                    android:textSize="20sp"
-                    android:textColor="@color/primary"
                     android:layout_gravity="center_vertical|end"
-                    android:paddingRight="28dp"
                     android:paddingTop="20dp"
-                    android:textStyle="bold"
-                    ></TextView>
+                    android:paddingRight="28dp"
+                    android:text="@string/olvidar_contraseña"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
 
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/primary"
-                    android:textColor="@color/white"
-                    android:text="@string/ingresar"/>
+                    android:background="@drawable/redondeocompleto"
+
+                    android:text="@string/ingresar"
+                    android:textColor="@color/white" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¿No estás registrado?"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:layout_marginTop="15dp"
                         android:layout_marginRight="5dp"
-                        />
+                        android:text="¿No estás registrado?"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
                     <TextView
+                        android:id="@+id/registrarse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="0dp"
                         android:text="@string/registrarse"
                         android:textColor="@color/primary"
                         android:textSize="20sp"
-                        android:layout_marginTop="15dp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/registrarse"
                         />
 
                 </LinearLayout>
