@@ -45,8 +45,15 @@ tools:context=".ui.home.HomeFragment">
 
 
 </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/white"
+        android:id="@+id/rv_providers"
+        android:layout_marginBottom="60dp" />
 
-<ListView
+<!--
+ <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 android:scrollbars="none"
@@ -55,4 +62,5 @@ android:scrollbars="none"
     android:id="@+id/lista"
     android:layout_marginBottom="60dp"
     />
+ -->
 </LinearLayout>

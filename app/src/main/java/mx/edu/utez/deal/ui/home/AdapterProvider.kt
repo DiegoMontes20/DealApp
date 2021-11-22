@@ -44,7 +44,7 @@ class AdapterProvider(items: ArrayList<Provider>, ctx: Context) :
             viewHolder.info = view!!.findViewById<View>(R.id.info) as TextView
             viewHolder.horario = view!!.findViewById<View>(R.id.horario) as TextView
             viewHolder.numero = view!!.findViewById<View>(R.id.numero) as TextView
-            viewHolder.imgProfile = view!!.findViewById<View>(R.id.imgProfile) as ImageView
+           // viewHolder.imgProfile = view!!.findViewById<View>(R.id.imgProfile) as ImageView
 
         } else {
             //no need to call findViewById, can use existing ones from saved view holder
@@ -58,7 +58,7 @@ class AdapterProvider(items: ArrayList<Provider>, ctx: Context) :
         viewHolder.horario!!.text = element!!.startTime +" - "+ element!!.finalTime
         viewHolder.numero!!.text = element!!.phone
 
-        Picasso.get().load(element.image).into(viewHolder.imgProfile);
+       // Picasso.get().load(element.image).into(viewHolder.imgProfile);
 
         //setBackgroundColor(context.resources.getColor(R.color.red))
 

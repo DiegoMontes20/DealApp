@@ -3,20 +3,12 @@ package mx.edu.utez.deal.Login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
-import kotlinx.android.synthetic.main.activity_login_screen.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.MainActivity
 import mx.edu.utez.deal.Model.User
+import mx.edu.utez.deal.Model.UserLogin
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
-import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Registro.RegistroScreen
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
@@ -58,7 +50,7 @@ class LoginScreen : AppCompatActivity() {
         // Create Service
         val service = retrofit.create(APIService::class.java)
         // Create HashMap with fields
-        val user: User = User(binding.loUser.text.toString(),binding.loPassword.text.toString(),"123" )
+        val user: UserLogin = UserLogin(binding.loUser.text.toString(),binding.loPassword.text.toString() )
 
         service.login(user).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

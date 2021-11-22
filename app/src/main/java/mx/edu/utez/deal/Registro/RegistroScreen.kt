@@ -9,29 +9,18 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_registro_screen.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Model.Client
 import mx.edu.utez.deal.Model.User
-import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityRegistroScreenBinding
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.reflect.typeOf
 
 
 class RegistroScreen : AppCompatActivity() {
@@ -98,7 +87,7 @@ class RegistroScreen : AppCompatActivity() {
             }else{
                 val token = it.result
                 Log.i("SI hay","${token}")
-                var user:User = User(username, password,token.toString())
+                var user:User = User("12",username, password,token.toString())
                 var cliente:Client = Client(name, phone,lastname,user)
                 println("Cliente ${cliente.toString()}")
                 service.createEmployee(cliente).enqueue(object : Callback<Void>{
