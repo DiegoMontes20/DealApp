@@ -4,6 +4,7 @@ import mx.edu.utez.deal.Model.Client
 import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Model.User
 import mx.edu.utez.deal.Model.UserLogin
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 
 import retrofit2.Call
@@ -24,5 +25,14 @@ interface APIService {
     @GET("/client/provider")
     @Headers("Content-Type: application/json")
     suspend fun getProvider(): Response<ResponseBody>
+
+    @GET("/client/profile")
+    @Headers("Content-Type: application/json")
+    suspend fun getProfile(): Response<ResponseBody>
+
+    @PUT("/client/profile")
+    @Headers("Content-Type: application/json")
+    suspend fun updateProfile(@Body requestBody: RequestBody): Response<ResponseBody>
+
 }
 
