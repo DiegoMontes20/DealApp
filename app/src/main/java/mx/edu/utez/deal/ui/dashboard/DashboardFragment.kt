@@ -42,10 +42,14 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //TODO: IMPLEMETAR SERVICIOS
-
+        check()
 
 
         return root
+    }
+
+    fun check(){
+        Toast.makeText(activity, "Servicios",Toast.LENGTH_LONG).show()
     }
 
 

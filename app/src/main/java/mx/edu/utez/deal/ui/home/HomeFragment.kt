@@ -22,9 +22,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.Adapter.ProviderAdapter
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
+import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Model.Provider
 import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Prefs.PrefsApplication
+import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.FragmentHomeBinding
@@ -134,7 +136,6 @@ class HomeFragment : Fragment() {
                         lista.add(providerList)
                         i++
                     }
-                    println("Lsita llena: ${lista.get(0).user.username}")
                     if(lista.isEmpty()){
                         Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
                     }else{
@@ -145,7 +146,14 @@ class HomeFragment : Fragment() {
                     }
 
                 } else {
-
+                    var code = response.code().toString()
+                    if(code == "401"){
+                        Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_LONG).show()
+                        prefs.deleteAll()
+                        val intent = Intent(activity, LoginScreen::class.java)
+                        intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                    }
                     Log.e("RETROFIT_ERROR", response.code().toString())
 
                 }
