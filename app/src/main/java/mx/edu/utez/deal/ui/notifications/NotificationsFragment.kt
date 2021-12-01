@@ -15,6 +15,7 @@ import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.R
+import mx.edu.utez.deal.SobreNosotrsActivity
 import mx.edu.utez.deal.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -48,6 +49,10 @@ class NotificationsFragment : Fragment() {
         }
         root.editarInformacion.setOnClickListener {
             val intent = Intent(activity, EditarInformacioActivity::class.java)
+            startActivity(intent)
+        }
+        root.sobrenosotros.setOnClickListener {
+            val intent = Intent(activity, SobreNosotrsActivity::class.java)
             startActivity(intent)
         }
 

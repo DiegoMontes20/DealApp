@@ -43,6 +43,7 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
         //TODO: IMPLEMETAR SERVICIOS
 
+        //el layout para los servicio se llama itemCitas
 
 
         return root

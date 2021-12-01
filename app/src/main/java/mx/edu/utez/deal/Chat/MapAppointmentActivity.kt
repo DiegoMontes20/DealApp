@@ -9,7 +9,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import mx.edu.utez.deal.Chat.databinding.ActivityMapAppointmentBinding
+import mx.edu.utez.deal.R
+import mx.edu.utez.deal.databinding.ActivityMapAppointmentBinding
 
 class MapAppointmentActivity : AppCompatActivity(), OnMapReadyCallback {
 

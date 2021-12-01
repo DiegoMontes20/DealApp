@@ -18,4 +18,7 @@
     <style name="DatePickerTheme" parent="android:Theme.Material.Light.Dialog">
         <item name="android:colorAccent">@color/primary</item>
     </style>
+
+
+
 </resources>

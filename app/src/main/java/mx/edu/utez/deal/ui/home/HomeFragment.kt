@@ -134,7 +134,7 @@ class HomeFragment : Fragment() {
                         lista.add(providerList)
                         i++
                     }
-                    println("Lsita llena: ${lista.get(0).user.username}")
+                    //println("Lsita llena: ${lista.get(0).user.username}")
                     if(lista.isEmpty()){
                         Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
                     }else{

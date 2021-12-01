@@ -64,6 +64,14 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/cerrarSesion"
                 android:text="@string/cerrar_sesion"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/redondeocompleto"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:id="@+id/sobrenosotros"
+                android:text="@string/sobrenosotros"/>
 
         </LinearLayout>
 

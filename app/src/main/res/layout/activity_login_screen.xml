@@ -94,6 +94,7 @@
                 <EditText
                     android:id="@+id/lo_password"
                     android:layout_width="350dp"
+                    android:inputType="textPassword"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/secondary" />
 
