@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:layout_margin="15dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,6 +16,7 @@
             android:orientation="vertical"
             android:padding="15dp">
             <TextView
+                android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="dd-mmm-yyyy hh:mm AM"
@@ -25,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Diego Flores"
+                android:id="@+id/nombre"
                 android:textStyle="bold"
                 android:textColor="@color/primary"
                 android:textSize="15dp"/>
