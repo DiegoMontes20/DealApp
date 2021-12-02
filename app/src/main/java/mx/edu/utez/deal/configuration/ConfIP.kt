@@ -11,18 +11,7 @@ import java.io.IOException
 
 class ConfIP {
     companion object{
-        const val IP = "http://192.168.0.9:8080"
-
-        val getHeader =fun(): Interceptor {
-            return Interceptor { chain ->
-                val request =
-                    chain.request().newBuilder()
-                        .header("Authorization", prefs.getData("token"))
-                        .build()
-                chain.proceed(request)
-            }
-        }
-
+        const val IP = "http://192.168.0.7:8080"
     }
 
 

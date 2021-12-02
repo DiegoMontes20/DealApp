@@ -11,6 +11,14 @@ import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
 import mx.edu.utez.deal.R
 
 class DetailProvider : AppCompatActivity() {
+
+    companion object{
+        var id = ""
+        var nombrePro=""
+        var descripcion=""
+        var tipo=""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_proveedor)
@@ -24,6 +32,12 @@ class DetailProvider : AppCompatActivity() {
         hora.setText( parametros!!.getString("HoraI") + " - "+ parametros!!.getString("HoraF"))
 
         telefono.setText( parametros!!.getString("telefono"))
+
+        id= parametros!!.getString("id").toString()
+        nombrePro= parametros!!.getString("Nombre").toString()
+        descripcion= parametros!!.getString("Descripcion").toString()
+        tipo= parametros!!.getString("Area").toString()
+
 
 
 

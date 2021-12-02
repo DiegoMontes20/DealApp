@@ -34,5 +34,13 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun updateProfile(@Body requestBody: RequestBody): Response<ResponseBody>
 
+    @POST("/client/appointment")
+    @Headers("Content-Type: application/json")
+    suspend fun saveAppointment(@Body requestBody: RequestBody): Response<ResponseBody>
+
+    @GET("/client/appointment")
+    @Headers("Content-Type: application/json")
+    suspend fun getAppointments(): Response<ResponseBody>
+
 }
 

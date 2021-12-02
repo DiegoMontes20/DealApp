@@ -1,4 +1,4 @@
-package mx.edu.utez.deal.Chat
+package mx.edu.utez.deal.chat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +11,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ActivityMapAppointmentBinding
-
 
 class MapAppointmentActivity : AppCompatActivity(), OnMapReadyCallback {
 

@@ -1,10 +1,9 @@
-package mx.edu.utez.deal.Adapter
+package mx.edu.utez.deal.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
@@ -39,6 +38,7 @@ class ProviderAdapter(val providers:List<ProviderList>):RecyclerView.Adapter<Pro
             Picasso.get().load(provider.image).into(binding.imgProfile);
             view.setOnClickListener {
                 val intent = Intent(view.context, DetailProvider::class.java)
+                intent.putExtra("id", provider.id);
                 intent.putExtra("Nombre", provider.name);
                 intent.putExtra("Area", provider.area)
                 intent.putExtra("Descripcion", provider.description)

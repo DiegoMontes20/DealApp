@@ -35,7 +35,7 @@ class RegistroScreen : AppCompatActivity() {
         binding.volverIniciarSesion.setOnClickListener {
             startActivity(Intent(this, LoginScreen::class.java))
         }
-
+0
         binding.btnRegister.setOnClickListener {
             if(validar()){
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)

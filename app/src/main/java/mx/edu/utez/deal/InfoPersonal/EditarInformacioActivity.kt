@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
@@ -12,18 +11,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mx.edu.utez.deal.Adapter.ProviderAdapter
 import mx.edu.utez.deal.Model.ClientProfile
-import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Prefs.PrefsApplication
-import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityEditarInformacioBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
 
