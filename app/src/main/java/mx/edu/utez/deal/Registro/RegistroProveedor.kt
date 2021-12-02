@@ -91,7 +91,8 @@ class RegistroProveedor : AppCompatActivity() {
                 Log.i("SI hay","${token}")
                 var user: User = User(username, password,token.toString())
                 var image = "https://www.mejorinfluencer.com/wp-content/uploads/2019/06/Mym-Alkapone-Streamer.png"
-                var provider:Provider = Provider(name,phone,description, area, image, startTime, finalTime, user)
+                var img ="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+                var provider:Provider = Provider(name,phone,description, area, img, startTime, finalTime, user)
                 println("Cliente ${provider.toString()}")
                 service.createProvider(provider).enqueue(object : Callback<Void>{
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
