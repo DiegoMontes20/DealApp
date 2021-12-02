@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
         val service = retrofit.create(APIService::class.java)
         CoroutineScope(Dispatchers.IO).launch {
 
-            val response = service.getProvider()
+            val response = service.getProviders()
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {

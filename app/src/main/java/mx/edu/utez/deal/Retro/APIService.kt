@@ -24,7 +24,7 @@ interface APIService {
 
     @GET("/client/provider")
     @Headers("Content-Type: application/json")
-    suspend fun getProvider(): Response<ResponseBody>
+    suspend fun getProviders(): Response<ResponseBody>
 
     @GET("/client/profile")
     @Headers("Content-Type: application/json")
@@ -41,6 +41,11 @@ interface APIService {
     @GET("/client/appointment")
     @Headers("Content-Type: application/json")
     suspend fun getAppointments(): Response<ResponseBody>
+
+    @GET("/client/appointment/available")
+    @Headers("Content-Type: application/json")
+    suspend fun getAppointmentsHoras(@Query("date") date:String,
+                                     @Query("providerId") providerId:String):Response<ResponseBody>
 
 }
 
