@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RegistroScreen : AppCompatActivity() {
-    private lateinit var binding : ActivityRegistroScreenBinding
+    private lateinit var binding: ActivityRegistroScreenBinding
     lateinit var tokenFun: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +35,21 @@ class RegistroScreen : AppCompatActivity() {
         binding.volverIniciarSesion.setOnClickListener {
             startActivity(Intent(this, LoginScreen::class.java))
         }
-0
+        0
         binding.btnRegister.setOnClickListener {
-            if(validar()){
+            if (validar()) {
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            }else{
+            } else {
                 Handler().postDelayed({
 
-                    create(binding.reUsuario.text.toString(),
-                    binding.reContrasenia.text.toString(),
+                    create(
+                        binding.reUsuario.text.toString(),
+                        binding.reContrasenia.text.toString(),
                         binding.reNombre.text.toString(),
-                    binding.reTelefono.text.toString(),
-                    binding.reApellidos.text.toString())
+                        binding.reTelefono.text.toString(),
+                        binding.reApellidos.text.toString()
+                    )
 
                 }, 2000)
 
@@ -58,17 +60,19 @@ class RegistroScreen : AppCompatActivity() {
 
     }
 
-    fun validar():Boolean{
+    fun validar(): Boolean {
         return binding.reTelefono.text.isEmpty() ||
                 binding.reNombre.text.isEmpty() ||
-                binding.reApellidos.text.isEmpty()  ||
+                binding.reApellidos.text.isEmpty() ||
                 binding.reUsuario.text.isEmpty() ||
                 binding.reContrasenia.text.isEmpty() ||
                 binding.reConfirmar.text.isEmpty()
     }
 
-    fun create(username:String, password:String,
-    name:String, phone:String, lastname:String) {
+    fun create(
+        username: String, password: String,
+        name: String, phone: String, lastname: String
+    ) {
 
         val retrofit = Retrofit.Builder()
             .baseUrl(ConfIP.IP)
@@ -81,25 +85,29 @@ class RegistroScreen : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener {
-            if(!it.isSuccessful){
+            if (!it.isSuccessful) {
                 println("Error en firebase ${it.exception}")
                 return@OnCompleteListener
-            }else{
+            } else {
                 val token = it.result
-                Log.i("SI hay","${token}")
-                var user:User = User("12",username, password,token.toString())
-                var cliente:Client = Client(name, phone,lastname,user)
+                Log.i("SI hay", "${token}")
+                var user: User = User("12", username, password, token.toString())
+                var cliente: Client = Client(name, phone, lastname, user)
                 println("Cliente ${cliente.toString()}")
-                service.createEmployee(cliente).enqueue(object : Callback<Void>{
+                service.createEmployee(cliente).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if(response.isSuccessful){
-                            Toast.makeText(applicationContext,
-                                "Usuarios registrado", Toast.LENGTH_LONG).show()
+                        if (response.isSuccessful) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Usuarios registrado", Toast.LENGTH_LONG
+                            ).show()
                             changeActivity()
                         }
                     }
+
                     override fun onFailure(call: Call<Void>, t: Throwable) {
-                        Toast.makeText(applicationContext, "Error al registrar", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Error al registrar", Toast.LENGTH_LONG)
+                            .show()
                     }
                 })
 
@@ -108,15 +116,15 @@ class RegistroScreen : AppCompatActivity() {
 
     }
 
-    fun gettoken(){
+    fun gettoken() {
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener {
-            if(!it.isSuccessful){
+            if (!it.isSuccessful) {
                 println("Error en firebase ${it.exception}")
                 return@OnCompleteListener
-            }else{
+            } else {
                 val token = it.result
-                Log.i("SI hay","${token}")
+                Log.i("SI hay", "${token}")
 
 
             }
@@ -124,9 +132,9 @@ class RegistroScreen : AppCompatActivity() {
     }
 
 
-    fun changeActivity(){
+    fun changeActivity() {
         val intent = Intent(this, LoginScreen::class.java)
-        intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
 

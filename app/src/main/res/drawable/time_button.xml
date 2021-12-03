@@ -1,0 +1,30 @@
+<!-- drawable/time_button.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="76dp"
+    android:height="30dp"
+    android:viewportWidth="76"
+    android:viewportHeight="30"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M5 0H71C73.7614 0 76 2.23858 76 5V25C76 27.7614 73.7614 30 71 30H5C2.23858 30 0 27.7614 0 25V5C0 2.23858 2.23858 0 5 0Z"
+            />
+
+        <path
+            android:pathData="M0 0V30H76V0"
+            android:fillColor="#FFFFFF"
+            />
+
+        <path
+            android:pathData="M5 0H71C73.7614 0 76 2.23858 76 5V25C76 27.7614 73.7614 30 71 30H5C2.23858 30 0 27.7614 0 25V5C0 2.23858 2.23858 0 5 0Z"
+            android:strokeWidth="5"
+            android:strokeColor="#70A7BF"
+            />
+
+    </group>
+
+</vector>

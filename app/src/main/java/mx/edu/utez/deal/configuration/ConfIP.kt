@@ -11,8 +11,6 @@ import java.io.IOException
 
 class ConfIP {
     companion object{
-        const val IP = "http://192.168.0.7:8080"
+        const val IP = "http://192.168.0.30:8080"
     }
-
-
 }

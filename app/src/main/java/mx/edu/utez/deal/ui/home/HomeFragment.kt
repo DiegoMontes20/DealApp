@@ -95,7 +95,8 @@ class HomeFragment : Fragment() {
                     var jobject:JSONObject = JSONObject(prettyJson)
                     var Jarray:JSONArray = jobject.getJSONArray("data")
                     var i=0
-                    var lista:ArrayList<ProviderList> = ArrayList<ProviderList>()
+                    var lista:ArrayList<ProviderList> = ArrayList()
+
                     while (i < Jarray.length() ){
                         var provedor:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()

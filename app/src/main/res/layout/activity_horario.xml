@@ -7,14 +7,14 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/primary"
     android:orientation="vertical"
     tools:context=".Login.LoginScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -40,8 +40,9 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="630dp"
+        android:layout_height="match_parent"
         android:background="@drawable/esquinas_redondeadas"
         android:gravity="center"
         android:orientation="vertical">
@@ -50,6 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_margin="20dp"
             android:orientation="vertical">
 
@@ -111,21 +113,16 @@ android:theme="@style/Theme.Deal"
         />
 </LinearLayout>
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/horas"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scrollbars="none"
-                android:textAlignment="center"
-                android:dividerHeight="10.0sp"
-                android:divider="@color/white"
-                ></ListView>
+                android:layout_height="wrap_content" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|top"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
