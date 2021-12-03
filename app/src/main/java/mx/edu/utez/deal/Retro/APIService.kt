@@ -13,10 +13,11 @@ interface APIService {
     @Headers("Content-Type: application/json")
     fun createProvider(@Body requestBody: Provider): Call<Void>
 
-
-
-
     @POST("/login")
     @Headers("Content-Type: application/json")
     fun login(@Body requestBody: User): Call<Void>
+
+    @GET("/provider/appointment")
+    @Headers("Content-Type: application/json")
+    suspend fun getAppointments(): Response<ResponseBody>
 }
