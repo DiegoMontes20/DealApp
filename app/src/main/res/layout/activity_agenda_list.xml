@@ -37,7 +37,7 @@
         android:background="@color/secondaryDark"
         android:layout_marginBottom="8dp"/>
     <ListView
-        android:id="@+id/listaChat"
+        android:id="@+id/listaAgenda"
         android:layout_width="match_parent"
         android:divider="@color/white"
         android:layout_height="wrap_content"

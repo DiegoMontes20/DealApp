@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/esquinas_redondeadas"
+    android:elevation="2dp"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/primaryDark" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="¿Aceptar cita?"
+        android:textColor="@color/primaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cita_shape"
+        android:layout_marginHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="dd-mmm-yyyy hh:mm AM"
+                android:textColor="@color/primaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/txtFechaHoraConfirmar"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Diego Flores"
+                android:textColor="@color/primary"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:id="@+id/txtClienteConfirmar"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:text="Cancelar"
+            android:textColor="@color/primaryDark"
+            android:id="@+id/btnCancelarCita" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:gravity="center"
+            android:text="Confirmar"
+            android:id="@+id/btnConfirmarCita"/>
+
+    </LinearLayout>
+
+</LinearLayout>
