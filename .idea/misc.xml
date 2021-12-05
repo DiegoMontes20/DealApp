@@ -11,6 +11,12 @@
         <entry key="..\:/git/10/android/Proveedor/DealApp/app/src/main/res/layout/cita_item.xml" value="0.20625" />
         <entry key="..\:/git/10/android/Proveedor/DealApp/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/git/10/android/Proveedor/DealApp/app/src/main/res/layout/fragment_notifications.xml" value="0.2046875" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/activity_agenda_list.xml" value="0.3625" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/activity_chat_proveedor.xml" value="0.30833333333333335" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/cita_item.xml" value="0.30833333333333335" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.30833333333333335" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/fragment_home.xml" value="0.30833333333333335" />
+        <entry key="..\:/project/androidprojects/DealApp/app/src/main/res/layout/fragment_notifications.xml" value="0.30833333333333335" />
       </map>
     </option>
   </component>

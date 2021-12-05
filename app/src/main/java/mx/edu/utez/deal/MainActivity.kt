@@ -1,13 +1,18 @@
 package mx.edu.utez.deal
 
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import mx.edu.utez.deal.databinding.ActivityMainBinding
+import mx.edu.utez.deal.util.PermissionChecker
 
 class MainActivity : AppCompatActivity() {
 
