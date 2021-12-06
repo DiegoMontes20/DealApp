@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ActivityMapAppointmentBinding
 
+
 class MapAppointmentActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap

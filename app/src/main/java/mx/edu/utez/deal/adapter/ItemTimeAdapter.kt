@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
 import mx.edu.utez.deal.Model.AppointmentModel
 import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.R
@@ -43,6 +44,7 @@ class ItemTimeAdapter(var times: List<String>) :
         fun render(time: String) {
             binding.time.text = time
             binding.time.setOnClickListener {
+                DetailProvider.tiempo = time
                 Toast.makeText(itemView.context, "Hora: $time", Toast.LENGTH_SHORT).show()
             }
         }

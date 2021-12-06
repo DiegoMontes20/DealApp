@@ -47,5 +47,9 @@ interface APIService {
     suspend fun getAppointmentsHoras(@Query("date") date:String,
                                      @Query("providerId") providerId:String):Response<ResponseBody>
 
+    @GET("/client/conversation")
+    @Headers("Content-Type: application/json")
+    suspend fun getMessages(): Response<ResponseBody>
+
 }
 

@@ -27,6 +27,7 @@
             </View>
         </LinearLayout>
         <ImageView
+            android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -45,6 +46,7 @@
                 android:text="dd-mmm-yyyy hh:mm AM"
                 android:textColor="@color/primaryDark"
                 android:textSize="20dp"
+                android:id="@+id/horario"
                 android:textStyle="bold" />
 
             <TextView

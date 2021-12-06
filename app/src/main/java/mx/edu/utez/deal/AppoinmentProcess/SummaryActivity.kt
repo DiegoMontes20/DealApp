@@ -35,7 +35,7 @@ class SummaryActivity : AppCompatActivity() {
             onBackPressed()
         }
         println()
-        binding.fechaHora.setText(horarioActivity.fecha)
+        binding.fechaHora.setText("${horarioActivity.fecha} ${DetailProvider.tiempo}")
         binding.ubicacion.setText(MapsActivity.dialogAddress)
         binding.nombreProveedor.setText(DetailProvider.nombrePro)
         binding.tipoempresa.setText(DetailProvider.tipo)
@@ -66,7 +66,7 @@ class SummaryActivity : AppCompatActivity() {
 
             val appoinment = JSONObject()
             appoinment.put("provider", provider)
-            appoinment.put("dateTime",horarioActivity.fecha+"T14:00")
+            appoinment.put("dateTime",horarioActivity.fecha+"T"+DetailProvider.tiempo)
             appoinment.put("takeout",true)
             println(appoinment)
 

@@ -112,6 +112,28 @@
                             android:textColor="@color/secondaryDark"
                             android:text="12:00am - 06:00m " />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/viewChat"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/primaryDark"
+                            android:background="@drawable/reloj" />
+                        <Button
+                            android:id="@+id/getChat"
+                            android:layout_width="300dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/redondeocompleto"
+                            android:text="Abrir chat"
+                            android:textColor="@color/white"  />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
