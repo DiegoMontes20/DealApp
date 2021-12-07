@@ -18,8 +18,11 @@
         android:theme="@style/Theme.Deal"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".proveedor.chat.ChatsList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".proveedor.agenda.CitaDetails"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".proveedor.agenda.AgendaList"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />

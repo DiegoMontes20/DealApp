@@ -4,67 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".proveedor.chat.ChatProveedor">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:backgroundTint="@color/primaryDark"
-            android:background="@android:drawable/ic_menu_revert" />
+            android:background="@android:drawable/ic_menu_revert"
+            android:backgroundTint="@color/primaryDark" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="120dp"
             android:backgroundTint="@color/white"
-            android:textColor="@color/primaryDark"
-            android:text="Barbería Deal"/>
+            android:text="Barbería Deal"
+            android:textColor="@color/primaryDark" />
+
         <ImageView
+            android:id="@+id/fotoChat"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
-            android:id="@+id/fotoChat"
             android:src="@mipmap/ic_launcher" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/listaChat"
         android:layout_width="match_parent"
-        android:divider="@color/white"
         android:layout_height="wrap_content"
-        android:layout_weight="2" />
+        android:layout_weight="2"
+        android:divider="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/mensajeChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:hint="Escribe tu mensaje"
-            android:id="@+id/mensajeChat"
 
             />
+
         <ImageView
+            android:id="@+id/enviaMensaje"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="0"
-            android:id="@+id/enviaMensaje"
-            android:backgroundTint="@color/primaryDark"
             android:background="@android:drawable/ic_menu_send"
-            />
+            android:backgroundTint="@color/primaryDark" />
     </LinearLayout>
 
 </LinearLayout>

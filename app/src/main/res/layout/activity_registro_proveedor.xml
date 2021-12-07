@@ -81,9 +81,7 @@
                 android:text="@string/usuario"
                 android:textColor="@color/secondaryDark"
                 android:textSize="20sp"
-                android:textStyle="bold"
-
-                ></TextView>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/re_username"

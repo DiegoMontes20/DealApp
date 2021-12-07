@@ -4,126 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="28sp"
+    android:orientation="vertical"
     tools:context=".proveedor.agenda.CitaDetails">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Detalle"
         android:gravity="center"
+        android:text="Detalle"
         android:textColor="@color/primaryDark"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fecha_hora"
-            android:textSize="20sp"
-            android:textColor="@color/secondaryDark"
             android:layout_gravity="center_vertical"
-            android:textStyle="bold"
             android:paddingTop="20dp"
-            ></TextView>
+            android:text="@string/fecha_hora"
+            android:textColor="@color/secondaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
+
         <TextView
             android:id="@+id/txtFechaHora"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/primaryDark"
-            android:textSize="15dp"
             android:backgroundTint="@color/secondary"
             android:text="Mièrcoles, 25 diciembre 12:00pm a 12:30pm"
-            />
+            android:textColor="@color/primaryDark"
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ubicacion"
-            android:textSize="20sp"
-            android:textColor="@color/secondaryDark"
             android:layout_gravity="center_vertical"
-            android:textStyle="bold"
             android:paddingTop="20dp"
-            ></TextView>
+            android:text="@string/ubicacion"
+            android:textColor="@color/secondaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
+
         <TextView
             android:id="@+id/txtUbicacion"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/primaryDark"
-            android:textSize="15dp"
             android:backgroundTint="@color/secondary"
             android:text="Calle Laureles #45 Colonia Centro"
-            />
+            android:textColor="@color/primaryDark"
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/servicio"
-            android:textSize="20sp"
-            android:textColor="@color/secondaryDark"
             android:layout_gravity="center_vertical"
-            android:textStyle="bold"
             android:paddingTop="20dp"
-            ></TextView>
+            android:text="@string/servicio"
+            android:textColor="@color/secondaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
 
         <LinearLayout
+            android:id="@+id/detalleServicio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/detalleServicio"
-            android:orientation="vertical"
             android:background="@drawable/cita_shape"
+            android:orientation="vertical"
             android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Corte de cabello"
-                    android:textStyle="bold"
                     android:layout_marginRight="120dp"
                     android:gravity="start"
+                    android:text="Corte de cabello"
                     android:textColor="@color/primaryDark"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$200"
                     android:gravity="end"
-                    android:textStyle="bold"
+                    android:text="$200"
                     android:textColor="@color/primary"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="60dp"
                     android:maxWidth="200dp"
                     android:text="Incluye masaje mientras lavamos tu cabello, corte y peinado."
-                    android:textSize="12dp"
                     android:textColor="@color/black"
-                    android:layout_marginRight="60dp" />
+                    android:textSize="12dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30 min."
-                    android:textStyle="bold"
                     android:textColor="@color/primaryDark"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
