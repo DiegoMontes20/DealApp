@@ -213,7 +213,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/boton_primary"
                     android:textColor="@color/white"
-                    android:text="@string/guardar_info"/>
+                    android:text="@string/guardar_info"
+                    android:id="@+id/btnSaveInfo"/>
 
             </LinearLayout>
 
