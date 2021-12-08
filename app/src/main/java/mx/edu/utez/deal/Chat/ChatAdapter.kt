@@ -11,7 +11,7 @@ import mx.edu.utez.deal.R
 
 class ChatAdapter(context2: Context) : BaseAdapter()  {
 
-    var mensajes = ArrayList<Conversation>()
+    var mensajes = ArrayList<ChatModel>()
     var context = context2
     override fun getCount(): Int {
        return mensajes.size
@@ -25,15 +25,30 @@ class ChatAdapter(context2: Context) : BaseAdapter()  {
         return 0
     }
 
+    fun add(mensaje: ChatModel){
+        mensajes.add(mensaje)
+        this.notifyDataSetChanged()
+    }
+
+    fun clear(){
+        mensajes.clear()
+        this.notifyDataSetChanged()
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var holder = MessageViewHolder()
         var myView = convertView
         var messageInflater = LayoutInflater.from(context)
-        var mensaje = mensajes.get(position).messages.get(position).body
-        println("Entro a getView")
+        var mensaje = mensajes.get(position).mensaje
 
-        if(mensajes.get(position).messages.get(position).sender.role.equals("Client")){
-           // myView= messageInflater.inflate(R.layout)
+        if(mensajes.get(position).usuario.equals("Client")){
+            myView= messageInflater.inflate(R.layout.mi_mensaje, null)
+            holder.cuerpoDelMensaje = myView.findViewById(R.id.cuerpoDelMensaje)
+            holder.cuerpoDelMensaje!!.setText(mensaje)
+        }else{
+            myView= messageInflater.inflate(R.layout.su_mensaje, null)
+            holder.cuerpoDelMensaje = myView.findViewById(R.id.cuerpoDelMensaje)
+            holder.cuerpoDelMensaje!!.setText(mensaje)
         }
 
         return myView

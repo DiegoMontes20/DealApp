@@ -56,9 +56,8 @@ class DetailProvider : AppCompatActivity() {
         }
 
         binding.getChat.setOnClickListener {
-
             val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("id", parametros!!.getString("id").toString());
+            intent.putExtra("idProvider", parametros!!.getString("id").toString());
             intent.putExtra("nombre",  parametros!!.getString("Nombre"));
             startActivity(intent)
         }

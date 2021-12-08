@@ -51,5 +51,9 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun getMessages(): Response<ResponseBody>
 
+    @POST("/client/sendMessage")
+    @Headers("Content-Type: application/json")
+    suspend fun saveMessage(@Body requestBody: RequestBody):Response<ResponseBody>
+
 }
 

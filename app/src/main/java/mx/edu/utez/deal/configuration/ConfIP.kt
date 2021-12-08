@@ -14,3 +14,5 @@ class ConfIP {
         const val IP = "http://209.50.56.129:8080"
     }
 }
+
+//http://209.50.56.129:8080
