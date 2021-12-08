@@ -48,6 +48,7 @@
             android:name=".Login.LoginScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>

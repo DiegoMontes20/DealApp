@@ -40,7 +40,7 @@ class NotificationsFragment : Fragment() {
 //        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
-        root.cerrar.setOnClickListener {
+        root.btnCerrarSesion.setOnClickListener {
             prefs.deleteAll()
             chageActivity()
         }
