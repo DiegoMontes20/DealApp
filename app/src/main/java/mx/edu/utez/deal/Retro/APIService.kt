@@ -20,4 +20,13 @@ interface APIService {
     @GET("/provider/appointment")
     @Headers("Content-Type: application/json")
     suspend fun getAppointments(): Response<ResponseBody>
+
+    @GET("/provider/profile")
+    @Headers("Content-Type: application/json")
+    suspend fun getProfile(): Response<ResponseBody>
+
+    @PUT("/provider/profile")
+    @Headers("Content-Type: application/json")
+    suspend fun updateProfile(@Body requestBody: RequestBody): Response<ResponseBody>
+
 }

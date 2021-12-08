@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
@@ -27,7 +29,9 @@ import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapter.AppointmentAdapter
 import mx.edu.utez.deal.databinding.FragmentHomeBinding
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
@@ -41,6 +45,9 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    var idProveedor=""
+    val jsonObject = JSONObject()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,6 +60,7 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         getData()
+        getProfile()
         return root
     }
 
@@ -61,14 +69,78 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    fun getProfile(){
+        val retrofit = getRetrofit()
+
+        val service = retrofit.create(APIService::class.java)
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val response = service.getProfile()
+
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    //Toast.makeText(activity, "Consulta con éxito", Toast.LENGTH_LONG).show()
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        JsonParser.parseString(
+                            response.body()
+                                ?.string()
+                        )
+                    )
+                    //Log.w("response", prettyJson)
+                    var jobject:JSONObject = JSONObject(prettyJson)
+
+                    val jsonPro:JSONObject = JSONObject(jobject.get("data").toString())
+
+
+                    idProveedor = jsonPro.get("id").toString()
+                    var token: String? = null
+                    FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                        if (!task.isSuccessful) {
+                            Log.w("MyFirebaseMsgService->", "Fetching FCM registration token failed", task.exception)
+                            return@OnCompleteListener
+                        }
+                        // Get new FCM registration token
+                        token = task.result
+                        jsonObject.put("id", idProveedor)
+                        jsonObject.put("notificationToken", token)
+                        //println(jsonObject)
+                        update()
+
+                    })
+
+
+                } else {
+
+                    Log.e("RETROFIT_ERROR", response.code().toString())
+
+                }
+            }
+        }
+    }
+
+    private fun update() {
+        val retrofit = getRetrofit()
+        val service = retrofit.create(APIService::class.java)
+        CoroutineScope(Dispatchers.IO).launch{
+            // Convert JSONObject to String
+            val jsonObjectString = jsonObject.toString()
+
+            // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
+            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+            val response = service.updateProfile(requestBody)
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    Toast.makeText(activity, "Token actualizado", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(activity, "Error al actualizar token", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     fun getData(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl(ConfIP.IP)
-            .client(OkHttpClient.Builder().addInterceptor{ chain ->
-                val request = chain.request().newBuilder().addHeader("Authorization", PrefsApplication.prefs.getData("token")).build()
-                chain.proceed(request)
-            }.build())
-            .build()
+        val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
         CoroutineScope(Dispatchers.IO).launch {
@@ -122,6 +194,16 @@ class HomeFragment : Fragment() {
         }
 
 
+    }
+
+    fun getRetrofit():Retrofit{
+        return  Retrofit.Builder()
+            .baseUrl(ConfIP.IP)
+            .client(OkHttpClient.Builder().addInterceptor{ chain ->
+                val request = chain.request().newBuilder().addHeader("Authorization", PrefsApplication.prefs.getData("token")).build()
+                chain.proceed(request)
+            }.build())
+            .build()
     }
 
 }
