@@ -23,6 +23,7 @@ class SplashScreen : AppCompatActivity() {
     private fun initApp(){
         Handler().postDelayed({
             verifyAuth()
+           //getFirebaseToken()
            // startActivity(Intent(this, LoginScreen::class.java))
         }, 4000)
 

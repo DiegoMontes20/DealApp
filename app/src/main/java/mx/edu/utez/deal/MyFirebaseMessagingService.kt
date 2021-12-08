@@ -32,20 +32,20 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         println("Se ejecuta el servicio")
         if (remoteMessage.data.isEmpty()){
             println("Mensaje -> ${remoteMessage.data}")
-            if(ChatActivity.chatActivo){
-                enviarNotificacionLocal(remoteMessage.data.get("mensaje").toString())
-                saveData(remoteMessage.data.get("mensaje").toString())
-            }else{
-                enviarNotificacionLocal(remoteMessage.data.get("mensaje").toString())
-                showNotification(remoteMessage.data.get("mensaje").toString())
-                saveData(remoteMessage.data.get("mensaje").toString())
-            }
+//            if(ChatActivity.chatActivo){
+//                enviarNotificacionLocal(remoteMessage.data.get("mensaje").toString())
+//                saveData(remoteMessage.data.get("mensaje").toString())
+//            }else{
+//                enviarNotificacionLocal(remoteMessage.data.get("mensaje").toString())
+//                showNotification(remoteMessage.data.get("mensaje").toString())
+//                saveData(remoteMessage.data.get("mensaje").toString())
+//            }
 
         }
 
         remoteMessage.notification?.let {
             println("Firebase notification -> ${it.body.toString()}")
-            showNotification(it.title.toString())
+            //showNotification(it.title.toString())
         }
     }
 
