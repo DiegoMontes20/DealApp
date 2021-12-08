@@ -12,6 +12,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
+import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,9 +32,10 @@ import org.json.JSONObject
 import retrofit2.Retrofit
 
 class ChatActivity : AppCompatActivity() {
+
+
     private lateinit var binding :ActivityChatBinding
-    var id=""
-    var idConversacion = ""
+
     var mensajes_chat:ArrayList<Conversation> = ArrayList<Conversation>()
     var mensajes_chat_modal:ArrayList<ChatModel> = ArrayList<ChatModel>()
 
@@ -42,10 +44,13 @@ class ChatActivity : AppCompatActivity() {
 
     private val FILTRO_CHAT ="broadcast_chat"
 
-    var flag = true
+
 
     companion object{
         var chatActivo = false
+        var idProveedor =""
+        var idConversacion =""
+        var listaVacia=false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +64,7 @@ class ChatActivity : AppCompatActivity() {
         chatActivo=true
 
         val parametros = this.intent.extras
-        id= parametros!!.getString("idProvider").toString()
+        idProveedor = parametros!!.getString("idProvider").toString()
         binding.btnMarca.text = parametros!!.getString("nombre")
         binding.regresar.setOnClickListener {
             onBackPressed()
@@ -71,6 +76,7 @@ class ChatActivity : AppCompatActivity() {
                 Toast.makeText(this, "Llena el campo", Toast.LENGTH_SHORT).show()
             }else{
                 saveData(mensa)
+                sendMessage(mensa, "Client")
             }
         }
 
@@ -84,8 +90,15 @@ class ChatActivity : AppCompatActivity() {
     }
     val broadcast = object: BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
-            saveData(intent!!.getStringExtra("mensaje").toString())
+            sendMessage(intent!!.getStringExtra("mensaje").toString(), "Client")
         }
+    }
+
+    fun sendMessage(mensaje: String, tipo:String){
+        messageAdapter.add(ChatModel(mensaje, tipo))
+        messageAdapter.notifyDataSetChanged()
+        binding.mensajeChat.setText("")
+        binding.listaChat.setSelection(messageAdapter.count-1)
     }
 
 
@@ -98,7 +111,7 @@ class ChatActivity : AppCompatActivity() {
 
         // JSON id Provider
         val idProvider = JSONObject()
-        idProvider.put("id", id)
+        idProvider.put("id", idProveedor)
 
         //JSON MESSAGE
         val messageBody = JSONObject()
@@ -128,8 +141,7 @@ class ChatActivity : AppCompatActivity() {
             val response = service.saveMessage(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
-                    binding.mensajeChat.setText("")
-                    getMessages()
+                    //getMessages()
                 }else{
                     println(response.code().toString())
                 }
@@ -162,21 +174,22 @@ class ChatActivity : AppCompatActivity() {
                         var conversationObj:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val conversation:Conversation = gson.fromJson(conversationObj.toString(), Conversation::class.java)
-                        if(conversation.provider.id.equals(id)){
+                        if(conversation.provider.id.equals(idProveedor)){
                             //messageAdapter.add(conversation)
                             mensajes_chat.add(conversation)
-                            idConversacion = conversation.id
+                            idConversacion= conversation.id
                         }
                         i++
                     }
                     if(mensajes_chat.isNotEmpty()){
+                        listaVacia=true
                         messageAdapter.clear()
                         for(position in mensajes_chat.get(0).messages.indices){
                             messageAdapter.add( ChatModel(mensajes_chat.get(0).messages.get(position).body, mensajes_chat.get(0).messages.get(position).sender.role))
                         }
                         messageAdapter.notifyDataSetChanged()
                     }
-                    //binding.listaChat.setSelection(messageAdapter.count-1)
+                    binding.listaChat.setSelection(messageAdapter.count-1)
                 }
             }
         }
