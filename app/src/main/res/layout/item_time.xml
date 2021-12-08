@@ -6,6 +6,7 @@
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:background="@drawable/time_button"
+
     android:gravity="center">
 
     <TextView
