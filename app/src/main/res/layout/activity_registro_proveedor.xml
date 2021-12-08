@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/primary">
+        android:background="@color/primary"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,8 +23,7 @@
                 android:layout_height="118dp"
                 android:layout_gravity="center_vertical|end"
                 android:layout_margin="10sp"
-                android:src="@drawable/logoappointment"
-                />
+                android:src="@drawable/logoappointment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,138 +52,141 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/imagen_empresa"
-                    android:textSize="20sp"
-                    android:textColor="@color/primaryDark"
                     android:layout_gravity="center_vertical"
-                    android:textStyle="bold"
-                    />
+                    android:text="@string/imagen_empresa"
+                    android:textColor="@color/primaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
                 <ImageButton
                     android:id="@+id/inputImagen"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:maxWidth="70dp"
-                    android:maxHeight="70dp"
                     android:layout_marginLeft="70dp"
                     android:background="@drawable/boton_primary"
-                    android:src="@drawable/logoappointment"
-                    />
+                    android:maxWidth="70dp"
+                    android:maxHeight="70dp"
+                    android:src="@drawable/logoappointment" />
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/usuario"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
-                android:textStyle="bold"
+                android:text="@string/usuario"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                ></TextView>
             <EditText
                 android:id="@+id/re_username"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contraseña"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/contraseña"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
+
             <EditText
                 android:id="@+id/re_password"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nombre_empresa"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/nombre_empresa"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
+
             <EditText
                 android:id="@+id/re_name"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/telefono_contacto"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/telefono_contacto"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
+
             <EditText
                 android:id="@+id/re_phone"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/giro_empresa"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/giro_empresa"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
+
             <EditText
                 android:id="@+id/re_area"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/descripcion"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
+
             <EditText
                 android:id="@+id/re_descripcion"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                />
+                android:backgroundTint="@color/secondary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/horario"
-                android:textSize="20sp"
-                android:textColor="@color/secondaryDark"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="20dp"
+                android:text="@string/horario"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
                 android:textStyle="bold"
 
                 ></TextView>
@@ -192,80 +194,79 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary"
                     android:layout_marginRight="100dp"
-                    android:text="Desde" />
+                    android:text="Desde"
+                    android:textColor="@color/primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:text="Hasta"
                     android:textColor="@color/primary"
-                    android:text="Hasta" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/re_startTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primaryDark"
                     android:layout_marginRight="50dp"
-                    android:hint="10:00 p. m." />
+                    android:hint="10:00 p. m."
+                    android:textColor="@color/primaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/re_finalTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:hint="12:00 p. m."
                     android:textColor="@color/primaryDark"
-                    android:hint="12:00 p. m." />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
                 android:layout_marginTop="20dp"
-                >
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/backLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="100dp"
                     android:backgroundTint="@color/white"
-                    android:textColor="@color/primaryDark"
-                    android:id="@+id/backLogin"
-                    android:text="@string/regresar"/>
+                    android:text="@string/regresar"
+                    android:textColor="@color/primaryDark" />
 
                 <Button
                     android:id="@+id/btn_pro_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/boton_primary"
-                    android:textColor="@color/white"
-                    android:text="@string/continuar"/>
+                    android:text="@string/continuar"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

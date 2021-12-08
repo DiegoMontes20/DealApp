@@ -15,22 +15,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="15dp">
+
             <TextView
                 android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="dd-mmm-yyyy hh:mm AM"
-                android:textStyle="bold"
                 android:textColor="@color/primaryDark"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Diego Flores"
-                android:id="@+id/nombre"
-                android:textStyle="bold"
                 android:textColor="@color/primary"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

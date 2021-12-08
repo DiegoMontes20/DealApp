@@ -2,28 +2,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mx.edu.utez.deal">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:name=".Prefs.PrefsApplication"
-        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Deal"
-        android:allowBackup="false">
-        <activity android:name=".proveedor.agenda.CitaDetails" />
-        <activity android:name=".proveedor.agenda.AgendaList" />
-        <activity android:name=".proveedor.chat.ChatProveedor" />
-        <activity android:name=".proveedor.perfil.EditProveedor" />
-        <activity android:name=".proveedor.perfil.PerfilProveedor" />
-        <activity android:name=".proveedor.perfil.MenuPerfil" />
-        <activity android:name=".Registro.RegistroProveedor" />
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".proveedor.chat.ChatsList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.agenda.CitaDetails"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.agenda.AgendaList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.chat.ChatProveedor"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.perfil.EditProveedor"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.perfil.PerfilProveedor"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.perfil.MenuPerfil"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".Registro.RegistroProveedor"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".Registro.RegistroScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
@@ -32,8 +49,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
