@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Login.LoginScreen">
+    android:background="@color/white"
+    android:backgroundTint="@color/white">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:backgroundTint="@color/white">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,15 +29,17 @@
                     android:textColor="@color/white"
                     android:textSize="70dp"
                     android:letterSpacing="0.2"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp"/>
 
-            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="447dp"
-                android:background="@drawable/esquinas_redondeadas"
                 android:gravity="center"
+                android:background="@drawable/esquinas_redondeadas"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -98,16 +89,6 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/secondary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:paddingTop="20dp"
-                    android:paddingRight="28dp"
-                    android:text="@string/olvidar_contraseña"
-                    android:textColor="@color/primary"
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
 
                 <Button
                     android:id="@+id/btn_login"
@@ -151,7 +132,7 @@
 
             </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+            </LinearLayout>
 
+
+</ScrollView>

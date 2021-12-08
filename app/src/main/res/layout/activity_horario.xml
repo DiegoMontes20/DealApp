@@ -116,44 +116,41 @@ android:theme="@style/Theme.Deal"
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/horas"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                />
 
-                <Button
-                    android:id="@+id/regresar"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Regresar"
+        </LinearLayout>
 
-                    android:layout_marginRight="30dp"
-                    android:textColor="@color/primaryDark" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="30dp"
-                    android:background="@drawable/redondeocompleto"
-                    android:id="@+id/horaselect"
-                    android:text="Siguiente" />
+            <Button
+                android:id="@+id/regresar"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Regresar"
 
+                android:layout_marginRight="30dp"
+                android:textColor="@color/primaryDark" />
 
-            </LinearLayout>
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/redondeocompleto"
+                android:id="@+id/horaselect"
+                android:text="Siguiente" />
 
 
         </LinearLayout>
 
-
     </LinearLayout>
+
 
 
 </LinearLayout>

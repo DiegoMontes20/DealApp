@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
+    android:layout_width="330dp"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:gravity="center"
@@ -12,41 +12,28 @@
         android:layout_height="80dp"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-
-            <View
-                android:layout_width="10dp"
-                android:id="@+id/estado"
-                android:background="@drawable/listamargin"
-                android:backgroundTint="#4CAF50"
-                android:layout_height="match_parent">
-
-            </View>
-        </LinearLayout>
         <ImageView
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/primaryDark"
             android:background="@drawable/ic_baseline_watch_later_24" />
 
         <LinearLayout
-            android:layout_width="272dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="15dp">
 
             <TextView
+                android:id="@+id/horario"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="dd-mmm-yyyy hh:mm AM"
                 android:textColor="@color/primaryDark"
                 android:textSize="20dp"
-                android:id="@+id/horario"
                 android:textStyle="bold" />
 
             <TextView
@@ -61,7 +48,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
+
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/primaryDark"

@@ -8,8 +8,8 @@
     </solid>
 
     <corners
-        android:topLeftRadius="12dp"
-        android:topRightRadius="12dp"   >
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp"   >
         >
     </corners>
 

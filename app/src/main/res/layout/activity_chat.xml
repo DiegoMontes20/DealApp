@@ -12,31 +12,42 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_margin="10dp"
+      >
 
         <ImageView
             android:id="@+id/regresar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginRight="10dp"
             android:backgroundTint="@color/primaryDark"
             android:background="@android:drawable/ic_menu_revert" />
+
         <Button
             android:id="@+id/btnMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="120dp"
             android:backgroundTint="@color/white"
-            android:textColor="@color/primaryDark"
-            android:text="Barbería Deal"/>
+            android:gravity="center"
+            android:textSize="20dp"
+            android:clickable="false"
+            android:text="Barbería Deal"
+            android:textColor="@color/primaryDark" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
+           android:layout_marginLeft="50dp"
             android:id="@+id/fotoChat"
             android:src="@mipmap/logo" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/secondaryDark"
+        android:layout_marginBottom="8dp"/>
     <ListView
         android:id="@+id/listaChat"
         android:layout_width="match_parent"
@@ -49,24 +60,32 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="320dp"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Escribe tu mensaje"
+                android:id="@+id/mensajeChat"
 
-        <EditText
+                />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:hint="Escribe tu mensaje"
-            android:id="@+id/mensajeChat"
-
-            />
+            android:layout_margin="10dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|bottom"
             android:layout_weight="0"
             android:id="@+id/enviaMensaje"
             android:backgroundTint="@color/primaryDark"
             android:background="@android:drawable/ic_menu_send"
             />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

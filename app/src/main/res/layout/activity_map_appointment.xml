@@ -33,20 +33,7 @@
             map:layout_constraintTop_toTopOf="parent"
             map:layout_constraintVertical_bias="0.946" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/redondeocompleto2"
-            android:backgroundTint="@color/secondaryDark"
-            android:padding="12dp"
-            android:src="@drawable/ic_baseline_message_24"
-            map:layout_constraintBottom_toBottomOf="parent"
-            map:layout_constraintEnd_toEndOf="parent"
-            map:layout_constraintHorizontal_bias="0.862"
-            map:layout_constraintStart_toEndOf="@+id/imageView2"
-            map:layout_constraintTop_toTopOf="parent"
-            map:layout_constraintVertical_bias="0.944" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
