@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="28sp"
+    android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".proveedor.agenda.CitaDetails">
+    tools:context=".proveedor.agenda.CitaConfirmacion">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="Detalle de la cita"
+        android:text="Confirmar Cita"
         android:textColor="@color/primaryDark"
         android:textSize="30dp"
         android:textStyle="bold" />
@@ -31,14 +31,14 @@
             android:text="@string/fecha_hora"
             android:textColor="@color/secondaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"></TextView>
 
         <TextView
-            android:id="@+id/txtFechaHora"
+            android:id="@+id/infoFechaHora"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
-            android:text="Mièrcoles, 25 diciembre 12:00pm a 12:30pm"
+            android:text="Miércoles, 25 diciembre 12:00pm a 12:30pm"
             android:textColor="@color/primaryDark"
             android:textSize="15dp" />
 
@@ -50,10 +50,10 @@
             android:text="Cliente"
             android:textColor="@color/secondaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"></TextView>
 
         <TextView
-            android:id="@+id/txtCliente"
+            android:id="@+id/infoCliente"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -69,10 +69,10 @@
             android:text="Número telefónico"
             android:textColor="@color/secondaryDark"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"></TextView>
 
         <TextView
-            android:id="@+id/txtPhone"
+            android:id="@+id/infoPhone"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
@@ -82,14 +82,30 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
         android:layout_marginTop="50dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/regresar"
-        android:textColor="@color/primaryDark" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelarCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="@string/cancelar"
+            android:textColor="@color/primaryDark" />
+
+        <Button
+            android:id="@+id/btnConfirmarCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="@color/primaryDark"
+            android:text="@string/confirmar"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 </LinearLayout>

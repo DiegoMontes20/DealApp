@@ -18,6 +18,12 @@
         android:theme="@style/Theme.Deal"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".proveedor.agenda.PendienteList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".proveedor.agenda.CitaConfirmacion"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".proveedor.chat.ChatsList"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
@@ -48,8 +54,8 @@
             android:name=".Login.LoginScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:exported="true"
             android:name=".SplashScreen"
+            android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -23,7 +23,7 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/fecha"
+                    android:id="@+id/nombreChat"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Oscar Urueta"
@@ -32,7 +32,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/nombre"
+                    android:id="@+id/mensajeChat"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="¿Puedo llegar antes?"

@@ -1,7 +1,11 @@
 package mx.edu.utez.deal.proveedor.agenda
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
+import mx.edu.utez.deal.Model.Appointment
+import mx.edu.utez.deal.adapter.AppointmentAdapter
 import mx.edu.utez.deal.databinding.ActivityAgendaListBinding
 
 class AgendaList : AppCompatActivity() {
@@ -11,12 +15,18 @@ class AgendaList : AppCompatActivity() {
         binding = ActivityAgendaListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val citaModalFragment = CitaModalFragment()
+        binding.listaAgenda.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val selectedItemText = parent.getItemAtPosition(position) as Appointment
+                val intent = Intent(applicationContext, CitaDetails::class.java)
+                intent.putExtra("nombreCliente", selectedItemText.client.fullname);
+                intent.putExtra("numeroCliente", selectedItemText.client.phone);
+                intent.putExtra("dateTime", selectedItemText.dateTime)
+                startActivity(intent);
+            }
 
-        binding.listaAgenda.setOnItemClickListener { adapterView, view, position, id ->
-            citaModalFragment.show(supportFragmentManager, "CitaModalFragment")
-
-
+        binding.btnCitasPendientes.setOnClickListener {
+            startActivity(Intent(this, PendienteList::class.java))
         }
 
     }
