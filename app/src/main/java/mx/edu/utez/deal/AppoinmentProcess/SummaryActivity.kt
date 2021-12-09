@@ -34,7 +34,8 @@ class SummaryActivity : AppCompatActivity() {
         binding.regresar.setOnClickListener {
             onBackPressed()
         }
-        println()
+//        println(MapsActivity.Maplat)
+//        println(MapsActivity.Maplog)
         binding.fechaHora.setText("${horarioActivity.fecha} ${DetailProvider.tiempo}")
         binding.ubicacion.setText(MapsActivity.dialogAddress)
         binding.nombreProveedor.setText(DetailProvider.nombrePro)
@@ -68,6 +69,11 @@ class SummaryActivity : AppCompatActivity() {
             appoinment.put("provider", provider)
             appoinment.put("dateTime",horarioActivity.fecha+"T"+DetailProvider.tiempo)
             appoinment.put("takeout",true)
+            val jsonDireccion = JSONObject()
+            jsonDireccion.put("name", MapsActivity.dialogAddress)
+            jsonDireccion.put("latitude", MapsActivity.Maplat)
+            jsonDireccion.put("longitude", MapsActivity.Maplog)
+            appoinment.put("location",jsonDireccion)
             println(appoinment)
 
             val jsonObjectString = appoinment.toString()

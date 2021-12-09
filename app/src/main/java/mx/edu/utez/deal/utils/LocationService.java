@@ -30,9 +30,8 @@ public class LocationService extends Service {
 
             if (location != null) {
                 loc=location;
-                //System.out.println("Latitud " + location.getLatitude());
-                //System.out.println("Latitud " + location.getLatitude());
-                //System.out.println("Longitud " + location.getLongitude());
+//                System.out.println("Latitud " + location.getLatitude());
+//                System.out.println("Longitud " + location.getLongitude());
             } else {
                 System.out.println("Mi ubicación es null");
             }

@@ -1,4 +1,4 @@
-package mx.edu.utez.deal.chat
+package mx.edu.utez.deal.chat2
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -7,21 +7,21 @@ import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
-import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Model.chat.Conversation
 import mx.edu.utez.deal.Prefs.PrefsApplication
-import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
+import mx.edu.utez.deal.adapterChat.AdapterChat
+import mx.edu.utez.deal.adapterChat.ModelChat
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityChatBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -37,10 +37,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var binding :ActivityChatBinding
 
     var mensajes_chat:ArrayList<Conversation> = ArrayList<Conversation>()
-    var mensajes_chat_modal:ArrayList<ChatModel> = ArrayList<ChatModel>()
-
-
-    lateinit var messageAdapter:ChatAdapter
+    private lateinit var messageAdapter: AdapterChat
 
     private val FILTRO_CHAT ="broadcast_chat"
 
@@ -58,13 +55,16 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        messageAdapter = ChatAdapter(this)
-        binding.listaChat.adapter =messageAdapter
+        //Chat
+        messageAdapter = AdapterChat(this)
+        binding.listaChat.adapter = messageAdapter
 
-        chatActivo=true
+        chatActivo =true
 
         val parametros = this.intent.extras
         idProveedor = parametros!!.getString("idProvider").toString()
+
+
         binding.btnMarca.text = parametros!!.getString("nombre")
         binding.regresar.setOnClickListener {
             onBackPressed()
@@ -76,7 +76,6 @@ class ChatActivity : AppCompatActivity() {
                 Toast.makeText(this, "Llena el campo", Toast.LENGTH_SHORT).show()
             }else{
                 saveData(mensa)
-                sendMessage(mensa, "Client")
             }
         }
 
@@ -95,7 +94,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     fun sendMessage(mensaje: String, tipo:String){
-        messageAdapter.add(ChatModel(mensaje, tipo))
+        messageAdapter.add(ModelChat(mensaje, tipo))
         messageAdapter.notifyDataSetChanged()
         binding.mensajeChat.setText("")
         binding.listaChat.setSelection(messageAdapter.count-1)
@@ -104,6 +103,7 @@ class ChatActivity : AppCompatActivity() {
 
 
     fun saveData(mensaje:String){
+        println("entro al metodo")
         val retrofit = getRetrofit()
 
         //OBJETO PARA MANDAR
@@ -131,7 +131,7 @@ class ChatActivity : AppCompatActivity() {
             objEnviar.put("provider", idProvider)
             objEnviar.put("message",messageBody)
         }
-        println(objEnviar)
+        //println(objEnviar)
         // Convert JSONObject to String
         val jsonObjectString = objEnviar.toString()
         // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
@@ -141,9 +141,18 @@ class ChatActivity : AppCompatActivity() {
             val response = service.saveMessage(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
-                    //getMessages()
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        JsonParser.parseString(
+                            response.body()
+                                ?.string()
+                        )
+                    )
+                    //Log.w("response", prettyJson)
+                    sendMessage(mensaje, "Client")
                 }else{
-                    println(response.code().toString())
+                    Log.e("Error", response.code().toString())
+
                 }
             }
         }
@@ -167,29 +176,28 @@ class ChatActivity : AppCompatActivity() {
 
                     var jobject: JSONObject = JSONObject(prettyJson)
                     var Jarray: JSONArray = jobject.getJSONArray("data")
-                    var i=0
-                    mensajes_chat.clear()
-                    mensajes_chat_modal.clear()
-                    while (i < Jarray.length() ){
+
+                    for(i in 0 until Jarray.length()){
                         var conversationObj:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val conversation:Conversation = gson.fromJson(conversationObj.toString(), Conversation::class.java)
                         if(conversation.provider.id.equals(idProveedor)){
-                            //messageAdapter.add(conversation)
                             mensajes_chat.add(conversation)
-                            idConversacion= conversation.id
+                            idConversacion = conversation.id
                         }
-                        i++
-                    }
-                    if(mensajes_chat.isNotEmpty()){
-                        listaVacia=true
-                        messageAdapter.clear()
-                        for(position in mensajes_chat.get(0).messages.indices){
-                            messageAdapter.add( ChatModel(mensajes_chat.get(0).messages.get(position).body, mensajes_chat.get(0).messages.get(position).sender.role))
+                        if(mensajes_chat.isNotEmpty()){
+                            println("entro al if not empy")
+                            listaVacia=true
+                            messageAdapter.clear()
+                            for(posicion in mensajes_chat.get(0).messages.indices){
+                                messageAdapter.add(ModelChat(mensajes_chat.get(0).messages.get(posicion).body,mensajes_chat.get(0).messages.get(posicion).sender.role))
+                            }
+                            messageAdapter.notifyDataSetChanged()
                         }
-                        messageAdapter.notifyDataSetChanged()
+                        binding.listaChat.setSelection(messageAdapter.count-1)
+
                     }
-                    binding.listaChat.setSelection(messageAdapter.count-1)
+
                 }
             }
         }
@@ -206,11 +214,11 @@ class ChatActivity : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        chatActivo=true
+        chatActivo =true
     }
 
     override fun onStop() {
         super.onStop()
-        chatActivo=false
+        chatActivo =false
     }
 }

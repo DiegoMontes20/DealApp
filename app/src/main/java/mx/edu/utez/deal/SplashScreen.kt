@@ -12,6 +12,9 @@ import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Prefs.PrefsApplication
 
 class SplashScreen : AppCompatActivity() {
+    companion object{
+        var tokenSplash=""
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -23,7 +26,7 @@ class SplashScreen : AppCompatActivity() {
     private fun initApp(){
         Handler().postDelayed({
             verifyAuth()
-           //getFirebaseToken()
+            getFirebaseToken()
            // startActivity(Intent(this, LoginScreen::class.java))
         }, 4000)
 
@@ -39,7 +42,8 @@ class SplashScreen : AppCompatActivity() {
 
             // Get new FCM registration token
             token = task.result
-            Log.w("MyFirebaseMsgService->", "$token")
+            tokenSplash=token.toString()
+            //Log.w("MyFirebaseMsgService->", "$token")
         })
         return token
     }

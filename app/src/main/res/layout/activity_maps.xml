@@ -80,10 +80,9 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
         android:layout_marginRight="25dp"
-        android:src="@drawable/ic_baseline_my_location_24"
-        />
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/ic_baseline_my_location_24" />
 
     <Button
         android:id="@+id/ubicacion"

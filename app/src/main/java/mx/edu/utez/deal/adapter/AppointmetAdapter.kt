@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
+import mx.edu.utez.deal.chat2.AgendaSummary
 import mx.edu.utez.deal.Model.AppointmentModel
-import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ItemcitasBinding
-import mx.edu.utez.deal.databinding.ItemproveedorBinding
 
 class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.Adapter<AppointmetAdapter.AppointmentHolder>() {
 
@@ -46,15 +44,19 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
            binding.horario.text="${appointment.dateTime.substring(0,10)} ${appointment.provider.startTime.substring(0,5)} a ${appointment.provider.finalTime.substring(0,5)}"
             binding.nombreProveedor.text = "${appointment.provider.name} (${appointment.provider.area})"
             view.setOnClickListener {
-                val intent = Intent(view.context, DetailProvider::class.java)
-                intent.putExtra("id", appointment.provider.id);
-                intent.putExtra("Nombre", appointment.provider.name);
-                intent.putExtra("Area", appointment.provider.area)
-                intent.putExtra("Descripcion", appointment.provider.description)
-                intent.putExtra("HoraI", appointment.provider.startTime);
-                intent.putExtra("HoraF", appointment.provider.finalTime)
-                intent.putExtra("Imagen", appointment.provider.image)
-                intent.putExtra("telefono", appointment.provider.phone)
+                val intent = Intent(view.context, AgendaSummary::class.java)
+                intent.putExtra("idCita", appointment.id);
+                intent.putExtra("idProveedor", appointment.provider.id);
+
+                intent.putExtra("fechaHora", appointment.dateTime);
+                intent.putExtra("ubicacion",appointment.location.name)
+                intent.putExtra("descripcion",appointment.provider.description)
+                intent.putExtra("nombreProveedor",appointment.provider.name)
+                intent.putExtra("tipoServicio",appointment.provider.area)
+
+                intent.putExtra("latitude",appointment.location.latitude)
+                intent.putExtra("longitude",appointment.location.longitude)
+                Toast.makeText(view.context, "IdProveedor", Toast.LENGTH_SHORT).show()
                 DetailProvider.chat=true
                 view.context.startActivity(intent)
             }

@@ -90,16 +90,16 @@ class RegistroScreen : AppCompatActivity() {
                 return@OnCompleteListener
             } else {
                 val token = it.result
-                Log.i("SI hay", "${token}")
+                //Log.i("SI hay", "${token}")
                 var user: User = User("12", username, password, token.toString())
                 var cliente: Client = Client(name, phone, lastname, user)
-                println("Cliente ${cliente.toString()}")
+                //println("Cliente ${cliente.toString()}")
                 service.createEmployee(cliente).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
                             Toast.makeText(
                                 applicationContext,
-                                "Usuarios registrado", Toast.LENGTH_LONG
+                                "Usuario registrado", Toast.LENGTH_LONG
                             ).show()
                             changeActivity()
                         }

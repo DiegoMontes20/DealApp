@@ -46,6 +46,7 @@ class ProviderAdapter(val providers:List<ProviderList>):RecyclerView.Adapter<Pro
                 intent.putExtra("HoraF", provider.finalTime)
                 intent.putExtra("Imagen", provider.image)
                 intent.putExtra("telefono", provider.phone)
+                intent.putExtra("promedio",provider.evaluationAverage.toString())
                 DetailProvider.chat=false
                 view.context.startActivity(intent)
             }

@@ -88,6 +88,7 @@
                                 android:backgroundTint="@color/primaryDark"
                                 android:background="@drawable/ic_baseline_star_rate_24" />
                             <TextView
+                                android:id="@+id/promedio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"

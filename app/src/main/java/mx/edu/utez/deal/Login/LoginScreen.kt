@@ -55,6 +55,7 @@ class LoginScreen : AppCompatActivity() {
         service.login(user).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if(response.isSuccessful){
+                    println(response.body())
                     println("Headers, ${response.headers()}")
                     var auto = response.headers().get("Authorization")
                     var autho = auto?.replace(":","")

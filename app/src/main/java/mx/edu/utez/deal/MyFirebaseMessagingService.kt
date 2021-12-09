@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
-import mx.edu.utez.deal.chat.ChatActivity
+import mx.edu.utez.deal.chat2.ChatActivity
 import mx.edu.utez.deal.configuration.ConfIP
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient

@@ -28,6 +28,7 @@ import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.Retro.APIService
+import mx.edu.utez.deal.SplashScreen
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.FragmentHomeBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -50,6 +51,8 @@ class HomeFragment : Fragment() {
     var telefono =""
     var nombre =""
 
+    var tokenStatico =""
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -71,11 +74,7 @@ class HomeFragment : Fragment() {
 
 
         val root: View = binding.root
-/*
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })*/
+
         return root
     }
 
@@ -135,6 +134,12 @@ class HomeFragment : Fragment() {
                         // Get new FCM registration token
                         token = task.result
 
+
+                        tokenStatico=token.toString()
+
+                        if(!tokenStatico.equals(SplashScreen.tokenSplash)){
+
+                        }
                         jsonObject.put("id", idCliente)
                         jsonObject.put("name", nombre)
                         jsonObject.put("lastname", apellidos)
@@ -144,6 +149,10 @@ class HomeFragment : Fragment() {
                         jsonObject.put("user", jsonUser)
                         println(jsonObject)
                         update()
+
+                        //println(token)
+
+
 
                     })
 

@@ -1,4 +1,4 @@
-package mx.edu.utez.deal.chat
+package mx.edu.utez.deal.chat2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

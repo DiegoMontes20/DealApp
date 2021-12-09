@@ -27,8 +27,8 @@ import java.util.*
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object{
-        var lat=""
-        var log=""
+        var Maplat=""
+        var Maplog=""
         var fecha=""
         var dialogAddress=""
     }
@@ -59,6 +59,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.addMarker(MarkerOptions().position(punto).title("Mi Ubicación"))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(punto))
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto, 16.0f))
+
+//            if(LocationService.loc.latitude==null || LocationService.loc.latitude==null){
+//                Toast.makeText(this, "Por favor enciende la ubicación", Toast.LENGTH_SHORT).show()
+//            }else{
+//
+//            }
             //Toast.makeText(this, "Centrar", Toast.LENGTH_LONG).show()
         }
     }
@@ -102,6 +108,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnCameraIdleListener {
             var lat = mMap.cameraPosition.target.latitude
             var long = mMap.cameraPosition.target.longitude
+            Maplog=mMap.cameraPosition.target.longitude.toString()
+            Maplat =mMap.cameraPosition.target.latitude.toString()
+
             encontrarDireccion(lat, long)
             //Toast.makeText(this, "Coordenadas -> lat: "+lat+", long: "+long,Toast.LENGTH_LONG).show()
         }

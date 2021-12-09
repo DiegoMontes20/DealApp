@@ -131,7 +131,7 @@ class horarioActivity : AppCompatActivity() {
                         )
                     )
 
-                    Log.d("Pretty Printed JSON :", prettyJson)
+                   // Log.d("Pretty Printed JSON :", prettyJson)
                     val jobject: JSONObject = JSONObject(prettyJson)
                     val Jarray: JSONArray = jobject.getJSONArray("data")
                     val times: ArrayList<String> = ArrayList()

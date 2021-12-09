@@ -1,16 +1,12 @@
 package mx.edu.utez.deal.AppoinmentProcess
 
 import android.content.Intent
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
-import mx.edu.utez.deal.Chat.AgendaSummary
+import mx.edu.utez.deal.chat2.AgendaSummary
 
 import mx.edu.utez.deal.databinding.ActivityDetalleProveedorBinding
 
@@ -24,6 +20,7 @@ class DetailProvider : AppCompatActivity() {
         var tipo=""
         var tiempo=""
         var chat=false
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +35,8 @@ class DetailProvider : AppCompatActivity() {
         binding.giro.setText( parametros!!.getString("Area"))
         binding.info.setText( parametros!!.getString("Descripcion"))
         binding.hora.setText( parametros!!.getString("HoraI") + " - "+ parametros!!.getString("HoraF"))
-        binding.telefono.setText( parametros!!.getString("telefono"))
+        binding.telefono.setText( parametros!!.getString("telefono")) //promedio
+        binding.promedio.setText( parametros!!.getString("promedio"))
 
         id= parametros!!.getString("id").toString()
         nombrePro= parametros!!.getString("Nombre").toString()
@@ -46,9 +44,12 @@ class DetailProvider : AppCompatActivity() {
         tipo= parametros!!.getString("Area").toString()
         Picasso.get().load(parametros!!.getString("Imagen")).into(imgProfile);
 
-        println("Chat ${chat}")
 
+        //mostrar/esconder botón chat
         binding.viewChat.isVisible = chat
+
+        //esconder/mostrar botón de solicitar
+        binding.solicitar.isVisible =!chat
 
 
         binding.solicitar.setOnClickListener {

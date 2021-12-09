@@ -92,7 +92,6 @@ class DashboardFragment : Fragment() {
                                 ?.string()
                         )
                     )
-
                     var jobject:JSONObject = JSONObject(prettyJson)
                     var Jarray:JSONArray = jobject.getJSONArray("data")
                     var i=0
@@ -105,7 +104,7 @@ class DashboardFragment : Fragment() {
                         i++
                     }
                     if(lista.isEmpty()){
-                        Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG).show()
                     }else{
                         binding.rvServices.layoutManager = LinearLayoutManager(activity)
                         val adapter = AppointmetAdapter(lista)
