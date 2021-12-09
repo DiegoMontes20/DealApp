@@ -41,6 +41,7 @@ class AppointmentAdapter(val citas:List<Appointment>): RecyclerView.Adapter<Appo
                 intent.putExtra("fechaHora", cita.dateTime);
                 intent.putExtra("telefonoCliente", cita.client.phone);
                 intent.putExtra("ubicacion", cita.location.name);
+                intent.putExtra("estado", cita.approved);
                 view.context.startActivity(intent)
                 //Toast.makeText(view.context, cita.dateTime, Toast.LENGTH_LONG).show()
             }
