@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Evaluación del servicio"
+        android:textStyle="bold"
+
+        android:textSize="30dp"
+        android:textColor="@color/primaryDark"
+        android:layout_marginBottom="16dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/primaryDark"
+            android:background="@drawable/ic_baseline_star_rate_24" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:maxLength="1"
+            android:digits="12345"
+            android:minEms="2"
+            android:hint="5"
+            android:inputType="number"
+            android:id="@+id/numero"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/white"
+            android:text="Cerrar"
+            android:textColor="@color/primaryDark" />
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Guardar" />
+
+
+
+    </LinearLayout>
+</LinearLayout>

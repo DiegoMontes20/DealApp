@@ -76,7 +76,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
+        val sydney = LatLng(18.85, -99.20)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
@@ -97,7 +97,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // for ActivityCompat#requestPermissions for more details.
             return
         }
-        mMap.isMyLocationEnabled = true
+        mMap.isMyLocationEnabled = false
 
         mMap.setOnCameraIdleListener {
             var lat = mMap.cameraPosition.target.latitude
@@ -105,6 +105,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             encontrarDireccion(lat, long)
             //Toast.makeText(this, "Coordenadas -> lat: "+lat+", long: "+long,Toast.LENGTH_LONG).show()
         }
+            buscarDireccion.setOnClickListener {
+                if(direccion.text.isNotEmpty()){
+                    encontrarPunto(direccion.text.toString())
+                }
+            }
     }
     fun dialog(){
         val builder = AlertDialog.Builder(this)
@@ -121,12 +126,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     fun changeAct(){
         startActivity(Intent(this,SummaryActivity::class.java))
     }
+    fun encontrarPunto(direccion:String) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val address = geocoder.getFromLocationName(direccion, 5)
+
+
+        if(address.isNotEmpty()) {
+            var lat = address.get(0).latitude
+            var long = address.get(0).longitude
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, long)))
+            mMap.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(lat, long), 16.0f
+                )
+            )
+        }
+    }
 
     fun encontrarDireccion(latitud:Double, longitude:Double){
         val geocoder = Geocoder(this, Locale.getDefault())
-
         val address = geocoder.getFromLocation(latitud, longitude, 5)
-
         if(address.isNotEmpty()){
             var direccion= address[0].getAddressLine(0)
             println("Dirección -> ${direccion}")

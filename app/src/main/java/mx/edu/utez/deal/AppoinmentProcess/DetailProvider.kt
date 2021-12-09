@@ -10,8 +10,8 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
-import mx.edu.utez.deal.R
-import mx.edu.utez.deal.chat.ChatActivity
+import mx.edu.utez.deal.Chat.AgendaSummary
+
 import mx.edu.utez.deal.databinding.ActivityDetalleProveedorBinding
 
 class DetailProvider : AppCompatActivity() {
@@ -56,7 +56,7 @@ class DetailProvider : AppCompatActivity() {
         }
 
         binding.getChat.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, AgendaSummary::class.java)
             intent.putExtra("idProvider", parametros!!.getString("id").toString());
             intent.putExtra("nombre",  parametros!!.getString("Nombre"));
             startActivity(intent)

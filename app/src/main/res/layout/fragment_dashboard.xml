@@ -39,13 +39,29 @@
         android:background="@color/secondaryDark"
         android:layout_marginBottom="8dp"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Pendientes"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Terminadas"></Button>
 
 
-    </LinearLayout>
+    </RelativeLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_services"
         android:layout_width="match_parent"
