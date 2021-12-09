@@ -16,12 +16,14 @@ class CitaConfirmacion : AppCompatActivity() {
 
         val idCita = getIntent().getStringExtra("idCita");
         val nombreCliente = getIntent().getStringExtra("nombreCliente");
-        val numeroCliente = getIntent().getStringExtra("numeroCliente");
-        val fechaHora = getIntent().getStringExtra("dateTime");
+        val numeroCliente = getIntent().getStringExtra("telefonoCliente");
+        val fechaHora = getIntent().getStringExtra("fechaHora");
+        val ubicacion = getIntent().getStringExtra("ubicacion");
 
-        binding.infoFechaHora.setText(fechaHora)
-        binding.infoCliente.setText(nombreCliente)
-        binding.infoPhone.setText(numeroCliente)
+        binding.infoFechaHora.text = "${fechaHora?.substring(0,10)} Hora: ${fechaHora?.substring(11,16)}"
+        binding.infoCliente.text = nombreCliente
+        binding.infoPhone.text = numeroCliente
+        binding.address.text=ubicacion
 
         binding.btnCancelarCita.setOnClickListener {
             startActivity(Intent(this, PendienteList::class.java))

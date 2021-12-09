@@ -80,6 +80,25 @@
             android:textColor="@color/primaryDark"
             android:textSize="15dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:text="Ubicación"
+            android:textColor="@color/secondaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary"
+            android:text="7771234567"
+            android:textColor="@color/primaryDark"
+            android:textSize="15dp" />
+
     </LinearLayout>
 
     <LinearLayout
