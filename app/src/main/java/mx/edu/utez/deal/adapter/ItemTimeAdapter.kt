@@ -1,18 +1,15 @@
 package mx.edu.utez.deal.adapter
 
-import android.util.Log
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
-import mx.edu.utez.deal.Model.AppointmentModel
-import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ItemTimeBinding
-import mx.edu.utez.deal.databinding.ItemproveedorBinding
+
 
 class ItemTimeAdapter(var times: List<String>) :
     RecyclerView.Adapter<ItemTimeAdapter.ITemTimeHolder>() {
@@ -45,6 +42,7 @@ class ItemTimeAdapter(var times: List<String>) :
             binding.time.text = time
             binding.time.setOnClickListener {
                 DetailProvider.tiempo = time
+                binding.time.setTextColor(Color.parseColor("#70A7BF"))
                 Toast.makeText(itemView.context, "Hora: $time", Toast.LENGTH_SHORT).show()
             }
         }

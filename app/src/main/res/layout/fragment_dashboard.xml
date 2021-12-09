@@ -46,12 +46,15 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/pendiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:backgroundTint="@color/primaryDark"
             android:text="Pendientes"></Button>
+
         <Button
+            android:id="@+id/terminada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

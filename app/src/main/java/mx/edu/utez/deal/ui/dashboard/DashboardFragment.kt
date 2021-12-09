@@ -58,7 +58,15 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //TODO: IMPLEMETAR SERVICIOS
-        getData()
+        getData("todos")
+
+        binding.pendiente.setOnClickListener {
+            getData("pendientes")
+        }
+
+        binding.terminada.setOnClickListener {
+            getData("terminadas")
+        }
 
 
         return root
@@ -68,7 +76,7 @@ class DashboardFragment : Fragment() {
         Toast.makeText(activity, "Servicios",Toast.LENGTH_LONG).show()
     }
 
-    fun getData(){
+    fun getData(tipo:String){
         val retrofit = Retrofit.Builder()
             .baseUrl(ConfIP.IP)
             .client(OkHttpClient.Builder().addInterceptor{ chain ->
@@ -92,17 +100,32 @@ class DashboardFragment : Fragment() {
                                 ?.string()
                         )
                     )
+                    //Log.w("body", prettyJson)
                     var jobject:JSONObject = JSONObject(prettyJson)
                     var Jarray:JSONArray = jobject.getJSONArray("data")
-                    var i=0
                     var lista:ArrayList<AppointmentModel> = ArrayList<AppointmentModel>()
-                    while (i < Jarray.length() ){
+                    lista.clear()
+                    for(i in 0 until Jarray.length()){
                         var provedor:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val providerList:AppointmentModel = gson.fromJson(provedor.toString(), AppointmentModel::class.java)
-                        lista.add(providerList)
-                        i++
+                        when(tipo){
+                            "todos"->{
+                                lista.add(providerList)
+                            }
+                            "terminadas"->{
+                                if(!providerList.enabled){
+                                    lista.add(providerList)
+                                }
+                            }
+                            "pendientes"->{
+                                if(providerList.approved){
+                                    lista.add(providerList)
+                                }
+                            }
+                        }
                     }
+
                     if(lista.isEmpty()){
                         Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG).show()
                     }else{
