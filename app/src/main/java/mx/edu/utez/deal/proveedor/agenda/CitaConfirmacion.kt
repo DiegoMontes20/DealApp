@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import mx.edu.utez.deal.databinding.ActivityCitaConfirmacionBinding
+import mx.edu.utez.deal.proveedor.mapa.MapaActivity
 
 class CitaConfirmacion : AppCompatActivity() {
-    private lateinit var binding : ActivityCitaConfirmacionBinding
+    private lateinit var binding: ActivityCitaConfirmacionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCitaConfirmacionBinding.inflate(layoutInflater)
@@ -28,8 +29,8 @@ class CitaConfirmacion : AppCompatActivity() {
         }
 
         binding.btnConfirmarCita.setOnClickListener {
-            Toast.makeText(this, "Confirmando cita: "+idCita, Toast.LENGTH_LONG).show()
-
+            Toast.makeText(this, "Confirmando cita: " + idCita, Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, MapaActivity::class.java))
         }
 
     }

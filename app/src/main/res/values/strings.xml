@@ -40,5 +40,6 @@
     <string name="guardar_info">Guardar información</string>
     <string name="chat">Chat</string>
     <string name="horario_laboral">Horario laboral</string>
+    <string name="title_activity_mapa">Map</string>
 
 </resources>
