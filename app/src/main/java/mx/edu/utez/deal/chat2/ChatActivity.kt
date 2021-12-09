@@ -7,7 +7,6 @@ import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
@@ -103,7 +102,7 @@ class ChatActivity : AppCompatActivity() {
 
 
     fun saveData(mensaje:String){
-        println("entro al metodo")
+
         val retrofit = getRetrofit()
 
         //OBJETO PARA MANDAR
@@ -141,18 +140,9 @@ class ChatActivity : AppCompatActivity() {
             val response = service.saveMessage(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    val prettyJson = gson.toJson(
-                        JsonParser.parseString(
-                            response.body()
-                                ?.string()
-                        )
-                    )
-                    //Log.w("response", prettyJson)
                     sendMessage(mensaje, "Client")
                 }else{
                     Log.e("Error", response.code().toString())
-
                 }
             }
         }
@@ -186,7 +176,6 @@ class ChatActivity : AppCompatActivity() {
                             idConversacion = conversation.id
                         }
                         if(mensajes_chat.isNotEmpty()){
-                            println("entro al if not empy")
                             listaVacia=true
                             messageAdapter.clear()
                             for(posicion in mensajes_chat.get(0).messages.indices){
