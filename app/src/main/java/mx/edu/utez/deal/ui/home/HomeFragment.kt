@@ -73,30 +73,39 @@ class HomeFragment : Fragment() {
         getProfile()
 
         _binding!!.btnCitasPendientes.setOnClickListener {
-            adapter.citas = listaPendiente
-            adapter.notifyDataSetChanged()
-            _binding!!.title.text = getString(R.string.agenda_pendiente)
-            _binding!!.btnCitasPendientes.visibility = View.GONE
-            _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
-            _binding!!.btnCitas.visibility = View.VISIBLE
+            if (listaPendiente.isEmpty()) {
+                adapter.citas = listaPendiente
+                adapter.notifyDataSetChanged()
+                _binding!!.title.text = getString(R.string.agenda_pendiente)
+                _binding!!.btnCitasPendientes.visibility = View.GONE
+                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
+                _binding!!.btnCitas.visibility = View.VISIBLE
+            }else
+                Toast.makeText(activity,"No hay registro de citas pendientes",Toast.LENGTH_LONG).show()
         }
 
         _binding!!.btnCitas.setOnClickListener {
-            adapter.citas = lista
-            adapter.notifyDataSetChanged()
-            _binding!!.title.text = getString(R.string.agenda)
-            _binding!!.btnCitasPendientes.visibility = View.VISIBLE
-            _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
-            _binding!!.btnCitas.visibility = View.GONE
+            if (listaPendiente.isEmpty()) {
+                adapter.citas = lista
+                adapter.notifyDataSetChanged()
+                _binding!!.title.text = getString(R.string.agenda)
+                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
+                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
+                _binding!!.btnCitas.visibility = View.GONE
+            }else
+                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_LONG).show()
         }
 
         _binding!!.btnCitasRealizadas.setOnClickListener {
-            adapter.citas = listaRealizadas
-            adapter.notifyDataSetChanged()
-            _binding!!.title.text = getString(R.string.agenda_realizada)
-            _binding!!.btnCitasPendientes.visibility = View.VISIBLE
-            _binding!!.btnCitas.visibility = View.VISIBLE
-            _binding!!.btnCitasRealizadas.visibility = View.GONE
+            if (listaPendiente.isEmpty()) {
+                adapter.citas = listaRealizadas
+                adapter.notifyDataSetChanged()
+                _binding!!.title.text = getString(R.string.agenda_realizada)
+                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
+                _binding!!.btnCitas.visibility = View.VISIBLE
+                _binding!!.btnCitasRealizadas.visibility = View.GONE
+            }else
+                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_LONG).show()
         }
         return root
     }
@@ -209,7 +218,7 @@ class HomeFragment : Fragment() {
                         i++
                     }
                     if(lista.isEmpty()){
-                        Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, "No hay registro de citas", Toast.LENGTH_LONG).show()
                     }else{
                         binding.rvCitas.layoutManager = LinearLayoutManager(activity)
                         adapter = AppointmentAdapter(lista)
