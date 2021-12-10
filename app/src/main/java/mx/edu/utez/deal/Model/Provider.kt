@@ -10,5 +10,6 @@ data class Provider(@SerializedName("name")val name:String,
                     @SerializedName("image")val image:String,
                     @SerializedName("startTime")val startTime:String,
                     @SerializedName("finalTime")val finalTime:String,
-                    @SerializedName("user")val User:User
+                    @SerializedName("user")val User:User,
+                    @SerializedName("location")var location: LocationAddress?
 )

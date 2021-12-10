@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="mx.edu.utez.deal.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/perfil"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

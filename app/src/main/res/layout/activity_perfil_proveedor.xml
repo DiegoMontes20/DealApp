@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="103dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -49,75 +49,46 @@
             android:orientation="vertical"
             android:padding="28dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:text="@string/nombre_empresa"
-                android:textColor="@color/secondaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-                ></TextView>
+                <LinearLayout
+                    android:layout_width="186dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/inputNombreEmpresa"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:text="@string/nombre_empresa"
+                        android:textColor="@color/secondaryDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:text="@string/ubicacion"
-                android:textColor="@color/secondaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+                        ></TextView>
 
-            <EditText
-                android:id="@+id/inputUbicacion"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                    <EditText
+                        android:id="@+id/inputNombreEmpresa"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/secondary"
+                        android:focusable="false"
+                        android:cursorVisible="false"/>
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:text="@string/telefono_contacto"
-                android:textColor="@color/secondaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                <ImageView
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_margin="10sp"
+                    android:src="@drawable/logoappointment" />
 
-                ></TextView>
-
-            <EditText
-                android:id="@+id/inputTelefono"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:text="@string/giro_empresa"
-                android:textColor="@color/secondaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-                ></TextView>
-
-            <EditText
-                android:id="@+id/inputGiro"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,7 +106,67 @@
                 android:id="@+id/inputDescripcion"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:text="@string/telefono_contacto"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                ></TextView>
+
+            <EditText
+                android:id="@+id/inputTelefono"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:text="@string/giro_empresa"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                ></TextView>
+
+            <EditText
+                android:id="@+id/inputGiro"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:text="@string/ubicacion"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
+            <EditText
+                android:id="@+id/inputUbicacion"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                android:focusable="false"
+                android:cursorVisible="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -163,7 +194,8 @@
                     android:text="Desde"
                     android:textColor="@color/primary"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,7 +222,9 @@
                     android:hint="10:00 p. m."
                     android:textColor="@color/primaryDark"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:focusable="false"
+                    android:cursorVisible="false"/>
 
                 <EditText
                     android:id="@+id/inputHasta"
@@ -199,26 +233,10 @@
                     android:hint="12:00 p. m."
                     android:textColor="@color/primaryDark"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:focusable="false"
+                    android:cursorVisible="false"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/boton_primary"
-                    android:text="@string/cambiar_info"
-                    android:textColor="@color/white"
-                    android:id="@+id/btnCambiarInfo"/>
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
