@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.databinding.ActivityMenuPerfilBinding
-import mx.edu.utez.deal.proveedor.agenda.AgendaList
 
 class MenuPerfil : AppCompatActivity() {
     private lateinit var binding: ActivityMenuPerfilBinding
@@ -20,8 +19,7 @@ class MenuPerfil : AppCompatActivity() {
         }
 
         binding.btnHorarioLaboral.setOnClickListener {
-            startActivity(Intent(this, AgendaList::class.java))
-
+            finish()
         }
 
         binding.btnCerrarSesion.setOnClickListener {

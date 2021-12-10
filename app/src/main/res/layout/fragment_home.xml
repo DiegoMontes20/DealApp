@@ -21,6 +21,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="200dp"
@@ -58,11 +59,28 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btnCitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryDark"
+                android:text="Agenda"
+                android:textColor="@color/white" />
+
+            <Button
                 android:id="@+id/btnCitasPendientes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primaryDark"
                 android:text="Citas pendientes"
+                android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/btnCitasRealizadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryDark"
+                android:text="Citas realizadas"
                 android:textColor="@color/white" />
 
         </LinearLayout>

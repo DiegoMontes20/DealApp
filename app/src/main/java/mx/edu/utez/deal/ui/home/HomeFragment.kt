@@ -1,6 +1,7 @@
 package mx.edu.utez.deal.ui.home
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,11 +37,16 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
+import java.time.LocalDateTime
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
+    val lista:ArrayList<Appointment> = ArrayList()
+    val listaRealizadas:ArrayList<Appointment> = ArrayList()
+    val listaPendiente:ArrayList<Appointment> = ArrayList()
+    private lateinit var adapter: AppointmentAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -48,6 +55,7 @@ class HomeFragment : Fragment() {
     var idProveedor=""
     val jsonObject = JSONObject()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,8 +67,37 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        _binding!!.btnCitas.visibility = View.GONE
+
         getData()
         getProfile()
+
+        _binding!!.btnCitasPendientes.setOnClickListener {
+            adapter.citas = listaPendiente
+            adapter.notifyDataSetChanged()
+            _binding!!.title.text = getString(R.string.agenda_pendiente)
+            _binding!!.btnCitasPendientes.visibility = View.GONE
+            _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
+            _binding!!.btnCitas.visibility = View.VISIBLE
+        }
+
+        _binding!!.btnCitas.setOnClickListener {
+            adapter.citas = lista
+            adapter.notifyDataSetChanged()
+            _binding!!.title.text = getString(R.string.agenda)
+            _binding!!.btnCitasPendientes.visibility = View.VISIBLE
+            _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
+            _binding!!.btnCitas.visibility = View.GONE
+        }
+
+        _binding!!.btnCitasRealizadas.setOnClickListener {
+            adapter.citas = listaRealizadas
+            adapter.notifyDataSetChanged()
+            _binding!!.title.text = getString(R.string.agenda_realizada)
+            _binding!!.btnCitasPendientes.visibility = View.VISIBLE
+            _binding!!.btnCitas.visibility = View.VISIBLE
+            _binding!!.btnCitasRealizadas.visibility = View.GONE
+        }
         return root
     }
 
@@ -138,6 +175,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getData(){
         val retrofit = getRetrofit()
 
@@ -160,19 +198,21 @@ class HomeFragment : Fragment() {
                     var jobject: JSONObject = JSONObject(prettyJson)
                     var Jarray: JSONArray = jobject.getJSONArray("data")
                     var i=0
-                    var lista:ArrayList<Appointment> = ArrayList<Appointment>()
                     while (i < Jarray.length() ){
                         var provedor: JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val providerList:Appointment = gson.fromJson(provedor.toString(), Appointment::class.java)
-                        lista.add(providerList)
+                        if (providerList.approved && LocalDateTime.parse(providerList.dateTime).isBefore(LocalDateTime.now()))
+                            listaRealizadas.add(providerList)
+                        else if (providerList.approved) lista.add(providerList)
+                        else listaPendiente.add(providerList)
                         i++
                     }
                     if(lista.isEmpty()){
                         Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
                     }else{
                         binding.rvCitas.layoutManager = LinearLayoutManager(activity)
-                        val adapter = AppointmentAdapter(lista)
+                        adapter = AppointmentAdapter(lista)
                         binding.rvCitas.adapter=adapter
                         adapter!!.notifyDataSetChanged()
                     }

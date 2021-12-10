@@ -37,13 +37,13 @@ class CitaConfirmacion : AppCompatActivity() {
         idCita = getIntent().getStringExtra("idCita").toString();
         val nombreCliente = getIntent().getStringExtra("nombreCliente");
         val numeroCliente = getIntent().getStringExtra("telefonoCliente");
-        val fechaHora = getIntent().getStringExtra("fechaHora");
-        val ubicacion = getIntent().getStringExtra("ubicacion");
+        val fechaHora = getIntent().getStringExtra("dateTime");
+        val ubicacion = getIntent().getStringExtra("locationName");
         val estado = getIntent().getBooleanExtra("estado",true)
 
-
-        binding.btnConfirmarCita.isVisible=!estado
-        binding.btnCancelarCita.isVisible=estado
+        println("estado>>>$estado")
+        //binding.btnConfirmarCita.isVisible=!estado
+        //binding.btnCancelarCita.isVisible=estado
 
 
         binding.infoFechaHora.text = "${fechaHora?.substring(0,10)} Hora: ${fechaHora?.substring(11,16)}"
@@ -57,7 +57,7 @@ class CitaConfirmacion : AppCompatActivity() {
         }
 
         binding.btnConfirmarCita.setOnClickListener {
-            Toast.makeText(this, "Confirmando cita: " + idCita, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Confirmando cita: $idCita", Toast.LENGTH_LONG).show()
             acceptCita()
             //
         }

@@ -34,6 +34,8 @@
     <string name="fecha_hora">Fecha y hora</string>
     <string name="servicio">Servicio</string>
     <string name="agenda">Agenda</string>
+    <string name="agenda_pendiente">Citas pendientes</string>
+    <string name="agenda_realizada">Citas realizadas</string>
     <string name="cancelar">Cancelar</string>
     <string name="confirmar">Confirmar</string>
     <string name="cambiar_info">Cambiar información</string>
