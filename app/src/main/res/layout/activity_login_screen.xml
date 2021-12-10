@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Login.LoginScreen">
+    android:background="@color/white"
+    android:backgroundTint="@color/white">
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@color/primary"
-                android:gravity="center"
-                android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/primary"
+        android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="200dp"
@@ -38,19 +30,24 @@
                     android:textSize="70dp"
                     android:textStyle="bold" />
 
-            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/esquinas_redondeadas"
+
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/esquinas_redondeadas"
-                android:gravity="center"
-                android:orientation="vertical">
 
+                android:gravity="center|top"
+                android:layout_marginTop="60dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:letterSpacing="0.1"
                     android:text="@string/bienvenida"
                     android:textColor="@color/secondary"
@@ -127,12 +124,13 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                </LinearLayout>
-
+            </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
 
+        </LinearLayout>
+
+        </LinearLayout>
+
+</ScrollView>
