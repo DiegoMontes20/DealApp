@@ -203,7 +203,7 @@ class HomeFragment : Fragment() {
                                 ?.string()
                         )
                     )
-                    Log.w("response", prettyJson)
+                    //Log.w("response", prettyJson)
                     var jobject: JSONObject = JSONObject(prettyJson)
                     var Jarray: JSONArray = jobject.getJSONArray("data")
                     var i=0

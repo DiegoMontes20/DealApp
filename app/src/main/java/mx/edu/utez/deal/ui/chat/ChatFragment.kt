@@ -75,7 +75,7 @@ class ChatFragment : Fragment() {
                         val conversation:Conversation = gson.fromJson(conversationObj.toString(), Conversation::class.java)
                         conversations.add(conversation)
                     }
-                    println(conversations)
+                    //println(conversations)
                     conversationAdapter = AdapterConversation(requireActivity())
                     conversationAdapter.conversations = conversations
                     _binding!!.listaConversation.adapter = conversationAdapter

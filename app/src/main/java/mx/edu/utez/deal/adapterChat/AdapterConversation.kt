@@ -31,7 +31,7 @@ class AdapterConversation(var activity: Activity) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        println("entro al getView")
+
         var holder = ConversationViewHolder()
         var myView = convertView
         var conversationInflater = LayoutInflater.from(activity)
