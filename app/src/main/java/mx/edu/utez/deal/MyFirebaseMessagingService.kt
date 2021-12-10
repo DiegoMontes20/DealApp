@@ -29,7 +29,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        println("Se ejecuta el servicio")
+        //println("Se ejecuta el servicio")
         if (remoteMessage.data.isEmpty()){
             println("Mensaje -> ${remoteMessage.data}")
 //            if(ChatActivity.chatActivo){

@@ -55,11 +55,11 @@ class LoginScreen : AppCompatActivity() {
         service.login(user).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if(response.isSuccessful){
-                    println(response.body())
-                    println("Headers, ${response.headers()}")
+                    //println(response.body())
+                    //println("Headers, ${response.headers()}")
                     var auto = response.headers().get("Authorization")
                     var autho = auto?.replace(":","")
-                    println("Auto, ${autho}")
+                    //println("Auto, ${autho}")
                     prefs.save("token", autho.toString())
                     Toast.makeText(applicationContext, "Bienenid@ ${binding.loUser.text.toString()}", Toast.LENGTH_LONG).show()
                     changeMain()

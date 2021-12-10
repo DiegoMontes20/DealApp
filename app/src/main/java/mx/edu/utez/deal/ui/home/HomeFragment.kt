@@ -147,7 +147,7 @@ class HomeFragment : Fragment() {
 
                         jsonUser.put("notificationToken",token)
                         jsonObject.put("user", jsonUser)
-                        println(jsonObject)
+                        //println(jsonObject)
                         update()
 
                         //println(token)

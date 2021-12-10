@@ -56,7 +56,6 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
 
                 intent.putExtra("latitude",appointment.location.latitude)
                 intent.putExtra("longitude",appointment.location.longitude)
-                Toast.makeText(view.context, "IdProveedor", Toast.LENGTH_SHORT).show()
                 DetailProvider.chat=true
                 view.context.startActivity(intent)
             }

@@ -12,11 +12,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import mx.edu.utez.deal.Model.chat.Conversation
+import mx.edu.utez.deal.Model.chat.Message
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapterChat.AdapterChat
@@ -35,30 +33,29 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding :ActivityChatBinding
 
+    private lateinit var myJob: Job
+
     var mensajes_chat:ArrayList<Conversation> = ArrayList<Conversation>()
     private lateinit var messageAdapter: AdapterChat
 
-    private val FILTRO_CHAT ="broadcast_chat"
-
-
 
     companion object{
-        var chatActivo = false
         var idProveedor =""
         var idConversacion =""
         var listaVacia=false
     }
+
+    private lateinit var jobject: JSONObject
+    private lateinit var  Jarray: JSONArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Chat
-        messageAdapter = AdapterChat(this)
-        binding.listaChat.adapter = messageAdapter
 
-        chatActivo =true
+        messageAdapter = AdapterChat(this)
+
 
         val parametros = this.intent.extras
         idProveedor = parametros!!.getString("idProvider").toString()
@@ -77,20 +74,11 @@ class ChatActivity : AppCompatActivity() {
                 saveData(mensa)
             }
         }
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcast, IntentFilter(FILTRO_CHAT))
-        getMessages()
-
-
-
+        myJob = startRepeatingJob(3000L)
 
         /*los estilos de cada burbuja son los que se llaman redondeo y redondeo2*/
     }
-    val broadcast = object: BroadcastReceiver(){
-        override fun onReceive(context: Context?, intent: Intent?) {
-            sendMessage(intent!!.getStringExtra("mensaje").toString(), "Client")
-        }
-    }
+
 
     fun sendMessage(mensaje: String, tipo:String){
         messageAdapter.add(ModelChat(mensaje, tipo))
@@ -98,8 +86,6 @@ class ChatActivity : AppCompatActivity() {
         binding.mensajeChat.setText("")
         binding.listaChat.setSelection(messageAdapter.count-1)
     }
-
-
 
     fun saveData(mensaje:String){
 
@@ -140,6 +126,8 @@ class ChatActivity : AppCompatActivity() {
             val response = service.saveMessage(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
+                    //Toast.makeText(applicationContext, "se envio el mensaje", Toast.LENGTH_SHORT).show()
+                    //getMessages()
                     sendMessage(mensaje, "Client")
                 }else{
                     Log.e("Error", response.code().toString())
@@ -148,13 +136,14 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-
     fun getMessages(){
         val retrofit =getRetrofit()
         val service = retrofit.create(APIService::class.java)
+        jobject = JSONObject()
+        Jarray = JSONArray()
         CoroutineScope(Dispatchers.IO).launch{
             val response = service.getMessages()
-            withContext(Dispatchers.Main){
+            runOnUiThread {
                 if(response.isSuccessful){
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
@@ -163,10 +152,10 @@ class ChatActivity : AppCompatActivity() {
                                 ?.string()
                         )
                     )
-
-                    var jobject: JSONObject = JSONObject(prettyJson)
-                    var Jarray: JSONArray = jobject.getJSONArray("data")
-
+                    //Log.w("response", prettyJson)
+                    jobject = JSONObject(prettyJson)
+                    Jarray= jobject.getJSONArray("data")
+                    mensajes_chat.clear()
                     for(i in 0 until Jarray.length()){
                         var conversationObj:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
@@ -175,21 +164,28 @@ class ChatActivity : AppCompatActivity() {
                             mensajes_chat.add(conversation)
                             idConversacion = conversation.id
                         }
-                        if(mensajes_chat.isNotEmpty()){
-                            listaVacia=true
-                            messageAdapter.clear()
-                            for(posicion in mensajes_chat.get(0).messages.indices){
-                                messageAdapter.add(ModelChat(mensajes_chat.get(0).messages.get(posicion).body,mensajes_chat.get(0).messages.get(posicion).sender.role))
-                            }
-                            messageAdapter.notifyDataSetChanged()
-                        }
-                        binding.listaChat.setSelection(messageAdapter.count-1)
-
+                    }
+                    if(mensajes_chat.isNotEmpty()){
+                        listaVacia=true
+                        llenarAdapter(mensajes_chat)
                     }
 
                 }
             }
+
         }
+
+    }
+
+    fun llenarAdapter(lista:ArrayList<Conversation>){
+        messageAdapter.clear()
+        var mensajes = lista.get(0).messages
+        for(item in mensajes){
+            messageAdapter.add(ModelChat(item.body, item.sender.role))
+        }
+        binding.listaChat.adapter = messageAdapter
+        messageAdapter.notifyDataSetChanged()
+        binding.listaChat.setSelection(messageAdapter.count-1)
     }
 
     fun getRetrofit():Retrofit{
@@ -201,13 +197,23 @@ class ChatActivity : AppCompatActivity() {
             }.build())
             .build()
     }
+
+    private fun startRepeatingJob(timeInterval: Long): Job {
+        return CoroutineScope(Dispatchers.Main).launch {
+            while (true) {
+                getMessages()
+                delay(timeInterval)
+            }
+        }
+    }
     override fun onStart() {
         super.onStart()
-        chatActivo =true
+        
     }
 
     override fun onStop() {
         super.onStop()
-        chatActivo =false
+        myJob .cancel()
+
     }
 }

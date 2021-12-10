@@ -36,7 +36,6 @@ class AdapterChat(context2: Context) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        println("entro al getView")
         var holder = MessageViewHolder()
         var myView = convertView
         var messageInflater = LayoutInflater.from(context)
