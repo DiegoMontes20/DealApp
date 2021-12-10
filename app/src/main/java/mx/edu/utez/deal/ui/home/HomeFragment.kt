@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +64,7 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -73,8 +75,12 @@ class HomeFragment : Fragment() {
         getProfile()
 
         _binding!!.btnCitasPendientes.setOnClickListener {
-            if (listaPendiente.isEmpty()) {
-                adapter.citas = listaPendiente
+
+            if (!listaPendiente.isEmpty()) {
+                adapter = AppointmentAdapter(listaPendiente)
+                _binding!!.rvCitas.layoutManager =
+                    LinearLayoutManager(activity)
+                _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
                 _binding!!.title.text = getString(R.string.agenda_pendiente)
                 _binding!!.btnCitasPendientes.visibility = View.GONE
@@ -85,8 +91,11 @@ class HomeFragment : Fragment() {
         }
 
         _binding!!.btnCitas.setOnClickListener {
-            if (listaPendiente.isEmpty()) {
-                adapter.citas = lista
+            if (!listaPendiente.isEmpty()) {
+                adapter = AppointmentAdapter(lista)
+                _binding!!.rvCitas.layoutManager =
+                    LinearLayoutManager(activity)
+                _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
                 _binding!!.title.text = getString(R.string.agenda)
                 _binding!!.btnCitasPendientes.visibility = View.VISIBLE
@@ -97,8 +106,11 @@ class HomeFragment : Fragment() {
         }
 
         _binding!!.btnCitasRealizadas.setOnClickListener {
-            if (listaPendiente.isEmpty()) {
-                adapter.citas = listaRealizadas
+            if (!listaPendiente.isEmpty()) {
+                adapter = AppointmentAdapter(listaRealizadas)
+                _binding!!.rvCitas.layoutManager =
+                    LinearLayoutManager(activity)
+                _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
                 _binding!!.title.text = getString(R.string.agenda_realizada)
                 _binding!!.btnCitasPendientes.visibility = View.VISIBLE
@@ -211,6 +223,7 @@ class HomeFragment : Fragment() {
                         var provedor: JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val providerList:Appointment = gson.fromJson(provedor.toString(), Appointment::class.java)
+
                         if (providerList.approved && LocalDateTime.parse(providerList.dateTime).isBefore(LocalDateTime.now()))
                             listaRealizadas.add(providerList)
                         else if (providerList.approved) lista.add(providerList)
@@ -222,9 +235,12 @@ class HomeFragment : Fragment() {
                     }else{
                         binding.rvCitas.layoutManager = LinearLayoutManager(activity)
                         adapter = AppointmentAdapter(lista)
-                        binding.rvCitas.adapter=adapter
+                        _binding!!.rvCitas.layoutManager =
+                            LinearLayoutManager(activity)
+                        _binding!!.rvCitas.adapter=adapter
                         adapter!!.notifyDataSetChanged()
                     }
+
 
                 } else {
                     var code = response.code().toString()

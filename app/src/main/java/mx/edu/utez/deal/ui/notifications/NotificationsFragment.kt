@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -50,6 +51,7 @@ class NotificationsFragment : Fragment() {
     ): View? {
         notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
