@@ -33,4 +33,12 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun updateAppointment(@Body requestBody: RequestBody): Response<ResponseBody>
 
+    @GET("/provider/conversation")
+    @Headers("Content-Type: application/json")
+    suspend fun getMessages(): Response<ResponseBody>
+
+    @POST("/provider/sendMessage")
+    @Headers("Content-Type: application/json")
+    suspend fun saveMessage(@Body requestBody: RequestBody):Response<ResponseBody>
+
 }

@@ -54,15 +54,6 @@
             android:textColor="@color/primaryDark" />
 
         <Button
-            android:id="@+id/btnHorarioLaboral"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/white"
-            android:text="@string/horario_laboral"
-            android:textColor="@color/primaryDark" />
-
-        <Button
             android:id="@+id/btnCerrarSesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

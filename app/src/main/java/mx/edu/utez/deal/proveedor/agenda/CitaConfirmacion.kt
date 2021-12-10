@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import kotlinx.coroutines.CoroutineScope
@@ -17,9 +16,6 @@ import mx.edu.utez.deal.MainActivity
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.databinding.ActivityCitaConfirmacionBinding
-import mx.edu.utez.deal.proveedor.mapa.MapaActivity
-import mx.edu.utez.deal.ui.dashboard.DashboardFragment
-import mx.edu.utez.deal.ui.home.HomeFragment
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody

@@ -15,15 +15,6 @@
         android:layout_margin="10dp"
         >
 
-        <ImageView
-            android:id="@+id/regresar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/primaryDark"
-            android:background="@android:drawable/ic_menu_revert" />
-
         <Button
             android:id="@+id/btnMarca"
             android:layout_width="wrap_content"
@@ -33,6 +24,7 @@
             android:textSize="20dp"
             android:clickable="false"
             android:text="Barbería Deal"
+            android:layout_weight="3"
             android:textColor="@color/primaryDark" />
 
         <ImageView
@@ -41,6 +33,7 @@
             android:layout_gravity="end"
             android:layout_marginLeft="50dp"
             android:id="@+id/fotoChat"
+            android:layout_weight="1"
             android:src="@mipmap/logo" />
     </LinearLayout>
     <LinearLayout
@@ -49,11 +42,23 @@
         android:background="@color/secondaryDark"
         android:layout_marginBottom="8dp"/>
     <ListView
-        android:id="@+id/listaChat"
+        android:id="@+id/listaConversation"
         android:layout_width="match_parent"
         android:divider="@color/white"
         android:layout_height="wrap_content"
         android:layout_weight="2" />
+
+    <Button
+        android:id="@+id/titleSinConversaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:layout_gravity="center"
+        android:text="Sin conversaciones"
+        android:textColor="@color/primaryDark" />
 
     <LinearLayout
         android:layout_width="match_parent"

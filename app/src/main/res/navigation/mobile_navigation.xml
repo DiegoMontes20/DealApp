@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="mx.edu.utez.deal.ui.dashboard.DashboardFragment"
+        android:name="mx.edu.utez.deal.ui.chat.ChatFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/navigation_notifications"
