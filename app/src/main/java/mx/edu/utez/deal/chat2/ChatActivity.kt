@@ -102,7 +102,6 @@ class ChatActivity : AppCompatActivity() {
         val messageBody = JSONObject()
         messageBody.put("body", mensaje)
 
-
         if(mensajes_chat.isEmpty()){
             //Primer mensaje
             objEnviar.put("provider", idProvider)
@@ -208,7 +207,7 @@ class ChatActivity : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-        
+
     }
 
     override fun onStop() {
