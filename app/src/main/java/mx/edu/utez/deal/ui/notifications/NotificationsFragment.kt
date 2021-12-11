@@ -18,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import mx.edu.utez.deal.AboutUs
 import mx.edu.utez.deal.Configuration.ConfIP
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.MainActivity
@@ -69,6 +70,11 @@ class NotificationsFragment : Fragment() {
             prefs.deleteAll()
             chageActivity()
         }
+        root.sobrenosotros.setOnClickListener {
+            val intent = Intent(activity, AboutUs::class.java)
+            startActivity(intent)
+        }
+
 
         return root
     }

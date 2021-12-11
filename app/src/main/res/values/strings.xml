@@ -44,4 +44,9 @@
     <string name="horario_laboral">Horario laboral</string>
     <string name="title_activity_mapa">Map</string>
 
+    <string name="sobrenosotros">
+        Sobre Nosotros
+    </string>
+    <string name="sobreDeal">Somos una empresa de tecnología que conecta el mundo físico y digital para hacer que el movimiento suceda con solo presionar un botón para todos, en todas partes. Porque creemos un mundo donde la satisfacción de una necesidad debería ser igualmente accesible para todos.</string>
+
 </resources>
