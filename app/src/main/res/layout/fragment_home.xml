@@ -42,12 +42,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/secondaryDark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right">
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/btnCitas"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primaryDark"
                 android:text="Agenda"
@@ -55,7 +63,7 @@
 
             <Button
                 android:id="@+id/btnCitasPendientes"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primaryDark"
                 android:text="Citas pendientes"
@@ -64,19 +72,13 @@
 
             <Button
                 android:id="@+id/btnCitasRealizadas"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primaryDark"
                 android:text="Citas realizadas"
                 android:textColor="@color/white" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/secondaryDark" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_citas"

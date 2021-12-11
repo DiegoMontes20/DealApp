@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingLeft="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -35,7 +36,7 @@
 
         <TextView
             android:id="@+id/txtFechaHora"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
             android:text="Mièrcoles, 25 diciembre 12:00pm a 12:30pm"
@@ -54,7 +55,7 @@
 
         <TextView
             android:id="@+id/txtCliente"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
             android:text="Oscar Urueta"
@@ -73,7 +74,7 @@
 
         <TextView
             android:id="@+id/txtPhone"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary"
             android:text="7771234567"
