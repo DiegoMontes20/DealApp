@@ -1,5 +1,6 @@
 package mx.edu.utez.deal
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -12,12 +13,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import mx.edu.utez.deal.databinding.ActivityMainBinding
+import mx.edu.utez.deal.util.LocationService
 import mx.edu.utez.deal.util.PermissionChecker
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             permissionChecker.requestPermissions()
             //showToast("solicitando permisos :c", 1)
         }
+
+        startService(Intent(this, LocationService::class.java))
+
+        val locationService = LocationService()
+        locationService.shouldShareLocation()
 
         val navView: BottomNavigationView = binding.navView
 

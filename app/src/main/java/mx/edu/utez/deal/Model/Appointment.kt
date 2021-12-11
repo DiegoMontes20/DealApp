@@ -8,4 +8,5 @@ data class Appointment(@SerializedName("id")val id:String,
                        @SerializedName("approved")val approved:Boolean,
                        @SerializedName("enabled")val enabled:Boolean,
                        @SerializedName("takeout")val takeout:Boolean,
+                       @SerializedName("onWay")val onWay:Boolean,
                        @SerializedName("location")val location:LocationAddress?)

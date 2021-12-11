@@ -21,6 +21,10 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun getAppointments(): Response<ResponseBody>
 
+    @PUT("/provider/appointment/location")
+    @Headers("Content-Type: application/json")
+    suspend fun saveOnWay(@Body requestBody: RequestBody): Response<ResponseBody>
+
     @GET("/provider/profile")
     @Headers("Content-Type: application/json")
     suspend fun getProfile(): Response<ResponseBody>
@@ -40,5 +44,9 @@ interface APIService {
     @POST("/provider/sendMessage")
     @Headers("Content-Type: application/json")
     suspend fun saveMessage(@Body requestBody: RequestBody):Response<ResponseBody>
+
+    @POST("/provider/location")
+    @Headers("Content-Type: application/json")
+    suspend fun saveLocation(@Body requestBody: RequestBody):Response<ResponseBody>
 
 }

@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
     val lista:ArrayList<Appointment> = ArrayList()
     val listaRealizadas:ArrayList<Appointment> = ArrayList()
     val listaPendiente:ArrayList<Appointment> = ArrayList()
+    val listaCanceladas:ArrayList<Appointment> = ArrayList()
     private lateinit var adapter: AppointmentAdapter
 
     // This property is only valid between onCreateView and
@@ -86,6 +87,7 @@ class HomeFragment : Fragment() {
                 _binding!!.btnCitasPendientes.visibility = View.GONE
                 _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
                 _binding!!.btnCitas.visibility = View.VISIBLE
+                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
             }else
                 Toast.makeText(activity,"No hay registro de citas pendientes",Toast.LENGTH_LONG).show()
         }
@@ -98,6 +100,7 @@ class HomeFragment : Fragment() {
                 _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
                 _binding!!.title.text = getString(R.string.agenda)
+                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
                 _binding!!.btnCitasPendientes.visibility = View.VISIBLE
                 _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
                 _binding!!.btnCitas.visibility = View.GONE
@@ -113,11 +116,28 @@ class HomeFragment : Fragment() {
                 _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
                 _binding!!.title.text = getString(R.string.agenda_realizada)
+                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
                 _binding!!.btnCitasPendientes.visibility = View.VISIBLE
                 _binding!!.btnCitas.visibility = View.VISIBLE
                 _binding!!.btnCitasRealizadas.visibility = View.GONE
             }else
                 Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_LONG).show()
+        }
+
+        _binding!!.btnCitasCanceladas.setOnClickListener {
+            if (listaCanceladas.isNotEmpty()){
+                adapter = AppointmentAdapter(listaCanceladas)
+                _binding!!.rvCitas.layoutManager =
+                    LinearLayoutManager(activity)
+                _binding!!.rvCitas.adapter=adapter
+                adapter.notifyDataSetChanged()
+                _binding!!.title.text = getString(R.string.agenda_realizada)
+                _binding!!.btnCitasCanceladas.visibility = View.GONE
+                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
+                _binding!!.btnCitas.visibility = View.VISIBLE
+                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
+            }else
+                Toast.makeText(activity,"No hay registro de citas canceladas",Toast.LENGTH_LONG).show()
         }
         return root
     }
@@ -224,7 +244,9 @@ class HomeFragment : Fragment() {
                         val gson = Gson()
                         val providerList:Appointment = gson.fromJson(provedor.toString(), Appointment::class.java)
 
-                        if (providerList.approved && LocalDateTime.parse(providerList.dateTime).isBefore(LocalDateTime.now()))
+                        if (providerList.approved.not() && providerList.enabled.not())
+                            listaCanceladas.add(providerList)
+                        else if (providerList.approved && LocalDateTime.parse(providerList.dateTime).isBefore(LocalDateTime.now()))
                             listaRealizadas.add(providerList)
                         else if (providerList.approved) lista.add(providerList)
                         else listaPendiente.add(providerList)
