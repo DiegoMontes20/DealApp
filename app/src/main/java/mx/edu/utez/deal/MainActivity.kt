@@ -23,6 +23,13 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val permissionChecker = PermissionChecker(this)
+        if (permissionChecker.arePermissionsGranted()) {
+            ///showToast("permisos ya concedidos uwu")
+        } else {
+            permissionChecker.requestPermissions()
+            //showToast("solicitando permisos :c", 1)
+        }
 
         val navView: BottomNavigationView = binding.navView
 

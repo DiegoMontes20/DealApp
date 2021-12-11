@@ -17,17 +17,10 @@ import mx.edu.utez.deal.util.PermissionChecker
 class SplashScreen : AppCompatActivity() {
 
 
-    @RequiresApi(Build.VERSION_CODES.Q)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        val permissionChecker = PermissionChecker(this)
-        if (permissionChecker.arePermissionsGranted()) {
-            showToast("permisos ya concedidos uwu")
-        } else {
-            permissionChecker.requestPermissions()
-            showToast("solicitando permisos :c", 1)
-        }
         initApp()
     }
 
