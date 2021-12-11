@@ -47,9 +47,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        ubicacion.setOnClickListener {
+        binding.ubicacion.setOnClickListener {
             dialog()
-            //startActivity(Intent(this,SummaryActivity::class.java))
+
         }
 
         binding.centrar.setOnClickListener {
@@ -60,12 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(punto))
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(punto, 16.0f))
 
-//            if(LocationService.loc.latitude==null || LocationService.loc.latitude==null){
-//                Toast.makeText(this, "Por favor enciende la ubicación", Toast.LENGTH_SHORT).show()
-//            }else{
-//
-//            }
-            //Toast.makeText(this, "Centrar", Toast.LENGTH_LONG).show()
+
         }
     }
 

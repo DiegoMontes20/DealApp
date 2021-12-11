@@ -7,8 +7,10 @@ import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import mx.edu.utez.deal.AppoinmentProcess.MapsActivity
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ActivityAgendaSummaryBinding
+import mx.edu.utez.deal.utils.LocationService
 
 
 class AgendaSummary : AppCompatActivity() {
@@ -56,6 +58,11 @@ class AgendaSummary : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.abrirMapa.setOnClickListener {
+            startService(Intent(this, LocationService::class.java))
+            startActivity(Intent(this, MapAppointmentActivity::class.java))
+        }
+
     }
 
     private fun iniciar(){
@@ -78,5 +85,7 @@ class AgendaSummary : AppCompatActivity() {
         dialog.show()
 
     }
+
+
 
 }
