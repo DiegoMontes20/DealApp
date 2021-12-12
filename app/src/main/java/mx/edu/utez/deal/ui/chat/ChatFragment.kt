@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
@@ -30,7 +31,7 @@ class ChatFragment : Fragment() {
 
     private var _binding: FragmentChatBinding? = null
     private lateinit var conversationAdapter: AdapterConversation
-
+    private val conversations: ArrayList<Conversation> = ArrayList()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -43,6 +44,9 @@ class ChatFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        _binding!!.listaConversation.layoutManager = LinearLayoutManager(activity)
+        conversationAdapter = AdapterConversation(requireActivity())
+        conversationAdapter.conversations = conversations
         getConversations()
 
         binding.btnMarca.text = HomeFragment.nombreEmpresa
@@ -73,16 +77,12 @@ class ChatFragment : Fragment() {
 
                     var jobject: JSONObject = JSONObject(prettyJson)
                     var Jarray: JSONArray = jobject.getJSONArray("data")
-                    val conversations: ArrayList<Conversation> = ArrayList()
                     for(i in 0 until Jarray.length()){
                         var conversationObj:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val conversation:Conversation = gson.fromJson(conversationObj.toString(), Conversation::class.java)
                         conversations.add(conversation)
                     }
-                    //println(conversations)
-                    conversationAdapter = AdapterConversation(requireActivity())
-                    conversationAdapter.conversations = conversations
                     _binding!!.listaConversation.adapter = conversationAdapter
                     conversationAdapter.notifyDataSetChanged()
                     if (conversations.isEmpty()) {

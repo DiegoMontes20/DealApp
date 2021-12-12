@@ -13,6 +13,7 @@ class AdapterChat(context2: Context) : BaseAdapter() {
 
     var mensajes = ArrayList<ModelChat>()
     var context = context2
+
     override fun getCount(): Int {
         return mensajes.size
     }

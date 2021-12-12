@@ -159,7 +159,6 @@ class HomeFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
 
             val response = service.getProfile()
-
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     //Toast.makeText(activity, "Consulta con éxito", Toast.LENGTH_LONG).show()
@@ -177,7 +176,7 @@ class HomeFragment : Fragment() {
 
                     idProveedor = jsonPro.get("id").toString()
                     nombreEmpresa = jsonPro.get("name").toString()
-                    var token: String? = null
+                    var token: String?
                     FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                         if (!task.isSuccessful) {
                             Log.w("MyFirebaseMsgService->", "Fetching FCM registration token failed", task.exception)
@@ -187,7 +186,6 @@ class HomeFragment : Fragment() {
                         token = task.result
                         jsonObject.put("id", idProveedor)
                         jsonObject.put("notificationToken", token)
-                        //println(jsonObject)
                         update()
 
                     })
@@ -214,9 +212,9 @@ class HomeFragment : Fragment() {
             val response = service.updateProfile(requestBody)
             withContext(Dispatchers.Main){
                 if (response.isSuccessful){
-                    Toast.makeText(activity, "Token actualizado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), "Token actualizado", Toast.LENGTH_SHORT).show()
                 }else{
-                    Toast.makeText(activity, "Error al actualizar token", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), "Error al actualizar token", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -233,7 +231,6 @@ class HomeFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    //Toast.makeText(activity, "Consulta con éxito", Toast.LENGTH_LONG).show()
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
                         JsonParser.parseString(
@@ -241,7 +238,6 @@ class HomeFragment : Fragment() {
                                 ?.string()
                         )
                     )
-                    //Log.w("response", prettyJson)
                     var jobject: JSONObject = JSONObject(prettyJson)
                     var Jarray: JSONArray = jobject.getJSONArray("data")
                     var i=0
@@ -259,7 +255,7 @@ class HomeFragment : Fragment() {
                         i++
                     }
                     if(lista.isEmpty()){
-                        Toast.makeText(activity, "No hay registro de citas", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@HomeFragment.context, "No hay registro de citas", Toast.LENGTH_SHORT).show()
                     }else{
                         binding.rvCitas.layoutManager = LinearLayoutManager(activity)
                         adapter = AppointmentAdapter(lista)
@@ -273,7 +269,7 @@ class HomeFragment : Fragment() {
                 } else {
                     var code = response.code().toString()
                     if(code == "401"){
-                        Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@HomeFragment.context, "La sesión ha expirado", Toast.LENGTH_SHORT).show()
                         PrefsApplication.prefs.deleteAll()
                         val intent = Intent(activity, LoginScreen::class.java)
                         intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
