@@ -1,8 +1,10 @@
 package mx.edu.utez.deal.ui.home
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,7 @@ import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.Configuration.ConfIP
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Model.Appointment
+import mx.edu.utez.deal.Model.Provider
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
@@ -39,6 +42,10 @@ import retrofit2.Retrofit
 import java.time.LocalDateTime
 
 class HomeFragment : Fragment() {
+
+    companion object{
+        var nombreEmpresa=""
+    }
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
@@ -169,6 +176,7 @@ class HomeFragment : Fragment() {
 
 
                     idProveedor = jsonPro.get("id").toString()
+                    nombreEmpresa = jsonPro.get("name").toString()
                     var token: String? = null
                     FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                         if (!task.isSuccessful) {
@@ -279,6 +287,8 @@ class HomeFragment : Fragment() {
 
 
     }
+
+
 
     fun getRetrofit():Retrofit{
         return  Retrofit.Builder()

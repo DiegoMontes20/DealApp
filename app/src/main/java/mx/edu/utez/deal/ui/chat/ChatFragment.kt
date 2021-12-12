@@ -20,6 +20,7 @@ import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapterChat.AdapterConversation
 import mx.edu.utez.deal.databinding.FragmentChatBinding
+import mx.edu.utez.deal.ui.home.HomeFragment
 import okhttp3.OkHttpClient
 import org.json.JSONArray
 import org.json.JSONObject
@@ -43,6 +44,8 @@ class ChatFragment : Fragment() {
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         val root: View = binding.root
         getConversations()
+
+        binding.btnMarca.text = HomeFragment.nombreEmpresa
         return root
     }
 

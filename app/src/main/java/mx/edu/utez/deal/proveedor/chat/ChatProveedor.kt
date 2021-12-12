@@ -16,6 +16,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapterChat.AdapterChat
 import mx.edu.utez.deal.adapterChat.ModelChat
 import mx.edu.utez.deal.databinding.ActivityChatProveedorBinding
+import mx.edu.utez.deal.ui.home.HomeFragment
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -41,6 +42,8 @@ class ChatProveedor : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatProveedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnMarca.text = HomeFragment.nombreEmpresa
 
         val conversationJson = intent.getStringExtra("conversation")
         val gson = Gson()

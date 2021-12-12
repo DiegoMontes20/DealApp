@@ -113,7 +113,7 @@ class RegistroProveedor : AppCompatActivity() {
                 return@OnCompleteListener
             } else {
                 val token = it.result
-                Log.i("SI hay", token)
+                //Log.i("SI hay", token.toString())
                 val user = User(username, password, token.toString())
                 val provider =
                     Provider(
@@ -127,7 +127,7 @@ class RegistroProveedor : AppCompatActivity() {
                         user,
                         null
                     )
-                println("Cliente ${provider.toString()}")
+               // println("Cliente ${provider.toString()}")
                 service.createProvider(provider).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
