@@ -1,8 +1,10 @@
 package mx.edu.utez.deal.AppoinmentProcess
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
@@ -42,7 +44,14 @@ class DetailProvider : AppCompatActivity() {
         nombrePro= parametros!!.getString("Nombre").toString()
         descripcion= parametros!!.getString("Descripcion").toString()
         tipo= parametros!!.getString("Area").toString()
-        Picasso.get().load(parametros!!.getString("Imagen")).into(imgProfile);
+
+        val image = parametros!!.getString("Imagen")
+
+        val decodedString: ByteArray = Base64.decode(image, Base64.DEFAULT)
+        val decodedByte =
+                BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        binding.imgProfile.setImageBitmap(decodedByte)
+
 
 
         //mostrar/esconder botón chat

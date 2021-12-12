@@ -1,6 +1,8 @@
 package mx.edu.utez.deal.adapter
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +37,11 @@ class ProviderAdapter(val providers:List<ProviderList>):RecyclerView.Adapter<Pro
             binding.tipoServicio.text = provider.name
             binding.horario.text ="${provider.startTime.substring(0,5)} a ${provider.finalTime.substring(0,5)}"
             binding.numero.text = provider.phone
-            Picasso.get().load(provider.image).into(binding.imgProfile);
+            val decodedString: ByteArray = Base64.decode(provider.image, Base64.DEFAULT)
+            val decodedByte =
+                BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+            binding.imgProfile.setImageBitmap(decodedByte)
+            //Picasso.get().load(provider.image).into(binding.imgProfile);
             view.setOnClickListener {
                 val intent = Intent(view.context, DetailProvider::class.java)
                 intent.putExtra("id", provider.id);
