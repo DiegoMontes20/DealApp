@@ -54,21 +54,23 @@
             android:textColor="@color/primaryDark" />
 
         <Button
-            android:id="@+id/btnCerrarSesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/boton_primary"
-            android:text="@string/cerrar_sesion"
-            android:textColor="@color/white" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/redondeocompleto"
+            android:backgroundTint="@color/white"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:id="@+id/sobrenosotros"
             android:text="@string/sobrenosotros"/>
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/primaryDark"
+            android:text="@string/cerrar_sesion"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 

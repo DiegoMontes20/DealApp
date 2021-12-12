@@ -7,29 +7,20 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.Configuration.ConfIP
-import mx.edu.utez.deal.Login.LoginScreen
-import mx.edu.utez.deal.Model.Appointment
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
-import mx.edu.utez.deal.adapter.AppointmentAdapter
 import mx.edu.utez.deal.databinding.ActivityCitaDetailsBinding
 import mx.edu.utez.deal.proveedor.mapa.MapaActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
-import java.time.LocalDateTime
 
 class CitaDetails : AppCompatActivity() {
     private lateinit var binding: ActivityCitaDetailsBinding
@@ -51,7 +42,7 @@ class CitaDetails : AppCompatActivity() {
         binding.txtCliente.text = nombreCliente
         binding.txtPhone.text = numeroCliente
 
-        binding.btnEnCamino.isVisible = onWay
+        binding.btnEnCamino.isVisible = !onWay
 
         if (locationName.isNullOrEmpty())
             binding.btnMostrarUbicacion.visibility = View.GONE

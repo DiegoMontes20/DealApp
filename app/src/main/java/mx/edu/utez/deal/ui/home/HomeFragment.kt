@@ -7,12 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.tasks.OnCompleteListener
@@ -77,7 +75,7 @@ class HomeFragment : Fragment() {
 
         _binding!!.btnCitasPendientes.setOnClickListener {
 
-            if (!listaPendiente.isEmpty()) {
+            if (listaPendiente.isNotEmpty()) {
                 adapter = AppointmentAdapter(listaPendiente)
                 _binding!!.rvCitas.layoutManager =
                     LinearLayoutManager(activity)
@@ -89,11 +87,11 @@ class HomeFragment : Fragment() {
                 _binding!!.btnCitas.visibility = View.VISIBLE
                 _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
             }else
-                Toast.makeText(activity,"No hay registro de citas pendientes",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,"No hay registro de citas pendientes",Toast.LENGTH_SHORT).show()
         }
 
         _binding!!.btnCitas.setOnClickListener {
-            if (!listaPendiente.isEmpty()) {
+            if (lista.isNotEmpty()) {
                 adapter = AppointmentAdapter(lista)
                 _binding!!.rvCitas.layoutManager =
                     LinearLayoutManager(activity)
@@ -105,11 +103,11 @@ class HomeFragment : Fragment() {
                 _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
                 _binding!!.btnCitas.visibility = View.GONE
             }else
-                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,"No hay registro de citas en agenda",Toast.LENGTH_SHORT).show()
         }
 
         _binding!!.btnCitasRealizadas.setOnClickListener {
-            if (!listaPendiente.isEmpty()) {
+            if (listaRealizadas.isNotEmpty()) {
                 adapter = AppointmentAdapter(listaRealizadas)
                 _binding!!.rvCitas.layoutManager =
                     LinearLayoutManager(activity)
@@ -121,7 +119,7 @@ class HomeFragment : Fragment() {
                 _binding!!.btnCitas.visibility = View.VISIBLE
                 _binding!!.btnCitasRealizadas.visibility = View.GONE
             }else
-                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_SHORT).show()
         }
 
         _binding!!.btnCitasCanceladas.setOnClickListener {
@@ -131,13 +129,13 @@ class HomeFragment : Fragment() {
                     LinearLayoutManager(activity)
                 _binding!!.rvCitas.adapter=adapter
                 adapter.notifyDataSetChanged()
-                _binding!!.title.text = getString(R.string.agenda_realizada)
+                _binding!!.title.text = getString(R.string.agenda_cancelada)
                 _binding!!.btnCitasCanceladas.visibility = View.GONE
                 _binding!!.btnCitasPendientes.visibility = View.VISIBLE
                 _binding!!.btnCitas.visibility = View.VISIBLE
                 _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
             }else
-                Toast.makeText(activity,"No hay registro de citas canceladas",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,"No hay registro de citas canceladas",Toast.LENGTH_SHORT).show()
         }
         return root
     }
@@ -208,9 +206,9 @@ class HomeFragment : Fragment() {
             val response = service.updateProfile(requestBody)
             withContext(Dispatchers.Main){
                 if (response.isSuccessful){
-                    Toast.makeText(activity, "Token actualizado", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "Token actualizado", Toast.LENGTH_SHORT).show()
                 }else{
-                    Toast.makeText(activity, "Error al actualizar token", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "Error al actualizar token", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -253,7 +251,7 @@ class HomeFragment : Fragment() {
                         i++
                     }
                     if(lista.isEmpty()){
-                        Toast.makeText(activity, "No hay registro de citas", Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, "No hay registro de citas", Toast.LENGTH_SHORT).show()
                     }else{
                         binding.rvCitas.layoutManager = LinearLayoutManager(activity)
                         adapter = AppointmentAdapter(lista)
@@ -267,7 +265,7 @@ class HomeFragment : Fragment() {
                 } else {
                     var code = response.code().toString()
                     if(code == "401"){
-                        Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_SHORT).show()
                         PrefsApplication.prefs.deleteAll()
                         val intent = Intent(activity, LoginScreen::class.java)
                         intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
