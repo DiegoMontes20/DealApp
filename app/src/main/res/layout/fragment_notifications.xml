@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryDark"
             android:layout_marginTop="10dp"
             android:id="@+id/sobrenosotros"
             android:text="@string/sobrenosotros"/>

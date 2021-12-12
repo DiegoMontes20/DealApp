@@ -82,6 +82,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/imgPerfilProvider"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_vertical|end"

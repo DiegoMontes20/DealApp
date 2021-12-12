@@ -23,6 +23,11 @@ import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import retrofit2.Retrofit
+import android.graphics.BitmapFactory
+
+import android.graphics.Bitmap
+import android.util.Base64
+
 
 class PerfilProveedor : AppCompatActivity() {
 
@@ -39,11 +44,11 @@ class PerfilProveedor : AppCompatActivity() {
 
     }
 
-    fun getProfile(){
+    fun getProfile() {
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
 
             val jsonObjectString = jsonObject.toString()
 
@@ -72,19 +77,27 @@ class PerfilProveedor : AppCompatActivity() {
                     binding.inputUbicacion.setText(if (proveedor.location == null) "Sin ubicación" else proveedor.location!!.name)
                     binding.inputDesde.setText(proveedor.startTime)
                     binding.inputHasta.setText(proveedor.finalTime)
-
-                }else{
-                    Toast.makeText(applicationContext, "Error al obetener la información, intente más tarde", Toast.LENGTH_LONG).show()
+                    val decodedString: ByteArray = Base64.decode(proveedor.image, Base64.DEFAULT)
+                    val decodedByte =
+                        BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+                    binding.imgPerfilProvider.setImageBitmap(decodedByte)
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        "Error al obetener la información, intente más tarde",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
     }
 
-    fun getRetrofit(): Retrofit {
-        return  Retrofit.Builder()
+    private fun getRetrofit(): Retrofit {
+        return Retrofit.Builder()
             .baseUrl(ConfIP.IP)
-            .client(OkHttpClient.Builder().addInterceptor{ chain ->
-                val request = chain.request().newBuilder().addHeader("Authorization", PrefsApplication.prefs.getData("token")).build()
+            .client(OkHttpClient.Builder().addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", PrefsApplication.prefs.getData("token")).build()
                 chain.proceed(request)
             }.build())
             .build()
