@@ -25,6 +25,18 @@ tools:context=".chat2.AgendaSummary"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/txt_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:letterSpacing="0.1"
+        android:layout_gravity="center"
+        android:text="texto"
+        android:textColor="#E91E63"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

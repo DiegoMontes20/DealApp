@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="20dp"
+    android:layout_margin="5dp"
     tools:context=".ui.dashboard.DashboardFragment">
 
     <LinearLayout
@@ -18,12 +18,13 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/txt_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="150dp"
             android:backgroundTint="@color/white"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textColor="@color/primaryDark"
             android:text="Servicios"/>
         <ImageView
@@ -39,13 +40,15 @@
         android:background="@color/secondaryDark"
         android:layout_marginBottom="8dp"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
+            android:textSize="10dp"
+            android:layout_marginRight="2dp"
             android:id="@+id/pendiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,17 +57,49 @@
             android:text="Pendientes"></Button>
 
         <Button
+            android:textSize="10dp"
+            android:id="@+id/proceso"
+            android:layout_marginRight="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="proceso"></Button>
+
+        <Button
+            android:textSize="10dp"
+            android:layout_marginRight="2dp"
+            android:id="@+id/canceladas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Cancelados"></Button>
+
+        <Button
+            android:textSize="10dp"
             android:id="@+id/terminada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:backgroundTint="@color/primaryDark"
-            android:text="Terminadas"></Button>
+            android:text="Terminados"></Button>
 
 
-    </RelativeLayout>
 
+    </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:layout_gravity="center"
+        android:text="Sin Citas"
+        android:textColor="@color/primaryDark" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_services"
         android:layout_width="match_parent"

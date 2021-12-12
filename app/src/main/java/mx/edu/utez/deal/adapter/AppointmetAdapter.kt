@@ -41,7 +41,7 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
 
         fun render(appointment:AppointmentModel){
 
-           binding.horario.text="${appointment.dateTime.substring(0,10)} ${appointment.provider.startTime.substring(0,5)} a ${appointment.provider.finalTime.substring(0,5)}"
+           binding.horario.text="${appointment.dateTime.substring(0,10)} ${appointment.dateTime.substring(11,16)}"
             binding.nombreProveedor.text = "${appointment.provider.name} (${appointment.provider.area})"
             view.setOnClickListener {
                 val intent = Intent(view.context, AgendaSummary::class.java)

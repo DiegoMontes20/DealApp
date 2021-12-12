@@ -58,23 +58,27 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //TODO: IMPLEMETAR SERVICIOS
-        getData("todos")
+        getData("pendientes")
 
         binding.pendiente.setOnClickListener {
             getData("pendientes")
         }
 
         binding.terminada.setOnClickListener {
-            getData("terminadas")
+            getData("terminados")
+        }
+        binding.canceladas.setOnClickListener {
+            getData("cancelados")
+        }
+
+        binding.proceso.setOnClickListener {
+            getData("activos")
         }
 
 
         return root
     }
 
-    fun check(){
-        Toast.makeText(activity, "Servicios",Toast.LENGTH_LONG).show()
-    }
 
     fun getData(tipo:String){
         val retrofit = Retrofit.Builder()
@@ -113,8 +117,8 @@ class DashboardFragment : Fragment() {
                             "todos"->{
                                 lista.add(providerList)
                             }
-                            "terminadas"->{
-                                if(!providerList.enabled){
+                            "terminados"->{
+                                if(providerList.enabled && providerList.approved && providerList.takeout){
                                     lista.add(providerList)
                                 }
                             }
@@ -123,12 +127,29 @@ class DashboardFragment : Fragment() {
                                     lista.add(providerList)
                                 }
                             }
+                            "cancelados"->{
+                                if(!providerList.enabled){
+                                    lista.add(providerList)
+                                }
+                            }
+                            "activos"->{
+                                if(providerList.approved && providerList.enabled){
+                                    lista.add(providerList)
+                                }
+                            }
                         }
                     }
 
                     if(lista.isEmpty()){
+                        binding.btnTexto.visibility = View.VISIBLE
                         Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG).show()
+                        binding.rvServices.layoutManager = LinearLayoutManager(activity)
+                        val adapter = AppointmetAdapter(lista)
+                        binding.rvServices.adapter=adapter
+                        adapter!!.notifyDataSetChanged()
                     }else{
+                        binding.btnTexto.visibility = View.GONE
+                        binding.txtTitulo.text="Servicios $tipo"
                         binding.rvServices.layoutManager = LinearLayoutManager(activity)
                         val adapter = AppointmetAdapter(lista)
                         binding.rvServices.adapter=adapter

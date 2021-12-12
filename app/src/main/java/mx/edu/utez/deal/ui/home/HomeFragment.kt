@@ -185,7 +185,6 @@ class HomeFragment : Fragment() {
                                 ?.string()
                         )
                     )
-
                     var jobject:JSONObject = JSONObject(prettyJson)
                     var Jarray:JSONArray = jobject.getJSONArray("data")
                     var i=0

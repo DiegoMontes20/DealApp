@@ -33,7 +33,7 @@
             android:maxLength="1"
             android:digits="12345"
             android:minEms="2"
-            android:hint="5"
+            android:hint="Calificación del 1 al 5"
             android:inputType="number"
             android:id="@+id/numero"/>
 

@@ -59,5 +59,13 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun saveMessage(@Body requestBody: RequestBody):Response<ResponseBody>
 
+    @HTTP(method = "DELETE", path = "/client/appointment", hasBody = true)
+    @Headers("Content-Type: application/json")
+    suspend fun deleteAppoinment(@Body requestBody: RequestBody):Response<ResponseBody>
+
+    @PUT("/client/appointment")
+    @Headers("Content-Type: application/json")
+    suspend fun updateAppoinment(@Body requestBody: RequestBody):Response<ResponseBody>
+
 }
 
