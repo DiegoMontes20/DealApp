@@ -69,6 +69,7 @@ class SummaryActivity : AppCompatActivity() {
             appoinment.put("provider", provider)
             appoinment.put("dateTime",horarioActivity.fecha+"T"+DetailProvider.tiempo)
             appoinment.put("takeout",true)
+            appoinment.put("onWay", false)
             val jsonDireccion = JSONObject()
             jsonDireccion.put("name", MapsActivity.dialogAddress)
             jsonDireccion.put("latitude", MapsActivity.Maplat)

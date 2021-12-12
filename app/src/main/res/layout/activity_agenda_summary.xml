@@ -128,19 +128,16 @@ tools:context=".chat2.AgendaSummary"
 
 
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/redondeocompleto2"
             android:backgroundTint="@color/secondaryDark"
             android:padding="12dp"
@@ -148,17 +145,24 @@ tools:context=".chat2.AgendaSummary"
 
         <Button
             android:id="@+id/calificar"
-            android:layout_width="160dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
             android:background="@drawable/redondeocompleto"
             android:text="Calificar"
             android:textColor="@color/white" />
 
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:id="@+id/abrirMapa"
+            android:layout_height="wrap_content"
+            android:background="@drawable/redondeocompleto"
+            android:text="Ubicación"
+            android:textColor="@color/white" />
 
-    </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -178,16 +182,14 @@ tools:context=".chat2.AgendaSummary"
             android:layout_margin="10dp"
             android:textColor="@color/primaryDark" />
 
+
         <Button
-            android:id="@+id/abrirMapa"
+            android:id="@+id/btnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:background="@drawable/redondeocompleto"
-            android:text="Ubicación"
+            android:text="Cancelar"
             android:textColor="@color/white" />
-
-
 
     </LinearLayout>
 </LinearLayout>

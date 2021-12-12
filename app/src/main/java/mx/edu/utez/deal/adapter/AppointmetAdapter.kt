@@ -49,13 +49,16 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
                 intent.putExtra("idProveedor", appointment.provider.id);
 
                 intent.putExtra("fechaHora", appointment.dateTime);
-                intent.putExtra("ubicacion",appointment.location.name)
                 intent.putExtra("descripcion",appointment.provider.description)
                 intent.putExtra("nombreProveedor",appointment.provider.name)
                 intent.putExtra("tipoServicio",appointment.provider.area)
 
-                intent.putExtra("latitude",appointment.location.latitude)
-                intent.putExtra("longitude",appointment.location.longitude)
+                intent.putExtra("ubicacion",appointment.location?.name)
+                intent.putExtra("latitude",appointment.location?.latitude)
+                intent.putExtra("longitude",appointment.location?.longitude)
+                intent.putExtra("enabled",appointment.enabled)
+                intent.putExtra("approved",appointment.approved)
+                intent.putExtra("onWay",appointment.onWay)
                 DetailProvider.chat=true
                 view.context.startActivity(intent)
             }

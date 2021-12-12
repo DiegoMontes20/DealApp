@@ -1,6 +1,7 @@
 package mx.edu.utez.deal.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -28,13 +29,9 @@ public class LocationService extends Service {
         @Override
         public void onLocationChanged(@NonNull Location location) {
 
-            if (location != null) {
-                loc=location;
+            loc=location;
 //                System.out.println("Latitud " + location.getLatitude());
 //                System.out.println("Longitud " + location.getLongitude());
-            } else {
-                System.out.println("Mi ubicación es null");
-            }
 
             myLocation.set(location);
         }
@@ -50,21 +47,12 @@ public class LocationService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate() {
         super.onCreate();
         iniLocalLocation();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER, 1000, 0,
                 mLocationListener[1]

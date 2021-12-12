@@ -26,6 +26,10 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun getProviders(): Response<ResponseBody>
 
+    @GET("/client/provider/location")
+    @Headers("Content-Type: application/json")
+    suspend fun getProviderLocation(@Query("providerId") providerId:String?): Response<ResponseBody>
+
     @GET("/client/profile")
     @Headers("Content-Type: application/json")
     suspend fun getProfile(): Response<ResponseBody>

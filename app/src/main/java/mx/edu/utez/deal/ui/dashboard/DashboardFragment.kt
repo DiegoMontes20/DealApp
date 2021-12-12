@@ -119,7 +119,7 @@ class DashboardFragment : Fragment() {
                                 }
                             }
                             "pendientes"->{
-                                if(providerList.approved){
+                                if(!providerList.approved && providerList.enabled){
                                     lista.add(providerList)
                                 }
                             }
