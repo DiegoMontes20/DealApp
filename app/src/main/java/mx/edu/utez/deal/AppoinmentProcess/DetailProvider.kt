@@ -8,6 +8,7 @@ import android.util.Base64
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
+import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.chat2.AgendaSummary
 
 import mx.edu.utez.deal.databinding.ActivityDetalleProveedorBinding
@@ -45,7 +46,7 @@ class DetailProvider : AppCompatActivity() {
         descripcion= parametros!!.getString("Descripcion").toString()
         tipo= parametros!!.getString("Area").toString()
 
-        val image = parametros!!.getString("Imagen")
+        val image = PrefsApplication.prefs.getData("Imagen")
 
         val decodedString: ByteArray = Base64.decode(image, Base64.DEFAULT)
         val decodedByte =
@@ -71,5 +72,10 @@ class DetailProvider : AppCompatActivity() {
             intent.putExtra("nombre",  parametros!!.getString("Nombre"));
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        PrefsApplication.prefs.save("Imagen", "")
     }
 }

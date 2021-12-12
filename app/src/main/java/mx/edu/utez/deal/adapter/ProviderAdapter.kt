@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
 import mx.edu.utez.deal.Model.ProviderList
+import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ItemproveedorBinding
 
@@ -41,8 +41,8 @@ class ProviderAdapter(val providers:List<ProviderList>):RecyclerView.Adapter<Pro
             val decodedByte =
                 BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
             binding.imgProfile.setImageBitmap(decodedByte)
-            //Picasso.get().load(provider.image).into(binding.imgProfile);
             view.setOnClickListener {
+                PrefsApplication.prefs.save("Imagen", provider.image)
                 val intent = Intent(view.context, DetailProvider::class.java)
                 intent.putExtra("id", provider.id);
                 intent.putExtra("Nombre", provider.name);
@@ -50,7 +50,6 @@ class ProviderAdapter(val providers:List<ProviderList>):RecyclerView.Adapter<Pro
                 intent.putExtra("Descripcion", provider.description)
                 intent.putExtra("HoraI", provider.startTime);
                 intent.putExtra("HoraF", provider.finalTime)
-                intent.putExtra("Imagen", provider.image)
                 intent.putExtra("telefono", provider.phone)
                 intent.putExtra("promedio",provider.evaluationAverage.toString())
                 DetailProvider.chat=false
