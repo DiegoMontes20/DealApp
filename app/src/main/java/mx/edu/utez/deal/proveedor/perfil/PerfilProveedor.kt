@@ -28,6 +28,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.util.Base64
 import android.util.Log
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 
 
 class PerfilProveedor : AppCompatActivity() {
@@ -49,7 +50,7 @@ class PerfilProveedor : AppCompatActivity() {
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val jsonObjectString = jsonObject.toString()
 

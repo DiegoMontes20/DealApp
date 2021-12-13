@@ -16,6 +16,7 @@ import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.databinding.ActivityCitaDetailsBinding
 import mx.edu.utez.deal.proveedor.mapa.MapaActivity
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -63,7 +64,7 @@ class CitaDetails : AppCompatActivity() {
             val retrofit = getRetrofit()
 
             val service = retrofit.create(APIService::class.java)
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
                 val response = service.getAppointments()
 
@@ -76,7 +77,7 @@ class CitaDetails : AppCompatActivity() {
                         // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
                         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
                         val service = retrofit.create(APIService::class.java)
-                        CoroutineScope(Dispatchers.IO).launch{
+                        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
                             val response = service.saveOnWay(requestBody)
                             withContext(Dispatchers.Main){
                                 if(response.isSuccessful){

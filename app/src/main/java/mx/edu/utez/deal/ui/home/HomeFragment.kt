@@ -33,6 +33,7 @@ import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapter.AppointmentAdapter
 import mx.edu.utez.deal.databinding.FragmentHomeBinding
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -147,16 +148,11 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     fun getProfile(){
         val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getProfile()
             withContext(Dispatchers.Main) {
@@ -203,7 +199,7 @@ class HomeFragment : Fragment() {
     private fun update() {
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             // Convert JSONObject to String
             val jsonObjectString = jsonObject.toString()
 
@@ -225,7 +221,7 @@ class HomeFragment : Fragment() {
         val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getAppointments()
 

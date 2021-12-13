@@ -1,5 +1,6 @@
 package mx.edu.utez.deal
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Log
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import mx.edu.utez.deal.Login.LoginScreen
@@ -16,11 +18,12 @@ import mx.edu.utez.deal.util.PermissionChecker
 
 class SplashScreen : AppCompatActivity() {
 
-
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        context = this
         initApp()
     }
 
@@ -62,6 +65,4 @@ class SplashScreen : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
 }

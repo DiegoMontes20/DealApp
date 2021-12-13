@@ -63,6 +63,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
+                    android:rotation="-90"
                     android:id="@+id/inputImagen"
                     android:layout_width="70dp"
                     android:layout_height="70dp"

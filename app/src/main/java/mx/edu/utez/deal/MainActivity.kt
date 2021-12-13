@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -24,6 +23,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.databinding.ActivityMainBinding
 import mx.edu.utez.deal.util.LocationService
 import mx.edu.utez.deal.util.PermissionChecker
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     fun shouldShareLocation(){
         val retrofit =getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.getAppointments()
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                         appointments.add(appointment)
                     }
                     //println(conversations)
-                    var appointment = appointments.find { appointment ->  appointment.onWay}
+                    var appointment = appointments.find { appointment ->  appointment.onWay && appointment.approved && appointment.enabled}
                     if (appointment!= null){
                         var localDateTimeAppointment = LocalDateTime.parse(appointment.dateTime).plus(5, ChronoUnit.MINUTES)
                         var localDateTime = LocalDateTime.now()
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                             // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
                             val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
                             val service = retrofit.create(APIService::class.java)
-                            CoroutineScope(Dispatchers.IO).launch{
+                            CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
                                 val response = service.saveLocation(requestBody)
                                 withContext(Dispatchers.Main){
                                     if(response.isSuccessful){
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                             delay(5000)
                             localDateTime = localDateTime.plus(5, ChronoUnit.SECONDS)
                         }
-                        CoroutineScope(Dispatchers.IO).launch {
+                        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
                             val response = service.getAppointments()
 
                             withContext(Dispatchers.Main) {
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                                     // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
                                     val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
                                     val service = retrofit.create(APIService::class.java)
-                                    CoroutineScope(Dispatchers.IO).launch{
+                                    CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
                                         val response = service.saveOnWay(requestBody)
                                         withContext(Dispatchers.Main){
                                             if(response.isSuccessful){

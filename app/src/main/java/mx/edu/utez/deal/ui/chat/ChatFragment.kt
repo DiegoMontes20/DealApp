@@ -22,6 +22,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.adapterChat.AdapterConversation
 import mx.edu.utez.deal.databinding.FragmentChatBinding
 import mx.edu.utez.deal.ui.home.HomeFragment
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.OkHttpClient
 import org.json.JSONArray
 import org.json.JSONObject
@@ -53,17 +54,11 @@ class ChatFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-
 
     fun getConversations(){
         val retrofit =getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.getMessages()
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

@@ -17,6 +17,7 @@ import mx.edu.utez.deal.adapterChat.AdapterChat
 import mx.edu.utez.deal.adapterChat.ModelChat
 import mx.edu.utez.deal.databinding.ActivityChatProveedorBinding
 import mx.edu.utez.deal.ui.home.HomeFragment
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -91,7 +92,7 @@ class ChatProveedor : AppCompatActivity() {
     fun getMessages(){
         val retrofit =getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.getMessages()
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
@@ -160,7 +161,7 @@ class ChatProveedor : AppCompatActivity() {
         // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.saveMessage(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
@@ -185,7 +186,7 @@ class ChatProveedor : AppCompatActivity() {
     }
 
     private fun startRepeatingJob(timeInterval: Long): Job {
-        return CoroutineScope(Dispatchers.Main).launch {
+        return CoroutineScope(Dispatchers.Main).launch(coroutineExceptionHandler.handler) {
             while (true) {
                 getMessages()
                 delay(timeInterval)

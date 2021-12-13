@@ -16,6 +16,7 @@ import mx.edu.utez.deal.MainActivity
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.databinding.ActivityCitaConfirmacionBinding
+import mx.edu.utez.deal.util.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -63,7 +64,7 @@ class CitaConfirmacion : AppCompatActivity() {
     fun cancelCita(){
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val objEnviar = JSONObject()
             objEnviar.put("id", idCita)
             objEnviar.put("approved", false)
@@ -95,7 +96,7 @@ class CitaConfirmacion : AppCompatActivity() {
     fun acceptCita(){
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val objEnviar = JSONObject()
             objEnviar.put("id", idCita)
             objEnviar.put("approved", true)
