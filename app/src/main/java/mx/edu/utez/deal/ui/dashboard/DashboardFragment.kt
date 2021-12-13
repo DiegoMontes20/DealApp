@@ -29,6 +29,7 @@ import mx.edu.utez.deal.adapter.AppointmetAdapter
 import mx.edu.utez.deal.adapter.ProviderAdapter
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.FragmentDashboardBinding
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.OkHttpClient
 import org.json.JSONArray
 import org.json.JSONObject
@@ -42,6 +43,8 @@ class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null
+    private val lista: ArrayList<AppointmentModel> = ArrayList()
+    private lateinit var adapter: AppointmetAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,30 +60,60 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //TODO: IMPLEMETAR SERVICIOS
-        getData("pendientes")
-
-        binding.pendiente.setOnClickListener {
-            getData("pendientes")
-        }
+        binding.rvServices.layoutManager = LinearLayoutManager(activity)
+        getData()
 
         binding.terminada.setOnClickListener {
-            getData("terminados")
-        }
-        binding.canceladas.setOnClickListener {
-            getData("cancelados")
+            changeCategory( "Cita realizada")
         }
 
         binding.proceso.setOnClickListener {
-            getData("activos")
+            changeCategory("Cita programada")
+        }
+
+        binding.pendiente.setOnClickListener {
+            changeCategory( "Cita por aprobar")
+        }
+
+        binding.canceladas.setOnClickListener {
+            changeCategory("Canceladas")
         }
 
 
         return root
     }
 
+    fun changeCategory(category: String) {
+        when (category) {
+            "Cita realizada" -> {
+                binding.txtTitulo.text = "Cita realizada"
+                adapter = AppointmetAdapter(lista.filter { appointmentModel -> appointmentModel.approved && !appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            "Cita programada" -> {
+                binding.txtTitulo.text = "Cita programada"
+                adapter = AppointmetAdapter(lista.filter { appointmentModel -> appointmentModel.approved && appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            "Cita por aprobar" -> {
+                binding.txtTitulo.text = "Cita por aprobar"
+                adapter = AppointmetAdapter(lista.filter { appointmentModel -> !appointmentModel.approved && appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            else -> {
+                binding.txtTitulo.text = "Cita Cancelada"
+                adapter = AppointmetAdapter(lista.filter { appointmentModel -> !appointmentModel.approved && !appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
 
-    fun getData(tipo:String){
+
+    fun getData(){
         val retrofit = Retrofit.Builder()
             .baseUrl(ConfIP.IP)
             .client(OkHttpClient.Builder().addInterceptor{ chain ->
@@ -90,7 +123,7 @@ class DashboardFragment : Fragment() {
             .build()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getAppointments()
 
@@ -105,59 +138,26 @@ class DashboardFragment : Fragment() {
                         )
                     )
                     //Log.w("body", prettyJson)
-                    var jobject:JSONObject = JSONObject(prettyJson)
-                    var Jarray:JSONArray = jobject.getJSONArray("data")
-                    var lista:ArrayList<AppointmentModel> = ArrayList<AppointmentModel>()
-                    lista.clear()
+                    val jobject:JSONObject = JSONObject(prettyJson)
+                    val Jarray:JSONArray = jobject.getJSONArray("data")
                     for(i in 0 until Jarray.length()){
-                        var provedor:JSONObject = Jarray.getJSONObject(i)
+                        val provedor:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val providerList:AppointmentModel = gson.fromJson(provedor.toString(), AppointmentModel::class.java)
-                        when(tipo){
-                            "todos"->{
-                                lista.add(providerList)
-                            }
-                            "terminados"->{
-                                if(providerList.enabled && providerList.approved && providerList.takeout){
-                                    lista.add(providerList)
-                                }
-                            }
-                            "pendientes"->{
-                                if(!providerList.approved && providerList.enabled){
-                                    lista.add(providerList)
-                                }
-                            }
-                            "cancelados"->{
-                                if(!providerList.enabled){
-                                    lista.add(providerList)
-                                }
-                            }
-                            "activos"->{
-                                if(providerList.approved && providerList.enabled){
-                                    lista.add(providerList)
-                                }
-                            }
-                        }
+                        lista.add(providerList)
                     }
-
-                    if(lista.isEmpty()){
+                    adapter = AppointmetAdapter(emptyList())
+                    binding.rvServices.adapter = adapter
+                    changeCategory("Cita programada")
+                    if (lista.isEmpty()) {
                         binding.btnTexto.visibility = View.VISIBLE
-                        Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG).show()
-                        binding.rvServices.layoutManager = LinearLayoutManager(activity)
-                        val adapter = AppointmetAdapter(lista)
-                        binding.rvServices.adapter=adapter
-                        adapter!!.notifyDataSetChanged()
-                    }else{
+                        Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
                         binding.btnTexto.visibility = View.GONE
-                        binding.txtTitulo.text="Servicios $tipo"
-                        binding.rvServices.layoutManager = LinearLayoutManager(activity)
-                        val adapter = AppointmetAdapter(lista)
-                        binding.rvServices.adapter=adapter
-                        adapter!!.notifyDataSetChanged()
                     }
-
                 } else {
-                    var code = response.code().toString()
+                    val code = response.code().toString()
                     if(code == "401"){
                         Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_LONG).show()
                         PrefsApplication.prefs.deleteAll()
@@ -166,13 +166,8 @@ class DashboardFragment : Fragment() {
                         startActivity(intent)
                     }
                     Log.e("RETROFIT_ERROR", response.code().toString())
-
                 }
             }
         }
-
-
     }
-
-
 }

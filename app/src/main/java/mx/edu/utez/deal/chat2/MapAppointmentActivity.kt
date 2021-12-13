@@ -29,6 +29,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityMapAppointmentBinding
 import mx.edu.utez.deal.utils.LocationService
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.OkHttpClient
 import org.json.JSONObject
 import retrofit2.Retrofit
@@ -86,7 +87,7 @@ class MapAppointmentActivity : AppCompatActivity(), OnMapReadyCallback {
                 }.build())
                 .build()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
             val response = service.getProviderLocation(providerId)
             runOnUiThread {
                 if (response.isSuccessful) {
@@ -117,7 +118,7 @@ class MapAppointmentActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun startRepeatingJob(timeInterval: Long): Job {
-        return CoroutineScope(Dispatchers.Main).launch {
+        return CoroutineScope(Dispatchers.Main).launch(coroutineExceptionHandler.handler) {
             while (true) {
                 getProviderLocation()
                 delay(timeInterval)

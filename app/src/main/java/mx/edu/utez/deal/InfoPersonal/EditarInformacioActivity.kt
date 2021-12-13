@@ -16,6 +16,7 @@ import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityEditarInformacioBinding
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -49,7 +50,7 @@ class EditarInformacioActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
             val jsonObject = JSONObject()
             jsonObject.put("id", id)
             jsonObject.put("name", binding.reNombre.text.toString())
@@ -105,7 +106,7 @@ class EditarInformacioActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getProfile()
 

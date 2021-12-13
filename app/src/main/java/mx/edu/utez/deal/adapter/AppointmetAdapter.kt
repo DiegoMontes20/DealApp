@@ -4,7 +4,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import mx.edu.utez.deal.AppoinmentProcess.DetailProvider
 import mx.edu.utez.deal.chat2.AgendaSummary
@@ -12,12 +13,15 @@ import mx.edu.utez.deal.Model.AppointmentModel
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ItemcitasBinding
 
-class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.Adapter<AppointmetAdapter.AppointmentHolder>() {
+class AppointmetAdapter(var appointments:List<AppointmentModel>): RecyclerView.Adapter<AppointmetAdapter.AppointmentHolder>() {
+
+    // Allows to remember the last item shown on screen
+    private var lastPosition = -1
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AppointmetAdapter.AppointmentHolder {
+    ): AppointmentHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return AppointmetAdapter.AppointmentHolder(
             layoutInflater.inflate(
@@ -28,8 +32,10 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
         )
     }
 
-    override fun onBindViewHolder(holder: AppointmetAdapter.AppointmentHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppointmentHolder, position: Int) {
         holder.render(appointments[position])
+        // Here you apply the animation when the view is bound
+        setAnimation(holder.itemView, position)
     }
 
     override fun getItemCount(): Int {
@@ -63,5 +69,22 @@ class AppointmetAdapter(val appointments:List<AppointmentModel>): RecyclerView.A
                 view.context.startActivity(intent)
             }
         }
+        fun clearAnimation() {
+            view.clearAnimation()
+        }
+    }
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation: Animation =
+                AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.slide_in_left)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
+    }
+
+    //clear animation if it was already displayed
+    override fun onViewDetachedFromWindow(holder: AppointmentHolder) {
+        holder.clearAnimation()
     }
 }

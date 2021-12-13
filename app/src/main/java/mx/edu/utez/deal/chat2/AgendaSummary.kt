@@ -29,6 +29,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityAgendaSummaryBinding
 import mx.edu.utez.deal.utils.LocationService
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -163,7 +164,7 @@ class AgendaSummary : AppCompatActivity() {
         objEnviar.put("evaluation", calificacion)
         val jsonObjectString = objEnviar.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.updateAppoinment(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
@@ -187,7 +188,7 @@ class AgendaSummary : AppCompatActivity() {
     fun cancel(){
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val objEnviar = JSONObject()
             objEnviar.put("id", idCita)
             val jsonObjectString = objEnviar.toString()
