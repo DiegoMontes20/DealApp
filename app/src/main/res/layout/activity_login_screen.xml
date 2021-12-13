@@ -8,131 +8,131 @@
     android:backgroundTint="@color/white">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:gravity="center"
+        android:background="@color/primary"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/logoappointment"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/titulo"
+            android:textColor="@color/white"
+            android:textSize="70dp"
+            android:letterSpacing="0.2"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="447dp"
+            android:gravity="center"
+            android:background="@drawable/esquinas_redondeadas"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:letterSpacing="0.1"
+                android:text="@string/bienvenida"
+                android:textColor="@color/secondary"
+                android:textSize="40dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="28dp"
+                android:paddingTop="20dp"
+                android:text="@string/usuario"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                ></TextView>
+
+            <EditText
+                android:id="@+id/lo_user"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="28dp"
+                android:paddingTop="20dp"
+                android:text="@string/contraseña"
+                android:textColor="@color/secondaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
+            <EditText
+                android:id="@+id/lo_password"
+                android:layout_width="350dp"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary" />
+
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/redondeocompleto"
+
+                android:text="@string/ingresar"
+                android:textColor="@color/white" />
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:gravity="center"
-                android:background="@color/primary"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/logoappointment"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/titulo"
-                    android:textColor="@color/white"
-                    android:textSize="70dp"
-                    android:letterSpacing="0.2"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="15dp"/>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="447dp"
-                android:gravity="center"
-                android:background="@drawable/esquinas_redondeadas"
-
-                android:orientation="vertical">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:letterSpacing="0.1"
-                    android:text="@string/bienvenida"
-                    android:textColor="@color/secondary"
-                    android:textSize="40dp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="5dp"
+                    android:text="¿No estás registrado?"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/registrarse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="28dp"
-                    android:paddingTop="20dp"
-                    android:text="@string/usuario"
-                    android:textColor="@color/secondaryDark"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/registrarse"
+                    android:textColor="@color/primary"
                     android:textSize="20sp"
                     android:textStyle="bold"
-
-                    ></TextView>
-
-                <EditText
-                    android:id="@+id/lo_user"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/secondary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="28dp"
-                    android:paddingTop="20dp"
-                    android:text="@string/contraseña"
-                    android:textColor="@color/secondaryDark"
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
-
-                <EditText
-                    android:id="@+id/lo_password"
-                    android:layout_width="350dp"
-                    android:inputType="textPassword"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/secondary" />
-
-
-                <Button
-                    android:id="@+id/btn_login"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/redondeocompleto"
-
-                    android:text="@string/ingresar"
-                    android:textColor="@color/white" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="5dp"
-                        android:text="¿No estás registrado?"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/registrarse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:text="@string/registrarse"
-                        android:textColor="@color/primary"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        />
-
-                </LinearLayout>
-
+                    />
 
             </LinearLayout>
 
-            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </ScrollView>
