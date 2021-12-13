@@ -23,7 +23,6 @@ import kotlinx.coroutines.withContext
 import mx.edu.utez.deal.adapter.ProviderAdapter
 import mx.edu.utez.deal.Login.LoginScreen
 import mx.edu.utez.deal.Model.ClientProfile
-import mx.edu.utez.deal.Model.Provider
 import mx.edu.utez.deal.Model.ProviderList
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
@@ -31,6 +30,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.SplashScreen
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.FragmentHomeBinding
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
     fun update(){
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             // Convert JSONObject to String
             val jsonObjectString = jsonObject.toString()
 
@@ -102,7 +102,7 @@ class HomeFragment : Fragment() {
         val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getProfile()
 
@@ -171,7 +171,7 @@ class HomeFragment : Fragment() {
         val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
             val response = service.getProviders()
 
@@ -224,10 +224,6 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
     fun getRetrofit():Retrofit{
         return  Retrofit.Builder()
             .baseUrl(ConfIP.IP)
@@ -237,6 +233,4 @@ class HomeFragment : Fragment() {
             }.build())
             .build()
     }
-
-
 }

@@ -29,6 +29,7 @@ import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityAgendaSummaryBinding
 import mx.edu.utez.deal.utils.LocationService
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -70,40 +71,35 @@ class AgendaSummary : AppCompatActivity() {
 
         idCita = parametros.getString("idCita").toString()
 
-        if (parametros.getBoolean("onWay")) {
-            binding.abrirMapa.visibility = View.VISIBLE
-        } else {
-            binding.abrirMapa.visibility = View.GONE
-        }
-
         val approved = parametros.getBoolean("approved")
         val enabled = parametros.getBoolean("enabled")
+        val onWay = parametros.getBoolean("onWay")
 
-        println("estados aproved $approved enabled $enabled")
+        binding.abrirMapa.visibility = View.GONE
+        binding.calificar.visibility = View.GONE
+        binding.btnCancelar.visibility = View.GONE
+        binding.btnChat.visibility = View.GONE
 
+        if(approved && !enabled){
+            binding.txtTitle.text = "Cita realizada"
+            binding.txtTitle.setTextColor(getColor(R.color.primary))
 
-        if (approved && enabled) {
-            binding.txtCancel.visibility= View.VISIBLE
-            binding.txtCancel.text="Cita terminada"
-            binding.txtCancel.setTextColor(Color.parseColor("#4CAF50"))
+        }else if(approved && enabled){
+            binding.txtTitle.text = "Cita programada"
+            binding.txtTitle.setTextColor(getColor(R.color.primary))
             binding.calificar.visibility = View.VISIBLE
             binding.btnCancelar.visibility = View.VISIBLE
-            binding.txtCancel.visibility= View.GONE
-
-        } else {
-            binding.txtCancel.visibility= View.VISIBLE
-            binding.calificar.visibility = View.GONE
-            binding.btnCancelar.visibility = View.GONE
-            binding.abrirMapa.visibility = View.GONE
-            binding.imageView.visibility = View.GONE
-            if(!approved && enabled){
-                binding.txtCancel.text="Cita pendiente"
-                binding.txtCancel.setTextColor(Color.parseColor("#FF5722"))
-            }else{
-                binding.txtCancel.text="Cita cancelada"
-            }
-
-
+            binding.btnChat.visibility = View.VISIBLE
+            if (onWay)
+                binding.abrirMapa.visibility = View.VISIBLE
+        } else if(!approved && enabled){
+            binding.txtTitle.text = "Cita por aprobar"
+            binding.txtTitle.setTextColor(getColor(R.color.primary))
+            binding.btnCancelar.visibility = View.VISIBLE
+            binding.btnChat.visibility = View.VISIBLE
+        }else{
+            binding.txtTitle.text = "Cita cancelada"
+            binding.txtTitle.setTextColor(getColor(R.color.red))
         }
 
 
@@ -115,7 +111,7 @@ class AgendaSummary : AppCompatActivity() {
             onBackPressed()
         }
 
-        binding.imageView.setOnClickListener {
+        binding.btnChat.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             intent.putExtra("idProvider", idProveedor);
             intent.putExtra("nombre", parametros.getString("nombreProveedor"));
@@ -168,7 +164,7 @@ class AgendaSummary : AppCompatActivity() {
         objEnviar.put("evaluation", calificacion)
         val jsonObjectString = objEnviar.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val response = service.updateAppoinment(requestBody)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
@@ -192,7 +188,7 @@ class AgendaSummary : AppCompatActivity() {
     fun cancel(){
         val retrofit = getRetrofit()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val objEnviar = JSONObject()
             objEnviar.put("id", idCita)
             val jsonObjectString = objEnviar.toString()
@@ -221,12 +217,13 @@ class AgendaSummary : AppCompatActivity() {
         val dialog : AlertDialog = builder.create()
         dialog.show()
     }
+
     fun changeActity(){
         val intent = Intent(this, MainActivity::class.java)
         intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-
     }
+
     fun showToast(mensaje:String){
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }

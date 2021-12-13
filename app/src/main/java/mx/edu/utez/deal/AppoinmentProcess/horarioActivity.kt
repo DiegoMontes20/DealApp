@@ -24,6 +24,7 @@ import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivityHorarioBinding
 import mx.edu.utez.deal.ui.dialog.DatePickerFragment
 import mx.edu.utez.deal.utils.LocationService
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.OkHttpClient
 import org.json.JSONArray
 import org.json.JSONObject
@@ -90,7 +91,7 @@ class horarioActivity : AppCompatActivity() {
     fun dialog(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Confirmación de horario y fecha")
-        builder.setMessage("¿Está seguro de agendar en la fecha ${fecha} y la hora ${DetailProvider.tiempo}")
+        builder.setMessage("¿Está seguro de agendar en la fecha ${fecha} y la hora ${DetailProvider.tiempo}?")
         builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
            changeAct()
         })
@@ -117,7 +118,7 @@ class horarioActivity : AppCompatActivity() {
             }.build())
             .build()
         val service = retrofit.create(APIService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
             val response = service.getAppointmentsHoras(fecha, DetailProvider.id)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {

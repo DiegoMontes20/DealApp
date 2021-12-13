@@ -18,6 +18,7 @@ import mx.edu.utez.deal.R
 import mx.edu.utez.deal.Retro.APIService
 import mx.edu.utez.deal.configuration.ConfIP
 import mx.edu.utez.deal.databinding.ActivitySummaryBinding
+import mx.edu.utez.deal.utils.coroutineExceptionHandler
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -61,7 +62,7 @@ class SummaryActivity : AppCompatActivity() {
 
 
 
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler){
             val provider = JSONObject()
             provider.put("id", DetailProvider.id)
 

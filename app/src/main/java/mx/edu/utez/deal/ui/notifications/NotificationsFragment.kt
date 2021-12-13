@@ -66,9 +66,4 @@ class NotificationsFragment : Fragment() {
         startActivity(intent)
     }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
