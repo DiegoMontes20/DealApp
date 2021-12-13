@@ -52,15 +52,5 @@ tools:context=".ui.home.HomeFragment">
         android:id="@+id/rv_providers"
         android:layout_marginBottom="60dp" />
 
-<!--
- <ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-android:scrollbars="none"
-    android:dividerHeight="20.0sp"
-    android:divider="@color/white"
-    android:id="@+id/lista"
-    android:layout_marginBottom="60dp"
-    />
- -->
+
 </LinearLayout>

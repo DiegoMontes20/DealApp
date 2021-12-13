@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import androidx.core.view.isVisible
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_proveedor.*
 import mx.edu.utez.deal.Prefs.PrefsApplication
 import mx.edu.utez.deal.chat2.AgendaSummary

@@ -149,7 +149,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/redondeocompleto"
+            android:backgroundTint="@color/primaryDark"
 
             android:text="Confirmar"
             android:textColor="@color/white" />

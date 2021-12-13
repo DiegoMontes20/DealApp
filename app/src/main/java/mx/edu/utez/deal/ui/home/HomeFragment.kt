@@ -224,10 +224,6 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
     fun getRetrofit():Retrofit{
         return  Retrofit.Builder()
             .baseUrl(ConfIP.IP)

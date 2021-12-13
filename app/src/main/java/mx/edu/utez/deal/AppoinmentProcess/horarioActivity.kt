@@ -90,7 +90,7 @@ class horarioActivity : AppCompatActivity() {
     fun dialog(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Confirmación de horario y fecha")
-        builder.setMessage("¿Está seguro de agendar en la fecha ${fecha} y la hora ${DetailProvider.tiempo}")
+        builder.setMessage("¿Está seguro de agendar en la fecha ${fecha} y la hora ${DetailProvider.tiempo}?")
         builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
            changeAct()
         })
