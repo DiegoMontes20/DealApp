@@ -87,7 +87,8 @@
                 android:id="@+id/re_username"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,8 +106,9 @@
                 android:id="@+id/re_password"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
                 android:inputType="textPassword"
-                android:backgroundTint="@color/secondary" />
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +126,8 @@
                 android:id="@+id/re_name"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,7 +145,8 @@
                 android:id="@+id/re_phone"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,7 +164,8 @@
                 android:id="@+id/re_area"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -178,7 +183,8 @@
                 android:id="@+id/re_descripcion"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary" />
+                android:backgroundTint="@color/secondary"
+                android:paddingLeft="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"

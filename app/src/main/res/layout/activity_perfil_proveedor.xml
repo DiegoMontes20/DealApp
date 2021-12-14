@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="30dp"
-                            android:text="5"
+                            android:text="0"
                             android:textColor="@color/secondaryDark"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -165,24 +165,6 @@
 
             <EditText
                 android:id="@+id/inputGiro"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary"
-                android:focusable="false"
-                android:cursorVisible="false"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:text="@string/ubicacion"
-                android:textColor="@color/secondaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"></TextView>
-
-            <EditText
-                android:id="@+id/inputUbicacion"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/secondary"

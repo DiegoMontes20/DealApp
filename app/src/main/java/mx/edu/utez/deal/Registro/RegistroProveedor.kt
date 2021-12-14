@@ -59,8 +59,7 @@ class RegistroProveedor : AppCompatActivity() {
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             } else {
-                Toast.makeText(this,"Registrado...",Toast.LENGTH_LONG).show()
-                binding.btnProRegister.isEnabled = false
+                Toast.makeText(this,"Registrando...",Toast.LENGTH_LONG).show()
                 Handler().postDelayed({
 
                     create(
@@ -136,7 +135,7 @@ class RegistroProveedor : AppCompatActivity() {
                         if (response.isSuccessful) {
                             Toast.makeText(
                                 applicationContext,
-                                "Usuarios registrado", Toast.LENGTH_LONG
+                                "Usuario registrado", Toast.LENGTH_LONG
                             ).show()
                             changeActivity()
                         }

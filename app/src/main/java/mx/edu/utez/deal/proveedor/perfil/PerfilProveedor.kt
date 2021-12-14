@@ -76,7 +76,6 @@ class PerfilProveedor : AppCompatActivity() {
                     binding.inputDescripcion.setText(proveedor.description)
                     binding.inputTelefono.setText(proveedor.phone)
                     binding.inputGiro.setText(proveedor.area)
-                    binding.inputUbicacion.setText(if (proveedor.location == null) "Sin ubicación" else proveedor.location!!.name)
                     binding.inputDesde.setText(proveedor.startTime)
                     binding.inputHasta.setText(proveedor.finalTime)
                     binding.promedio.text = proveedor.evaluationAverage.toString()

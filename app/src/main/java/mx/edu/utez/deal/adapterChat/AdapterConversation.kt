@@ -33,7 +33,7 @@ class AdapterConversation(var activity: Activity) :
             var name = conversation.client.name + " " + conversation.client.lastname[0] + "."
             binding.nombreChat.text = name
             binding.mensajeChat.text = messageBody
-            binding.nombreChat.setOnClickListener {
+            binding.root.setOnClickListener {
                 val gson = Gson()
                 val intent = Intent(view.context, ChatProveedor::class.java)
                 intent.putExtra("conversation", gson.toJson(conversation))
