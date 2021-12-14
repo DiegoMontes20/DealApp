@@ -1,13 +1,18 @@
 package mx.edu.utez.deal.ui.home
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +21,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,8 +56,7 @@ class HomeFragment : Fragment() {
     var apellidos =""
     var telefono =""
     var nombre =""
-
-    var tokenStatico =""
+    var tokenCliente =""
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -69,11 +74,15 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding.rvProviders.layoutManager = LinearLayoutManager(activity)
+        getData("")
         getProfile()
-        getData()
-
 
         val root: View = binding.root
+
+        root.img_buscar.setOnClickListener {
+            getData(binding.buscarNombre.text.toString())
+        }
 
         return root
     }
@@ -108,7 +117,6 @@ class HomeFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    //Toast.makeText(activity, "Consulta con éxito", Toast.LENGTH_LONG).show()
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
                         JsonParser.parseString(
@@ -117,14 +125,13 @@ class HomeFragment : Fragment() {
                         )
                     )
                     var jobject:JSONObject = JSONObject(prettyJson)
-                    //jobject.get("data")
-                    //println(jobject.get("data"))
                     val gson2 = Gson()
                     val clientProfile: ClientProfile = gson2.fromJson(jobject.get("data").toString(), ClientProfile::class.java)
                     idCliente = clientProfile.id
                     apellidos = clientProfile.lastname
                     telefono=clientProfile.phone
                     nombre=clientProfile.name
+                    tokenCliente = clientProfile.token
                     var token: String? = null
                     FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                         if (!task.isSuccessful) {
@@ -134,29 +141,17 @@ class HomeFragment : Fragment() {
                         // Get new FCM registration token
                         token = task.result
 
+                        if(!token.equals(tokenCliente)){
+                            jsonObject.put("id", idCliente)
+                            jsonObject.put("name", nombre)
+                            jsonObject.put("lastname", apellidos)
+                            jsonObject.put("phone", telefono)
 
-                        tokenStatico=token.toString()
-
-                        if(!tokenStatico.equals(SplashScreen.tokenSplash)){
-
+                            jsonUser.put("notificationToken",token)
+                            jsonObject.put("user", jsonUser)
+                            update()
                         }
-                        jsonObject.put("id", idCliente)
-                        jsonObject.put("name", nombre)
-                        jsonObject.put("lastname", apellidos)
-                        jsonObject.put("phone", telefono)
-
-                        jsonUser.put("notificationToken",token)
-                        jsonObject.put("user", jsonUser)
-                        //println(jsonObject)
-                        update()
-
-                        //println(token)
-
-
-
                     })
-
-
                 } else {
 
                     Log.e("RETROFIT_ERROR", response.code().toString())
@@ -167,13 +162,13 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun getData(){
+    fun getData(nombre:String){
         val retrofit = getRetrofit()
 
         val service = retrofit.create(APIService::class.java)
         CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler.handler) {
 
-            val response = service.getProviders()
+            val response = service.getProvidersByName(nombre)
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
@@ -198,14 +193,19 @@ class HomeFragment : Fragment() {
                         i++
                     }
                     if(lista.isEmpty()){
+                        binding.btnTexto.visibility = View.VISIBLE
                         Toast.makeText(activity, "No hay proveedores disponibles", Toast.LENGTH_LONG).show()
+                        val adapter = ProviderAdapter(lista)
+                        binding.rvProviders.adapter=adapter
+                        adapter!!.notifyDataSetChanged()
                     }else{
-                        binding.rvProviders.layoutManager = LinearLayoutManager(activity)
+                        binding.btnTexto.visibility = View.GONE
+
                         val adapter = ProviderAdapter(lista)
                         binding.rvProviders.adapter=adapter
                         adapter!!.notifyDataSetChanged()
                     }
-
+                    hideKeyboard()
                 } else {
                     var code = response.code().toString()
                     if(code == "401"){
@@ -222,6 +222,10 @@ class HomeFragment : Fragment() {
         }
 
 
+    }
+    private fun hideKeyboard() {
+        val imm = view?.let { ContextCompat.getSystemService(it.context, InputMethodManager::class.java) }
+        imm?.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
     fun getRetrofit():Retrofit{

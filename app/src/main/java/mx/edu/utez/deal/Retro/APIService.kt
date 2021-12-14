@@ -67,5 +67,9 @@ interface APIService {
     @Headers("Content-Type: application/json")
     suspend fun updateAppoinment(@Body requestBody: RequestBody):Response<ResponseBody>
 
+    @GET("/client/provider")
+    @Headers("Content-Type: application/json")
+    suspend fun getProvidersByName(@Query("name") name:String):Response<ResponseBody>
+
 }
 

@@ -7,4 +7,5 @@ data class ClientProfile(@SerializedName("id")val id:String,
                          @SerializedName("phone") val phone:String,
                          @SerializedName("lastname") val lastname:String,
                          @SerializedName("user")val User:User,
-                         @SerializedName("fullname")val fullname:String)
+                         @SerializedName("fullname")val fullname:String,
+                         @SerializedName("notificationToken")val token:String)

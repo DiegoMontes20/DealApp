@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +50,39 @@
 
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:hint="Ingresa el nombre"
+            android:backgroundTint="@color/secondary"
+            android:id="@+id/buscar_nombre"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/img_buscar"
+            android:layout_weight="3"
+            android:src="@drawable/ic_baseline_search_24"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:layout_gravity="center"
+        android:text="Sin proveedores"
+        android:textColor="@color/primaryDark" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_providers"

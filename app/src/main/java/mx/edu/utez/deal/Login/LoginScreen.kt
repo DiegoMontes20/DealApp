@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import mx.edu.utez.deal.MainActivity
-import mx.edu.utez.deal.Model.User
 import mx.edu.utez.deal.Model.UserLogin
 import mx.edu.utez.deal.Prefs.PrefsApplication.Companion.prefs
 import mx.edu.utez.deal.Registro.RegistroScreen
