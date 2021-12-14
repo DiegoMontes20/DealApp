@@ -224,6 +224,7 @@ class HomeFragment : Fragment() {
 
     }
     private fun hideKeyboard() {
+        binding.buscarNombre.clearFocus()
         val imm = view?.let { ContextCompat.getSystemService(it.context, InputMethodManager::class.java) }
         imm?.hideSoftInputFromWindow(view?.windowToken, 0)
     }
