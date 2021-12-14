@@ -1,100 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginRight="150dp"
+            android:backgroundTint="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/primaryDark"
+            android:text="Servicios"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:id="@+id/fotoChat"
+            android:src="@drawable/logoappointment" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/secondaryDark"
+        android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="200dp"
-                android:backgroundTint="@color/white"
-                android:text="@string/agenda"
-                android:textColor="@color/primaryDark"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/fotoChat"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="end"
-                android:src="@drawable/logoappointment" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/secondaryDark" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:textSize="10dp"
+            android:layout_marginRight="2dp"
+            android:id="@+id/pendiente"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Pendientes" />
 
-            <Button
-                android:id="@+id/btnCitas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primaryDark"
-                android:text="Agenda"
-                android:textColor="@color/white" />
+        <Button
+            android:textSize="10dp"
+            android:id="@+id/proceso"
+            android:layout_marginRight="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="proceso" />
 
-            <Button
-                android:id="@+id/btnCitasPendientes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primaryDark"
-                android:text="Citas pendientes"
-                android:textColor="@color/white" />
+        <Button
+            android:textSize="10dp"
+            android:layout_marginRight="2dp"
+            android:id="@+id/canceladas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Cancelados" />
+
+        <Button
+            android:textSize="10dp"
+            android:id="@+id/terminada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/primaryDark"
+            android:text="Terminados" />
 
 
-            <Button
-                android:id="@+id/btnCitasRealizadas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primaryDark"
-                android:text="Citas realizadas"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/btnCitasCanceladas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primaryDark"
-                android:text="Citas canceladas"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_citas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
-            android:divider="@color/white" />
 
     </LinearLayout>
 
-</ScrollView>
+    <Button
+        android:id="@+id/btn_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:layout_gravity="center"
+        android:text="Sin Citas"
+        android:textColor="@color/primaryDark" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_services"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+</LinearLayout>

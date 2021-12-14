@@ -59,6 +59,8 @@ class RegistroProveedor : AppCompatActivity() {
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             } else {
+                Toast.makeText(this,"Registrado...",Toast.LENGTH_LONG).show()
+                binding.btnProRegister.isEnabled = false
                 Handler().postDelayed({
 
                     create(
@@ -125,6 +127,7 @@ class RegistroProveedor : AppCompatActivity() {
                         startTime,
                         finalTime,
                         user,
+                        null,
                         null
                     )
                // println("Cliente ${provider.toString()}")

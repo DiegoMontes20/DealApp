@@ -54,7 +54,7 @@ class CitaConfirmacion : AppCompatActivity() {
         }
 
         binding.btnConfirmarCita.setOnClickListener {
-            Toast.makeText(this, "Confirmando cita: $idCita", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Confirmando cita...", Toast.LENGTH_LONG).show()
             acceptCita()
             //
         }

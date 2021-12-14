@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="40dp"
-        android:src="@drawable/logoappointment" />
+        android:padding="100dp"
+        android:src="@drawable/logo_sin_fondo" />
 
 </LinearLayout>

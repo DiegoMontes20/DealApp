@@ -30,7 +30,8 @@ class AdapterConversation(var activity: Activity) :
                 messageBody = "Yo: " + conversation.messages[conversation.messages.lastIndex].body
             else
                 messageBody = conversation.messages[conversation.messages.lastIndex].body
-            binding.nombreChat.text = conversation.client.fullname
+            var name = conversation.client.name + " " + conversation.client.lastname[0] + "."
+            binding.nombreChat.text = name
             binding.mensajeChat.text = messageBody
             binding.nombreChat.setOnClickListener {
                 val gson = Gson()

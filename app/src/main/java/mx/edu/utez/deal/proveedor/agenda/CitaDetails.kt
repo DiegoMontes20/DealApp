@@ -36,6 +36,7 @@ class CitaDetails : AppCompatActivity() {
         val fechaHora = intent.getStringExtra("dateTime")
         val locationName = intent.getStringExtra("locationName")
         val onWay = intent.getBooleanExtra("onWay", false)
+        val enabled = intent.getBooleanExtra("estado", false)
         val locationLatitude = intent.getDoubleExtra("locationLatitude", 0.0);
         val locationLongitude = intent.getDoubleExtra("locationLongitude", 0.0);
 
@@ -43,7 +44,10 @@ class CitaDetails : AppCompatActivity() {
         binding.txtCliente.text = nombreCliente
         binding.txtPhone.text = numeroCliente
 
-        binding.btnEnCamino.isVisible = !onWay
+        if(enabled && !onWay)
+            binding.btnEnCamino.visibility = View.VISIBLE
+        else
+            binding.btnEnCamino.visibility = View.GONE
 
         if (locationName.isNullOrEmpty())
             binding.btnMostrarUbicacion.visibility = View.GONE

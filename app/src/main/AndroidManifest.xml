@@ -51,13 +51,7 @@
             android:name=".proveedor.chat.ChatProveedor"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".proveedor.perfil.EditProveedor"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity
             android:name=".proveedor.perfil.PerfilProveedor"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity
-            android:name=".proveedor.perfil.MenuPerfil"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".Registro.RegistroProveedor"

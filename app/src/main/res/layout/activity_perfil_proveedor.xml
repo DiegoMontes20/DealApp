@@ -62,8 +62,9 @@
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:id="@+id/nombreEmpresa"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:gravity="bottom|center"
                         android:paddingTop="20dp"
                         android:text="@string/nombre_empresa"
                         android:textColor="@color/secondaryDark"
@@ -72,13 +73,32 @@
 
                         ></TextView>
 
-                    <EditText
-                        android:id="@+id/inputNombreEmpresa"
-                        android:layout_width="350dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondary"
-                        android:focusable="false"
-                        android:cursorVisible="false"/>
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/star"
+                            android:backgroundTint="@color/primaryDark" />
+
+                        <TextView
+                            android:id="@+id/promedio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="30dp"
+                            android:text="5"
+                            android:textColor="@color/secondaryDark"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <ImageView

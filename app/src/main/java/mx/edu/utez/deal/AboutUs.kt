@@ -9,8 +9,10 @@ class AboutUs : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (this).supportActionBar!!.hide()
         binding = ActivityAboutUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         binding.regresar.setOnClickListener {

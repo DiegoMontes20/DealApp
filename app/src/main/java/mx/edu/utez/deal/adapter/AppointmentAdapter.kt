@@ -55,6 +55,7 @@ class AppointmentAdapter(var citas: List<Appointment>) :
                 intent.putExtra("telefonoCliente", cita.client.phone)
                 intent.putExtra("dateTime", cita.dateTime)
                 intent.putExtra("estado", cita.enabled)
+                intent.putExtra("onWay",cita.onWay)
                 if (cita.location != null) {
                     intent.putExtra("locationName", cita.location.name)
                     intent.putExtra("locationLatitude", cita.location.latitude)

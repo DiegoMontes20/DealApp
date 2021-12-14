@@ -50,10 +50,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-    val lista:ArrayList<Appointment> = ArrayList()
-    val listaRealizadas:ArrayList<Appointment> = ArrayList()
-    val listaPendiente:ArrayList<Appointment> = ArrayList()
-    val listaCanceladas:ArrayList<Appointment> = ArrayList()
+    private val lista: ArrayList<Appointment> = ArrayList()
     private lateinit var adapter: AppointmentAdapter
 
     // This property is only valid between onCreateView and
@@ -76,76 +73,56 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        _binding!!.btnCitas.visibility = View.GONE
-
+        binding.rvServices.layoutManager = LinearLayoutManager(activity)
         getData()
         getProfile()
 
-        _binding!!.btnCitasPendientes.setOnClickListener {
-
-            if (listaPendiente.isNotEmpty()) {
-                adapter = AppointmentAdapter(listaPendiente)
-                _binding!!.rvCitas.layoutManager =
-                    LinearLayoutManager(activity)
-                _binding!!.rvCitas.adapter=adapter
-                adapter.notifyDataSetChanged()
-                _binding!!.title.text = getString(R.string.agenda_pendiente)
-                _binding!!.btnCitasPendientes.visibility = View.GONE
-                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
-                _binding!!.btnCitas.visibility = View.VISIBLE
-                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
-            }else
-                Toast.makeText(activity,"No hay registro de citas pendientes",Toast.LENGTH_SHORT).show()
+        binding.terminada.setOnClickListener {
+            changeCategory( "Cita realizada")
         }
 
-        _binding!!.btnCitas.setOnClickListener {
-            if (lista.isNotEmpty()) {
-                adapter = AppointmentAdapter(lista)
-                _binding!!.rvCitas.layoutManager =
-                    LinearLayoutManager(activity)
-                _binding!!.rvCitas.adapter=adapter
-                adapter.notifyDataSetChanged()
-                _binding!!.title.text = getString(R.string.agenda)
-                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
-                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
-                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
-                _binding!!.btnCitas.visibility = View.GONE
-            }else
-                Toast.makeText(activity,"No hay registro de citas en agenda",Toast.LENGTH_SHORT).show()
+        binding.proceso.setOnClickListener {
+            changeCategory("Cita programada")
         }
 
-        _binding!!.btnCitasRealizadas.setOnClickListener {
-            if (listaRealizadas.isNotEmpty()) {
-                adapter = AppointmentAdapter(listaRealizadas)
-                _binding!!.rvCitas.layoutManager =
-                    LinearLayoutManager(activity)
-                _binding!!.rvCitas.adapter=adapter
-                adapter.notifyDataSetChanged()
-                _binding!!.title.text = getString(R.string.agenda_realizada)
-                _binding!!.btnCitasCanceladas.visibility = View.VISIBLE
-                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
-                _binding!!.btnCitas.visibility = View.VISIBLE
-                _binding!!.btnCitasRealizadas.visibility = View.GONE
-            }else
-                Toast.makeText(activity,"No hay registro de citas realizadas",Toast.LENGTH_SHORT).show()
+        binding.pendiente.setOnClickListener {
+            changeCategory( "Cita por aprobar")
         }
 
-        _binding!!.btnCitasCanceladas.setOnClickListener {
-            if (listaCanceladas.isNotEmpty()){
-                adapter = AppointmentAdapter(listaCanceladas)
-                _binding!!.rvCitas.layoutManager =
-                    LinearLayoutManager(activity)
-                _binding!!.rvCitas.adapter=adapter
-                adapter.notifyDataSetChanged()
-                _binding!!.title.text = getString(R.string.agenda_cancelada)
-                _binding!!.btnCitasCanceladas.visibility = View.GONE
-                _binding!!.btnCitasPendientes.visibility = View.VISIBLE
-                _binding!!.btnCitas.visibility = View.VISIBLE
-                _binding!!.btnCitasRealizadas.visibility = View.VISIBLE
-            }else
-                Toast.makeText(activity,"No hay registro de citas canceladas",Toast.LENGTH_SHORT).show()
+        binding.canceladas.setOnClickListener {
+            changeCategory("Canceladas")
         }
+
         return root
+    }
+
+    fun changeCategory(category: String) {
+        when (category) {
+            "Cita realizada" -> {
+                binding.txtTitulo.text = "Cita realizada"
+                adapter = AppointmentAdapter(lista.filter { appointmentModel -> appointmentModel.approved && !appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            "Cita programada" -> {
+                binding.txtTitulo.text = "Cita programada"
+                adapter = AppointmentAdapter(lista.filter { appointmentModel -> appointmentModel.approved && appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            "Cita por aprobar" -> {
+                binding.txtTitulo.text = "Cita por aprobar"
+                adapter = AppointmentAdapter(lista.filter { appointmentModel -> !appointmentModel.approved && appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+            else -> {
+                binding.txtTitulo.text = "Cita Cancelada"
+                adapter = AppointmentAdapter(lista.filter { appointmentModel -> !appointmentModel.approved && !appointmentModel.enabled })
+                binding.rvServices.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+        }
     }
 
     fun getProfile(){
@@ -227,6 +204,7 @@ class HomeFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
+                    //Toast.makeText(activity, "Consulta con éxito", Toast.LENGTH_LONG).show()
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
                         JsonParser.parseString(
@@ -234,45 +212,35 @@ class HomeFragment : Fragment() {
                                 ?.string()
                         )
                     )
-                    var jobject: JSONObject = JSONObject(prettyJson)
-                    var Jarray: JSONArray = jobject.getJSONArray("data")
-                    var i=0
-                    while (i < Jarray.length() ){
-                        var provedor: JSONObject = Jarray.getJSONObject(i)
+                    //Log.w("body", prettyJson)
+                    val jobject:JSONObject = JSONObject(prettyJson)
+                    val Jarray:JSONArray = jobject.getJSONArray("data")
+                    for(i in 0 until Jarray.length()){
+                        val provedor:JSONObject = Jarray.getJSONObject(i)
                         val gson = Gson()
                         val providerList:Appointment = gson.fromJson(provedor.toString(), Appointment::class.java)
-
-                        if (providerList.approved.not() && providerList.enabled.not())
-                            listaCanceladas.add(providerList)
-                        else if (providerList.approved && LocalDateTime.parse(providerList.dateTime).isBefore(LocalDateTime.now()))
-                            listaRealizadas.add(providerList)
-                        else if (providerList.approved) lista.add(providerList)
-                        else listaPendiente.add(providerList)
-                        i++
+                        lista.add(providerList)
                     }
-                    if(lista.isEmpty()){
-                        Toast.makeText(this@HomeFragment.context, "No hay registro de citas", Toast.LENGTH_SHORT).show()
-                    }else{
-                        binding.rvCitas.layoutManager = LinearLayoutManager(activity)
-                        adapter = AppointmentAdapter(lista)
-                        _binding!!.rvCitas.layoutManager =
-                            LinearLayoutManager(activity)
-                        _binding!!.rvCitas.adapter=adapter
-                        adapter!!.notifyDataSetChanged()
+                    adapter = AppointmentAdapter(emptyList())
+                    binding.rvServices.adapter = adapter
+                    changeCategory("Cita programada")
+                    if (lista.isEmpty()) {
+                        binding.btnTexto.visibility = View.VISIBLE
+                        Toast.makeText(activity, "No hay citas disponibles", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
+                        binding.btnTexto.visibility = View.GONE
                     }
-
-
                 } else {
-                    var code = response.code().toString()
+                    val code = response.code().toString()
                     if(code == "401"){
-                        Toast.makeText(this@HomeFragment.context, "La sesión ha expirado", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "La sesión ha expirado", Toast.LENGTH_LONG).show()
                         PrefsApplication.prefs.deleteAll()
                         val intent = Intent(activity, LoginScreen::class.java)
                         intent.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                     }
                     Log.e("RETROFIT_ERROR", response.code().toString())
-
                 }
             }
         }

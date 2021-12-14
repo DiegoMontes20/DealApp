@@ -11,5 +11,7 @@ data class Provider(@SerializedName("name")val name:String,
                     @SerializedName("startTime")val startTime:String,
                     @SerializedName("finalTime")val finalTime:String,
                     @SerializedName("user")val User:User,
-                    @SerializedName("location")var location: LocationAddress?
+                    @SerializedName("location")var location: LocationAddress?,
+                    @SerializedName("evaluationAverage")var evaluationAverage: Int?
+
 )

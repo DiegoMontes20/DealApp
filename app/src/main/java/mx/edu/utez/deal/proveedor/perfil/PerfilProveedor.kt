@@ -72,13 +72,14 @@ class PerfilProveedor : AppCompatActivity() {
 
                     val proveedor = gson.fromJson(jsonProveedor.toString(), Provider::class.java)
 
-                    binding.inputNombreEmpresa.setText(proveedor.name)
+                    binding.nombreEmpresa.text = proveedor.name
                     binding.inputDescripcion.setText(proveedor.description)
                     binding.inputTelefono.setText(proveedor.phone)
                     binding.inputGiro.setText(proveedor.area)
                     binding.inputUbicacion.setText(if (proveedor.location == null) "Sin ubicación" else proveedor.location!!.name)
                     binding.inputDesde.setText(proveedor.startTime)
                     binding.inputHasta.setText(proveedor.finalTime)
+                    binding.promedio.text = proveedor.evaluationAverage.toString()
                     val decodedString: ByteArray = Base64.decode(proveedor.image, Base64.DEFAULT)
                     val decodedByte =
                         BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
