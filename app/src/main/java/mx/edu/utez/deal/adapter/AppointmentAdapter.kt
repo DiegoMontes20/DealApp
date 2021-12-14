@@ -13,7 +13,7 @@ import mx.edu.utez.deal.Model.AppointmentModel
 import mx.edu.utez.deal.R
 import mx.edu.utez.deal.databinding.ItemcitasBinding
 
-class AppointmetAdapter(var appointments:List<AppointmentModel>): RecyclerView.Adapter<AppointmetAdapter.AppointmentHolder>() {
+class AppointmentAdapter(var appointments:List<AppointmentModel>): RecyclerView.Adapter<AppointmentAdapter.AppointmentHolder>() {
 
     // Allows to remember the last item shown on screen
     private var lastPosition = -1
@@ -23,7 +23,7 @@ class AppointmetAdapter(var appointments:List<AppointmentModel>): RecyclerView.A
         viewType: Int
     ): AppointmentHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return AppointmetAdapter.AppointmentHolder(
+        return AppointmentAdapter.AppointmentHolder(
             layoutInflater.inflate(
                 R.layout.itemcitas,
                 parent,
