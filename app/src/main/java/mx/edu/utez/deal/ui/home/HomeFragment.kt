@@ -60,6 +60,8 @@ class HomeFragment : Fragment() {
     var idProveedor=""
     val jsonObject = JSONObject()
 
+    var tokenService =""
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -142,6 +144,7 @@ class HomeFragment : Fragment() {
                                 ?.string()
                         )
                     )
+
                     var jobject:JSONObject = JSONObject(prettyJson)
 
                     val jsonPro:JSONObject = JSONObject(jobject.get("data").toString())
@@ -149,6 +152,7 @@ class HomeFragment : Fragment() {
 
                     idProveedor = jsonPro.get("id").toString()
                     nombreEmpresa = jsonPro.get("name").toString()
+                    tokenService = jsonPro.getString("notificationToken")
                     var token: String?
                     FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                         if (!task.isSuccessful) {
@@ -157,10 +161,11 @@ class HomeFragment : Fragment() {
                         }
                         // Get new FCM registration token
                         token = task.result
-                        jsonObject.put("id", idProveedor)
-                        jsonObject.put("notificationToken", token)
-                        update()
-
+                        if(!token.equals(tokenService)){
+                            jsonObject.put("id", idProveedor)
+                            jsonObject.put("notificationToken", token)
+                            update()
+                        }
                     })
 
 
