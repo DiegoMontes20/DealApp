@@ -32,6 +32,8 @@ class LoginScreen : AppCompatActivity() {
                 Snackbar.make(it, "Por favor llena los campos", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }else{
+                binding.btnLogin.isEnabled=false
+                binding.btnLogin.setText("Cargando...")
                 login()
             }
         }
@@ -61,6 +63,7 @@ class LoginScreen : AppCompatActivity() {
                     //println("Auto, ${autho}")
                     prefs.save("token", autho.toString())
                     Toast.makeText(applicationContext, "Bienenid@ ${binding.loUser.text.toString()}", Toast.LENGTH_LONG).show()
+                    binding.btnLogin.isEnabled=true
                     changeMain()
                 }
             }
