@@ -63,15 +63,14 @@
                     android:text="@string/usuario"
                     android:textColor="@color/secondaryDark"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-
-                    ></TextView>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/lo_user"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/secondary" />
+                    android:backgroundTint="@color/secondary"
+                    android:hint="@string/usuario" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -82,14 +81,15 @@
                     android:text="@string/contraseña"
                     android:textColor="@color/secondaryDark"
                     android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/lo_password"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:backgroundTint="@color/secondary" />
+                    android:backgroundTint="@color/secondary"
+                    android:hint="@string/contraseña"
+                    android:inputType="textPassword" />
 
                 <Button
                     android:id="@+id/btn_login"
