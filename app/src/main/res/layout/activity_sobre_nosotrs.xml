@@ -67,11 +67,9 @@ tools:context=".SobreNosotrsActivity">
         android:layout_height="match_parent"
         android:textSize="20dp"
         android:layout_margin="15dp"
-
         android:textStyle="normal"
         android:justificationMode="inter_word"
         android:text="@string/sobreDeal">
-
     </TextView>
 
     <Button

@@ -69,6 +69,7 @@
                 android:id="@+id/lo_user"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
+                android:hint="@string/usuario"
                 android:backgroundTint="@color/secondary" />
 
             <TextView
@@ -87,6 +88,7 @@
                 android:layout_width="350dp"
                 android:inputType="textPassword"
                 android:layout_height="wrap_content"
+                android:hint="@string/contraseña"
                 android:backgroundTint="@color/secondary" />
 
 
