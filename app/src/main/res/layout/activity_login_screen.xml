@@ -49,7 +49,7 @@
                 android:letterSpacing="0.1"
                 android:text="@string/bienvenida"
                 android:textColor="@color/secondary"
-                android:textSize="40dp"
+                android:textSize="35dp"
                 android:textStyle="bold" />
 
             <TextView

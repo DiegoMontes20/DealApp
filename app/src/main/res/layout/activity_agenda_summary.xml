@@ -160,8 +160,9 @@ tools:context=".chat2.AgendaSummary"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/redondeocompleto"
+            android:backgroundTint="@color/primaryDark"
             android:text="Calificar"
+            android:layout_marginRight="5dp"
             android:textColor="@color/white" />
 
         <Button
@@ -169,7 +170,7 @@ tools:context=".chat2.AgendaSummary"
             android:layout_width="0dp"
             android:id="@+id/abrirMapa"
             android:layout_height="wrap_content"
-            android:background="@drawable/redondeocompleto"
+            android:backgroundTint="@color/primaryDark"
             android:text="Ubicación"
             android:textColor="@color/white" />
 
@@ -199,7 +200,7 @@ tools:context=".chat2.AgendaSummary"
             android:id="@+id/btnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/redondeocompleto"
+            android:backgroundTint="@color/primaryDark"
             android:text="Cancelar"
             android:textColor="@color/white" />
 
