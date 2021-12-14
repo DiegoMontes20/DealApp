@@ -63,7 +63,8 @@ class AgendaSummary : AppCompatActivity() {
         latIntent = parametros.getDouble("latitude", 0.0)
         longIntent = parametros.getDouble("longitude", 0.0)
 
-        binding.fechaHora.setText(parametros.getString("fechaHora"))
+        var fecha = parametros.getString("fechaHora")
+        binding.fechaHora.setText("${fecha?.substring(0,10)} ${fecha?.substring(11,16)}")
         binding.ubicacion.setText(parametros.getString("ubicacion"))
         binding.servicio.setText(parametros.getString("descripcion"))
         binding.nombreProveedor.setText(parametros.getString("nombreProveedor"))
@@ -74,6 +75,10 @@ class AgendaSummary : AppCompatActivity() {
         val approved = parametros.getBoolean("approved")
         val enabled = parametros.getBoolean("enabled")
         val onWay = parametros.getBoolean("onWay")
+
+//        println("aproved -> $approved")
+//        println("enabled -> $enabled")
+//        println("onWay -> $onWay")
 
         binding.abrirMapa.visibility = View.GONE
         binding.calificar.visibility = View.GONE
@@ -100,6 +105,11 @@ class AgendaSummary : AppCompatActivity() {
         }else{
             binding.txtTitle.text = "Cita cancelada"
             binding.txtTitle.setTextColor(getColor(R.color.red))
+        }
+        //if para
+        if(approved && enabled && !onWay){
+            binding.txtTitle.text = "Cita aprobada"
+            binding.calificar.visibility = View.GONE
         }
 
 

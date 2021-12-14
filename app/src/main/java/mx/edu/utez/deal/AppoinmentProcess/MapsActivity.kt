@@ -117,8 +117,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     fun dialog(){
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("¿Esta seguro de agendar la cita?")
-        builder.setMessage("¿Esta es la dirección correcta? \n ${dialogAddress}")
+        builder.setTitle("Agendar cita")
+        builder.setMessage("¿Está es la dirección correcta? \n ${dialogAddress}")
         builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
             changeAct()
         })
